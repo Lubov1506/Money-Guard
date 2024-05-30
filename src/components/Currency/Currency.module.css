@@ -1,0 +1,9 @@
+.wrapper {
+  background-color: #56117b;
+}
+.table {
+  color: white;
+  thead {
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
