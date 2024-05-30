@@ -3,16 +3,15 @@ import {
   addTrnThunk,
   deleteTrnThunk,
   fetchAllTrnThunk,
-  getTrnCats,
+  fetchPeriodTrnThunk,
 } from './operations';
 
 const initialState = {
-  transactions: {
-    items: [],
-    loading: false,
-    error: null,
-    currentTransaction: null,
-  },
+  items: [],
+  periodTransactions: [],
+  loading: false,
+  error: null,
+  currentTransaction: null,
 };
 
 const transactionsSlice = createSlice({
@@ -20,22 +19,23 @@ const transactionsSlice = createSlice({
   initialState,
   reducers: {
     addCurrentTransaction(state, { payload }) {
-      state.transactions.currentTransaction = payload;
+      state.currentTransaction = payload;
     },
   },
   extraReducers: (builder) => {
     builder
       .addCase(fetchAllTrnThunk.fulfilled, (state, { payload }) => {
-        state.transactions.items = payload;
+        state.items = payload;
       })
-      .addCase(getTrnCats.fulfilled, (state, { payload }) => {
-        console.log(payload);
+      .addCase(fetchPeriodTrnThunk.fulfilled, (state, { payload }) => {
+        state.periodTransactions = payload;
       })
+
       .addCase(addTrnThunk.fulfilled, (state, { payload }) => {
-        state.transactions.items.push(payload);
+        state.items.push(payload);
       })
       .addCase(deleteTrnThunk.fulfilled, (state, { payload }) => {
-        state.transactions.items.map((trn) => trn.id !== payload);
+        state.items.map((trn) => trn.id !== payload);
       })
       .addMatcher(
         ({ type }) => type.endsWith('/pending'),
