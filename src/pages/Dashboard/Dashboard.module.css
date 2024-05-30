@@ -1,0 +1,33 @@
+.divBackground {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #101010;
+  background-image: url('../../images/Dashboard/background-mob.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+@media only screen and (min-width: 768px) {
+  .divBackground {
+    background-image: url('../../images/Dashboard/background-tab.png');
+  }
+  .noOutletWrapper {
+    display: flex;
+  }
+  .navBalWrapper {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .divBackground {
+    flex-direction: column row;
+    background-image: url('../../images/Dashboard/background-desc.png');
+  }
+  .noOutletWrapper {
+    flex-direction: column;
+  }
+}
