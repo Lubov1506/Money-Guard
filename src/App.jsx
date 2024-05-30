@@ -1,5 +1,7 @@
+import Currency from "./components/Currency/Currency";
+
 function App() {
-  return <></>;
+  return <><Currency/></>;
 }
 
 export default App;
