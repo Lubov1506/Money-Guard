@@ -1,17 +1,26 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import { MdOutlineMailOutline } from "react-icons/md";
-import { MdLock } from "react-icons/md";
+import { MdOutlineMailOutline, MdLock, IoPerson } from "react-icons/md";
 import * as yup from "yup";
-import s from "./LoginForm.module.css";
-// import { signInThunk } from "../../redux/auth/operations";
+import s from "./RegistrationForm.module.css";
+import PasswordStrengthBar from "react-password-strength-bar";
+// import { signUpThunk } from "../../redux/auth/operations";
 
-export const LoginForm = () => {
+export const RegistrationForm = () => {
   // const dispatch = useDispatch();
   const initialValues = {
+    name: "",
     email: "",
     password: "",
+    confirmPassword: "",
   };
+  const { password } = this.state;
   const validation = yup.object().shape({
+    name: yup
+      .string()
+      .required("Name is required")
+      .min(3, "Must be at least 3 characters long")
+      .max(50, "Too long")
+      .trim(),
     email: yup
       .string()
       .email("Invalid email")
@@ -24,9 +33,14 @@ export const LoginForm = () => {
       .required("Password is required")
       .min(6, "Must be at least 3 characters long")
       .max(12, "Too long"),
+    confirmPassword: yup
+      .string()
+      .required("Password is required")
+      .min(6, "Must be at least 3 characters long")
+      .max(12, "Too long"),
   });
   const handleSubmit = (values, actions) => {
-    //   dispatch(signInThunk(values));
+    //   dispatch(signUpThunk(values));
     console.log(values);
     actions.resetForm();
   };
@@ -50,6 +64,21 @@ export const LoginForm = () => {
         >
           <Form className={s.form}>
             <div className={s.inputs}>
+              <div className={s.inputGroup}>
+                <IoPerson className={s.inputIcon} />
+                <Field
+                  type="name"
+                  name="name"
+                  placeholder="Name"
+                  className={s.input}
+                  required
+                />
+                <ErrorMessage
+                  className={s.error}
+                  name="name"
+                  component="span"
+                />
+              </div>
               <div className={s.inputGroup}>
                 <MdOutlineMailOutline className={s.inputIcon} />
                 <Field
@@ -80,13 +109,29 @@ export const LoginForm = () => {
                   component="span"
                 />
               </div>
+              <div className={s.inputGroup}>
+                <MdLock className={s.inputIcon} />
+                <Field
+                  type="password"
+                  name="confirmPassword"
+                  placeholder="Confirm password"
+                  className={s.input}
+                  required
+                />
+                <ErrorMessage
+                  className={s.error}
+                  name="confirmPassword"
+                  component="span"
+                />
+              </div>
+              <PasswordStrengthBar password={password} />
             </div>
             <div className={s.btns}>
               <button type="submit" className={s.btnColor}>
-                Login
+                Register
               </button>
               <button type="button" className={s.btnWhite}>
-                Register
+                Login
               </button>
             </div>
           </Form>
@@ -96,4 +141,4 @@ export const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default RegistrationForm;
