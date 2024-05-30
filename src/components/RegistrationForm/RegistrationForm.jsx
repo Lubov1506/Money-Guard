@@ -3,10 +3,11 @@ import { MdOutlineMailOutline, MdLock, IoPerson } from "react-icons/md";
 import * as yup from "yup";
 import s from "./RegistrationForm.module.css";
 import PasswordStrengthBar from "react-password-strength-bar";
-// import { signUpThunk } from "../../redux/auth/operations";
+import { useDispatch } from "react-redux";
+import { signUpThunk } from "../../redux/auth/operations";
 
 export const RegistrationForm = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const initialValues = {
     name: "",
     email: "",
@@ -40,7 +41,7 @@ export const RegistrationForm = () => {
       .max(12, "Too long"),
   });
   const handleSubmit = (values, actions) => {
-    //   dispatch(signUpThunk(values));
+    dispatch(signUpThunk(values));
     console.log(values);
     actions.resetForm();
   };

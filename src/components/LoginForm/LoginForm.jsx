@@ -3,10 +3,11 @@ import { MdOutlineMailOutline } from "react-icons/md";
 import { MdLock } from "react-icons/md";
 import * as yup from "yup";
 import s from "./LoginForm.module.css";
-// import { signInThunk } from "../../redux/auth/operations";
+import { signInThunk } from "../../redux/auth/operations";
+import { useDispatch } from "react-redux";
 
 export const LoginForm = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const initialValues = {
     email: "",
     password: "",
@@ -26,7 +27,7 @@ export const LoginForm = () => {
       .max(12, "Too long"),
   });
   const handleSubmit = (values, actions) => {
-    //   dispatch(signInThunk(values));
+    dispatch(signInThunk(values));
     console.log(values);
     actions.resetForm();
   };
