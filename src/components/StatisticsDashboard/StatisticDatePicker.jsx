@@ -54,46 +54,4 @@ export const StatisticDatePicker = () => {
       />
     </div>
   );
-
-  //   const renderMonthContent = (month, shortMonth, longMonth) => {
-  //     const tooltipText = `Tooltip for month: ${longMonth} `;
-  //     return <span title={tooltipText}>{longMonth}</span>;
-  //   };
-  //   const renderYearContent = year => {
-  //     const tooltipText = `${year}`;
-  //     return <span title={tooltipText}>{year}</span>;
-  //   };
-
-  //   return (
-  //     <div>
-  //       <CalendarContainer className={s.calendar}>
-  //         <DatePicker
-  //           renderYearContent={renderYearContent}
-  //           renderCustomHeader={() => <span></span>}
-  //           selected={startDate}
-  //           onChange={date => setStartDate(date)}
-  //           dateFormat="yyyy"
-  //           showYearPicker
-  //           minDate={new Date(2000, 0, 1)}
-  //           maxDate={new Date()}
-  //           placeholderText="Select year"
-  //           shouldCloseOnSelect={true}
-  //           scrollableYearDropdown={true}
-  //           yearItemNumber={12}
-  //         />
-
-  //         <DatePicker
-  //           selected={startDate}
-  //           renderMonthContent={renderMonthContent}
-  //           onChange={date => setStartDate(date)}
-  //           dateFormat="MMMM"
-  //           showMonthYearPicker
-  //           renderCustomHeader={() => <span></span>}
-  //           maxDate={new Date()}
-  //           placeholderText="Select month"
-  //           shouldCloseOnSelect={true}
-  //         />
-  //       </CalendarContainer>
-  //     </div>
-  //   );
 };
