@@ -1,5 +1,11 @@
+import Header from "./pages/Header";
+
 function App() {
-  return <></>;
+  return (
+    <>
+      <Header></Header>
+    </>
+  );
 }
 
 export default App;
