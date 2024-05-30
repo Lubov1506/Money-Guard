@@ -24,7 +24,7 @@
 
 @media only screen and (min-width: 1280px) {
   .divBackground {
-    flex-direction: column row;
+    flex-direction: row;
     background-image: url('../../images/Dashboard/background-desc.png');
   }
   .noOutletWrapper {
