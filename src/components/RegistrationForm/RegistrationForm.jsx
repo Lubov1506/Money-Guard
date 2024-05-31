@@ -20,7 +20,6 @@ export const RegistrationForm = () => {
     const { name: username, email, password } = values;
     const signUpData = { username, email, password };
     dispatch(signUpThunk(signUpData));
-    console.log(values);
     console.log(signUpData);
     actions.resetForm();
   };
