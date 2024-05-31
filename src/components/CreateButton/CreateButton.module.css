@@ -1,0 +1,31 @@
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-image: linear-gradient(
+    167deg,
+    #ffc727 0%,
+    #9e40ba 61.46%,
+    #7000ff 90.54%
+  );
+  box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
+  width: 44px;
+  height: 44px;
+  transition: all 300ms ease-in-out;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.btn:hover {
+  box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.4);
+  scale: 1.05;
+}
+
+@media only screen and (min-width: 768px) {
+  .btn {
+    bottom: 40px;
+    right: 40px;
+  }
+}
