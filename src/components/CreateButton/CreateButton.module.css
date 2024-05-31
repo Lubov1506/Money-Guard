@@ -3,6 +3,7 @@
   justify-content: center;
   align-items: center;
   border-radius: 50%;
+  color: rgba(251, 251, 251, 1);
   background: linear-gradient(
     96.76deg,
     #ffc727 -16.42%,
@@ -19,15 +20,22 @@
 }
 
 .icon {
-  color: #ffffff;
   width: 28px;
   height: 28px;
   line-height: 1;
 }
 
 .btn:hover {
-  box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.4);
-  scale: 1.05;
+  transform: scale(1.05);
+  background-image: linear-gradient(
+    to right,
+    #7000ff 0%,
+    #9e40ba 31%,
+    #ffc727 100%
+  );
+  background-size: 200%;
+  background-position: right center;
+  transition: all 1s ease 0s;
 }
 
 .btn:active {
