@@ -11,8 +11,8 @@ import Loader from './components/Loader/Loader';
 import RegistrationPage from './pages/RegistrationPage';
 import LoginPage from './pages/LoginPage';
 import CurrencyTab from './components/CurrencyTab/CurrencyTab';
-import NotFound from "./pages/NotFound/NotFound";
-
+import NotFound from './pages/NotFound/NotFound';
+import CreateButton from './components/CreateButton/CreateButton';
 
 function App() {
   const dispatch = useDispatch();
@@ -25,7 +25,7 @@ function App() {
   return (
     <>
       {(isLoading || isRefreshing) && <Loader />}
-
+      <CreateButton />
       <Routes>
         <Route
           path="/"
@@ -37,14 +37,14 @@ function App() {
         >
           <Route index element={<p>HomeTab</p>} />
           <Route path="statistics" element={<p>StatisticsTab</p>} />
-          <Route path="currency" element={<CurrencyTab/>} />
+          <Route path="currency" element={<CurrencyTab />} />
         </Route>
 
         <Route
           path="register"
           element={
             <PublicRoute>
-              <RegistrationPage/>
+              <RegistrationPage />
             </PublicRoute>
           }
         />
@@ -52,7 +52,7 @@ function App() {
           path="login"
           element={
             <PublicRoute>
-              <LoginPage/>
+              <LoginPage />
             </PublicRoute>
           }
         />
