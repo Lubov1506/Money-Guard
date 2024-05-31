@@ -44,7 +44,7 @@ function App() {
         </Route>
 
         <Route
-          path="register"
+          path="/register"
           element={
             <PublicRoute>
               <RegistrationPage />
@@ -52,7 +52,7 @@ function App() {
           }
         />
         <Route
-          path="login"
+          path="/login"
           element={
             <PublicRoute>
               <LoginPage />
