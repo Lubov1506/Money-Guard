@@ -5,6 +5,7 @@ import { selectIsLoading } from './redux/transactions/selectors';
 import { refreshUserThunk } from './redux/auth/operations';
 import Loader from './components/Loader/Loader';
 import Currency from './components/Currency/Currency';
+import MoneyLoader from './components/MoneyLoader/MoneyLoader';
 
 function App() {
   const dispatch = useDispatch();
@@ -14,7 +15,12 @@ function App() {
   useEffect(() => {
     dispatch(refreshUserThunk());
   }, [dispatch]);
-  return <>{(isLoading || isRefreshing) && <Loader />}</>;
+  return (
+    <>
+      {(isLoading || isRefreshing) && <Loader />}
+      <MoneyLoader />
+    </>
+  );
 }
 
 export default App;
