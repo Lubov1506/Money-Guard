@@ -2,8 +2,9 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import s from './LogoutModal.module.css';
 import { signOutThunk } from '../../redux/auth/operations';
+import FormButton from '../common/FormButton/FormButton';
 
-const LogoutModal = ({ onClose }) => { // Destructure the onClose prop
+const LogoutModal = ({ onClose }) => {
   const dispatch = useDispatch();
 
   const handleBackDropClick = e => {
@@ -39,13 +40,13 @@ const LogoutModal = ({ onClose }) => { // Destructure the onClose prop
         </div>
         <h3 className={s.text}>Are you sure you want to log out?</h3>
         <div className={s.btns}>
-          <button
-            type="button" // Changed to button for consistency
-            className={s.btnColor}
+          <FormButton
+            type="button"
+            variant={'multiColorButtton'}
             onClick={() => dispatch(signOutThunk())}
           >
             Logout
-          </button>
+          </FormButton>
           <button type="button" className={s.btnWhite} onClick={onClose}>
             Cancel
           </button>
