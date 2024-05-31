@@ -47,9 +47,9 @@ const LogoutModal = ({ onClose }) => {
           >
             Logout
           </FormButton>
-          <button type="button" className={s.btnWhite} onClick={onClose}>
+          <FormButton type="button" variant={'whiteButtton'}  onClick={onClose}>
             Cancel
-          </button>
+          </FormButton>
         </div>
       </div>
     </div>
