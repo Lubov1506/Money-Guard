@@ -1,5 +1,8 @@
+import { useDispatch } from "react-redux";
 import s from "./LogoutModal.module.css";
+import { signOutThunk } from "../../redux/auth/operations";
 const LogoutModal = () => {
+  const dispatch = useDispatch()
   return (
     <div className={s.modal}>
       <div className={s.logo}>
@@ -13,10 +16,10 @@ const LogoutModal = () => {
       </div>
       <h3 className={s.text}>Are you sure you want to log out?</h3>
       <div className={s.btns}>
-        <button type="submit" className={s.btnColor}>
+        <button type="submit" className={s.btnColor} onClick={()=>dispatch(signOutThunk())}>
           Logout
         </button>
-        <button type="button" className={s.btnWhite}>
+        <button type="button" className={s.btnWhite} >
           Cancel
         </button>
       </div>
