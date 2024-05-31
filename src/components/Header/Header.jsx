@@ -33,7 +33,6 @@ const Header = () => {
       localStorage.clear();
     }
   };
-
   return (
     <header className={s.header}>
       <div className={s.logo}>
