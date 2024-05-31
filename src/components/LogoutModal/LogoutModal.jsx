@@ -42,14 +42,17 @@ const LogoutModal = ({ onClose }) => {
         <div className={s.btns}>
           <FormButton
             type="button"
+            text={'Logout'}
             variant={'multiColorButtton'}
-            onClick={() => dispatch(signOutThunk())}
-          >
-            Logout
-          </FormButton>
-          <FormButton type="button" variant={'whiteButtton'}  onClick={onClose}>
-            Cancel
-          </FormButton>
+            handlerFunction={() => dispatch(signOutThunk())}
+          />
+
+          <FormButton
+            type="button"
+            text={'Cancel'}
+            variant={'whiteButtton'}
+            handlerFunction={onClose}
+          />
         </div>
       </div>
     </div>
