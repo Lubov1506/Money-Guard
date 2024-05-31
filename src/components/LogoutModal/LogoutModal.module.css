@@ -1,3 +1,13 @@
+.wrapper {
+  z-index: 10;
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(7px);
+  background: rgba(34, 13, 91, 0.23);
+}
 .modal {
   z-index: 10;
   display: flex;

@@ -14,12 +14,12 @@ import Loader from './components/Loader/Loader';
 import { lazy, Suspense } from 'react';
 
 const Dashboard = lazy(() => import('./pages/Dashboard/Dashboard'));
-// const HomeTab = lazy(() => import('./HomeTab'));
-// const StatisticsTab = lazy(() => import('./StatisticsTab'));
 const CurrencyTab = lazy(() => import('./components/CurrencyTab/CurrencyTab'));
 const RegistrationPage = lazy(() => import('./pages/RegistrationPage'));
 const LoginPage = lazy(() => import('./pages/LoginPage'));
-// const NotFound = lazy(() => import('./NotFound/'));
+const NotFound = lazy(() => import('./pages/NotFound/NotFound'));
+// const HomeTab = lazy(() => import('./HomeTab'));
+// const StatisticsTab = lazy(() => import('./StatisticsTab'));
 
 function App() {
   const dispatch = useDispatch();
@@ -63,7 +63,7 @@ function App() {
               </PublicRoute>
             }
           />
-          <Route path="*" element={<p>NotFoundPage</p>} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
     </>

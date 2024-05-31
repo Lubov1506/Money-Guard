@@ -1,0 +1,32 @@
+.header {
+  padding: 16px;
+  .logo {
+    color: inherit;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 4px 40px 0 rgba(0, 0, 0, 0.25),
+    inset 0 -3px 2px 0 rgba(0, 0, 0, 0.1);
+  background: linear-gradient(276deg, #2e1746 3.19%, #2e225f 100%);
+}
+.user {
+  display: flex;
+  align-items: center;
+  color: var(--white-60);
+  padding: 0 5px;
+  span {
+    padding: 0 10px;
+  }
+  button {
+    border: none;
+    border-left: 1px solid var(--white-60);
+    background-color: transparent;
+    color: var(--white-60);
+    padding: 0 10px;
+  }
+}
