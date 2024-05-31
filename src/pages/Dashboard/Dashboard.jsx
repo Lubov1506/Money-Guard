@@ -5,6 +5,8 @@ import Header from '../../components/Header/Header';
 import Navigation from '../../components/Navigation/Navigation';
 import Balance from '../../components/Balance/Balance';
 import Currency from '../../components/Currency/Currency';
+import { Suspense } from 'react';
+import MoneyLoader from '../../components/MoneyLoader/MoneyLoader';
 
 const Dashboard = () => {
   const isDesktop = useMediaQuery({
@@ -20,7 +22,9 @@ const Dashboard = () => {
           <div className={s.divBackground}>
             <Navigation />
             <Balance />
-            <Outlet />
+            <Suspense fallback={<MoneyLoader />}>
+              <Outlet />
+            </Suspense>
           </div>
         </>
       )}
@@ -35,7 +39,9 @@ const Dashboard = () => {
               </div>
               <Currency />
             </div>
-            <Outlet />
+            <Suspense fallback={<MoneyLoader />}>
+              <Outlet />
+            </Suspense>
           </div>
         </>
       )}
@@ -49,7 +55,9 @@ const Dashboard = () => {
               <Balance />
               <Currency />
             </div>
-            <Outlet />
+            <Suspense fallback={<MoneyLoader />}>
+              <Outlet />
+            </Suspense>
           </div>
         </>
       )}
