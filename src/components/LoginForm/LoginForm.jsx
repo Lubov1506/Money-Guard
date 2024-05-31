@@ -1,16 +1,18 @@
-import { ErrorMessage, Field, Form, Formik } from "formik";
-import { MdOutlineMailOutline } from "react-icons/md";
-import { MdLock } from "react-icons/md";
-import s from "./LoginForm.module.css";
-import { signInThunk } from "../../redux/auth/operations";
-import { useDispatch } from "react-redux";
-import { validation } from "../../helpers/loginValidation";
+import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { MdOutlineMailOutline } from 'react-icons/md';
+import { MdLock } from 'react-icons/md';
+import s from './LoginForm.module.css';
+import { signInThunk } from '../../redux/auth/operations';
+import { useDispatch } from 'react-redux';
+import { validation } from '../../helpers/loginValidation';
+import FormButton from '../common/FormButton/FormButton';
+import { Link } from 'react-router-dom';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
   const initialValues = {
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   };
   const handleSubmit = (values, actions) => {
     dispatch(signInThunk(values));
@@ -69,12 +71,19 @@ export const LoginForm = () => {
               </div>
             </div>
             <div className={s.btns}>
-              <button type="submit" className={s.btnColor}>
-                Login
-              </button>
-              <button type="button" className={s.btnWhite}>
-                Register
-              </button>
+              <FormButton
+                type="submit"
+                text={'LogIn'}
+                variant={'multiColorButtton'}
+              />
+
+              <Link to="/register">
+                <FormButton
+                  type="button"
+                  text={'Register'}
+                  variant={'whiteButtton'}
+                />
+              </Link>
             </div>
           </Form>
         </Formik>

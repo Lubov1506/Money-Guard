@@ -1,18 +1,21 @@
 import { Route, Routes } from 'react-router-dom';
 import PrivateRoute from './routes/PrivateRoute';
 import PublicRoute from './routes/PublicRoute';
-import Dashboard from './pages/Dashboard/Dashboard';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsRefreshing } from './redux/auth/selectors';
 import { selectIsLoading } from './redux/transactions/selectors';
 import { refreshUserThunk } from './redux/auth/operations';
 import Loader from './components/Loader/Loader';
-import RegistrationPage from './pages/RegistrationPage';
-import LoginPage from './pages/LoginPage';
-import CurrencyTab from './components/CurrencyTab/CurrencyTab';
-import NotFound from './pages/NotFound/NotFound';
-import CreateButton from './components/CreateButton/CreateButton';
+import { lazy } from 'react';
+
+const Dashboard = lazy(() => import('./pages/Dashboard/Dashboard'));
+const CurrencyTab = lazy(() => import('./components/CurrencyTab/CurrencyTab'));
+const RegistrationPage = lazy(() => import('./pages/RegistrationPage'));
+const LoginPage = lazy(() => import('./pages/LoginPage'));
+const NotFound = lazy(() => import('./pages/NotFound/NotFound'));
+// const HomeTab = lazy(() => import('enter path here'));
+// const StatisticsTab = lazy(() => import('enter path here'));
 
 function App() {
   const dispatch = useDispatch();
