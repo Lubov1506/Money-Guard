@@ -1,9 +1,16 @@
-import s from "./CurrencyChart.module.css";
-const CurrencyChart = ({usd, eur}) => {
+import { useMediaQuery } from 'react-responsive';
+import s from './CurrencyChart.module.css';
+const CurrencyChart = ({ usd, eur , type='mob'}) => {
+  const typeOfWidth = {
+    desk: '400',
+    tab: '336',
+    mob: '320'
+  }
+    console.log(typeOfWidth[type]);
   return (
     <div className={s.chart_wrapper}>
-          <div className={s.first_circle}>
-              <p>{usd}</p>
+      <div className={s.first_circle}>
+        {type==='desc' && <p>{usd}</p>}
         <svg
           width="9"
           height="9"
@@ -13,8 +20,8 @@ const CurrencyChart = ({usd, eur}) => {
           <circle cx="4.5" cy="4.5" r="4" fill="#563EAF" stroke="#FF868D" />
         </svg>
       </div>
-          <div className={s.second_circle}>
-                      <p>{eur}</p>
+      <div className={s.second_circle}>
+        {type==='desc' && <p>{eur}</p>}
         <svg
           width="9"
           height="9"
@@ -27,7 +34,7 @@ const CurrencyChart = ({usd, eur}) => {
       </div>
       <div className={s.line_chart}>
         <svg
-          width="480"
+          width={typeOfWidth[type]}
           height="102"
           viewBox="0 0 480 102"
           fill="none"
@@ -41,7 +48,7 @@ const CurrencyChart = ({usd, eur}) => {
       </div>
       <div className={s.area_chart}>
         <svg
-          width="480"
+          width={typeOfWidth[type]}
           height="167"
           viewBox="0 0 480 167"
           fill="none"
@@ -72,11 +79,7 @@ const CurrencyChart = ({usd, eur}) => {
                 stopColor="white"
                 stopOpacity="0.536458"
               />
-              <stop
-                offset="0.6091"
-                stopColor="white"
-                stopOpacity="0.269957"
-              />
+              <stop offset="0.6091" stopColor="white" stopOpacity="0.269957" />
               <stop
                 offset="0.766012"
                 stopColor="white"

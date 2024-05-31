@@ -1,15 +1,15 @@
 .chart_wrapper {
-  max-width: 480px;
+  max-width: 320px;
   position: relative;
-  margin-top: 50px;
+  margin-top: -10px;
 }
 .first_circle {
   p {
     color: #ff868d;
     transform: translateX(-45%);
   }
-  left: 57px;
-  top: -5px;
+  left: 39px;
+  top: 28px;
   position: absolute;
   z-index: 1;
 }
@@ -19,13 +19,57 @@
     transform: translateX(-45%);
   }
   z-index: 1;
-  right: 75px;
-  top: -39px;
+  right: 71px;
+  top: 6px;
   position: absolute;
 }
 .line_chart {
   position: absolute;
-  top: -16px;
+  top: -3px;
 }
-.area_chart {
+@media only screen and (min-width: 768px) {
+  .chart_wrapper {
+    max-width: 336px;
+    margin-top: -10px;
+  }
+  .first_circle {
+    left: 41px;
+    top: 29px;
+  }
+  .second_circle {
+    top: 4px;
+  }
+  .line_chart {
+    top: -2.5px;
+  }
+}
+@media only screen and (min-width: 1280px) {
+  .chart_wrapper {
+    max-width: 480px;
+    margin-top: 50px;
+  }
+  .first_circle {
+    p {
+      color: #ff868d;
+      transform: translateX(-45%);
+    }
+    left: 57px;
+    top: -5px;
+    position: absolute;
+    z-index: 1;
+  }
+  .second_circle {
+    p {
+      color: #ff868d;
+      transform: translateX(-45%);
+    }
+    z-index: 1;
+    right: 75px;
+    top: -39px;
+    position: absolute;
+  }
+  .line_chart {
+    position: absolute;
+    top: -16px;
+  }
 }

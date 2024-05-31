@@ -3,6 +3,7 @@ import s from './Currency.module.css';
 import CurrencyChart from '../CurrencyChart/CurrencyChart';
 import getCurrency from '../../helpers/fetchCurrencyApi';
 import Loader from '../Loader/Loader';
+import { useMediaQuery } from 'react-responsive';
 
 const Currency = () => {
   const [currency, setCurrency] = useState(
@@ -15,6 +16,12 @@ const Currency = () => {
     };
     getData();
   }, []);
+  const isDesktop = useMediaQuery({
+    query: '(min-width: 1280px)',
+  });
+  const isTablet = useMediaQuery({
+    query: '(min-width: 768px)',
+  });
   if (!currency) {
     return <Loader />;
   }
@@ -42,10 +49,27 @@ const Currency = () => {
             </tr>
           </tbody>
         </table>
-        <CurrencyChart
-          usd={currency.usd.rateBuy.toFixed(2)}
-          eur={currency.eur.rateBuy.toFixed(2)}
-        />
+        {isDesktop && (
+          <CurrencyChart
+            usd={currency.usd.rateBuy.toFixed(2)}
+            eur={currency.eur.rateBuy.toFixed(2)}
+            type="desc"
+          />
+        )}
+        {isTablet && !isDesktop && (
+          <CurrencyChart
+            usd={currency.usd.rateBuy.toFixed(2)}
+            eur={currency.eur.rateBuy.toFixed(2)}
+            type="tab"
+          />
+        )}
+        {!isTablet && !isDesktop && (
+          <CurrencyChart
+            usd={currency.usd.rateBuy.toFixed(2)}
+            eur={currency.eur.rateBuy.toFixed(2)}
+            type="mob"
+          />
+        )}
       </div>
     </>
   );
