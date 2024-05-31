@@ -28,7 +28,7 @@ function App() {
   return (
     <>
       {(isLoading || isRefreshing) && <Loader />}
-      <CreateButton />
+
       <Routes>
         <Route
           path="/"
