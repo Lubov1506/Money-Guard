@@ -1,10 +1,11 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import { MdOutlineMailOutline, MdLock, IoPerson } from "react-icons/md";
-import * as yup from "yup";
+import { MdOutlineMailOutline, MdLock } from "react-icons/md";
+import { IoPerson } from "react-icons/io5";
 import s from "./RegistrationForm.module.css";
 import PasswordStrengthBar from "react-password-strength-bar";
 import { useDispatch } from "react-redux";
 import { signUpThunk } from "../../redux/auth/operations";
+import { validation } from "../../helpers/registerValidation";
 
 export const RegistrationForm = () => {
   const dispatch = useDispatch();
@@ -14,32 +15,7 @@ export const RegistrationForm = () => {
     password: "",
     confirmPassword: "",
   };
-  const { password } = this.state;
-  const validation = yup.object().shape({
-    name: yup
-      .string()
-      .required("Name is required")
-      .min(3, "Must be at least 3 characters long")
-      .max(50, "Too long")
-      .trim(),
-    email: yup
-      .string()
-      .email("Invalid email")
-      .required("Email is required")
-      .min(3, "Must be at least 3 characters long")
-      .max(50, "Too long")
-      .trim(),
-    password: yup
-      .string()
-      .required("Password is required")
-      .min(6, "Must be at least 3 characters long")
-      .max(12, "Too long"),
-    confirmPassword: yup
-      .string()
-      .required("Password is required")
-      .min(6, "Must be at least 3 characters long")
-      .max(12, "Too long"),
-  });
+
   const handleSubmit = (values, actions) => {
     dispatch(signUpThunk(values));
     console.log(values);
@@ -125,7 +101,13 @@ export const RegistrationForm = () => {
                   component="span"
                 />
               </div>
-              <PasswordStrengthBar password={password} />
+              <PasswordStrengthBar
+                style={{ top: "-40px" }}
+                barColors={["#ddd", "#ffcc00", "#00cc00", "#00cc00", "#00cc00"]}
+                scoreWords={[]}
+                minLength={3}
+                shortScoreWord={""}
+              />
             </div>
             <div className={s.btns}>
               <button type="submit" className={s.btnColor}>

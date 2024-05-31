@@ -73,8 +73,8 @@
 @media only screen and (min-width: 768px) {
   .modal {
     width: 533px;
-    height: 570px;
-    padding: 80px 62px;
+    height: 624px;
+    padding: 40px 62px;
     /* background-position: center, 148px 320px;
     background-image: url("/login-modal-desk@1x.webp"),
       url("/login-modal-circle-desk@1x.webp");
@@ -111,8 +111,8 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  gap: 20px;
-  margin: 52px 0;
+  gap: 40px;
+  margin-top: 40px;
 }
 
 .inputGroup {
@@ -187,8 +187,7 @@
   color: var(--white);
 }
 @media only screen and (min-width: 768px) {
-  .btnColor,
-  .btnWhite {
+  .btnColor {
     width: 300px;
   }
 }
@@ -201,4 +200,9 @@
   box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
   background: #fcfcfc;
   color: var(--text-button);
+}
+@media only screen and (min-width: 768px) {
+  .btnWhite {
+    width: 300px;
+  }
 }

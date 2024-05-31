@@ -1,10 +1,10 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { MdLock } from "react-icons/md";
-import * as yup from "yup";
 import s from "./LoginForm.module.css";
 import { signInThunk } from "../../redux/auth/operations";
 import { useDispatch } from "react-redux";
+import { validation } from "../../helpers/loginValidation";
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
@@ -12,20 +12,6 @@ export const LoginForm = () => {
     email: "",
     password: "",
   };
-  const validation = yup.object().shape({
-    email: yup
-      .string()
-      .email("Invalid email")
-      .required("Email is required")
-      .min(3, "Must be at least 3 characters long")
-      .max(50, "Too long")
-      .trim(),
-    password: yup
-      .string()
-      .required("Password is required")
-      .min(6, "Must be at least 3 characters long")
-      .max(12, "Too long"),
-  });
   const handleSubmit = (values, actions) => {
     dispatch(signInThunk(values));
     console.log(values);
