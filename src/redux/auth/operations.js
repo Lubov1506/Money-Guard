@@ -60,6 +60,7 @@ export const refreshUserThunk = createAsyncThunk(
     try {
       setAuthHeader(persistedToken);
       const { data } = await walletAPI.get('/users/current');
+
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
