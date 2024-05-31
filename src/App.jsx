@@ -10,12 +10,10 @@ import Loader from './components/Loader/Loader';
 import { lazy } from 'react';
 import RegistrationPage from './pages/RegistrationPage';
 import LoginPage from './pages/LoginPage';
+import Dashboard from './pages/Dashboard/Dashboard';
+import NotFound from './pages/NotFound/NotFound';
 
-const Dashboard = lazy(() => import('./pages/Dashboard/Dashboard'));
 const CurrencyTab = lazy(() => import('./components/CurrencyTab/CurrencyTab'));
-// const RegistrationPage = lazy(() => import('./pages/RegistrationPage'));
-// const LoginPage = lazy(() => import('./pages/LoginPage'));
-const NotFound = lazy(() => import('./pages/NotFound/NotFound'));
 // const HomeTab = lazy(() => import('enter path here'));
 // const StatisticsTab = lazy(() => import('enter path here'));
 
@@ -61,6 +59,7 @@ function App() {
             </PublicRoute>
           }
         />
+
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>
