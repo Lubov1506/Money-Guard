@@ -6,6 +6,8 @@ import PasswordStrengthBar from "react-password-strength-bar";
 import { useDispatch } from "react-redux";
 import { signUpThunk } from "../../redux/auth/operations";
 import { validation } from "../../helpers/registerValidation";
+import FormButton from "../common/FormButton/FormButton";
+import { Link } from "react-router-dom";
 
 export const RegistrationForm = () => {
   const dispatch = useDispatch();
@@ -112,12 +114,19 @@ export const RegistrationForm = () => {
               />
             </div>
             <div className={s.btns}>
-              <button type="submit" className={s.btnColor}>
-                Register
-              </button>
-              <button type="button" className={s.btnWhite}>
-                Login
-              </button>
+                  <FormButton
+                type="submit"
+                text={'Register'}
+                variant={'multiColorButtton'}
+              />
+
+              <Link to="/login">
+                <FormButton
+                  type="button"
+                  text={'LogIn'}
+                  variant={'whiteButtton'}
+                />
+              </Link>
             </div>
           </Form>
         </Formik>
