@@ -2,8 +2,9 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import s from './LogoutModal.module.css';
 import { signOutThunk } from '../../redux/auth/operations';
+import FormButton from '../common/FormButton/FormButton';
 
-const LogoutModal = ({ onClose }) => { // Destructure the onClose prop
+const LogoutModal = ({ onClose }) => {
   const dispatch = useDispatch();
 
   const handleBackDropClick = e => {
@@ -30,7 +31,7 @@ const LogoutModal = ({ onClose }) => { // Destructure the onClose prop
       <div className={s.modal}>
         <div className={s.logo}>
           <img
-            src="/public/money-guard.svg"
+            src="/money-guard.svg"
             alt="Money Guard Logo"
             width={36}
             height={36}
@@ -39,16 +40,19 @@ const LogoutModal = ({ onClose }) => { // Destructure the onClose prop
         </div>
         <h3 className={s.text}>Are you sure you want to log out?</h3>
         <div className={s.btns}>
-          <button
-            type="button" // Changed to button for consistency
-            className={s.btnColor}
-            onClick={() => dispatch(signOutThunk())}
-          >
-            Logout
-          </button>
-          <button type="button" className={s.btnWhite} onClick={onClose}>
-            Cancel
-          </button>
+          <FormButton
+            type="button"
+            text={'Logout'}
+            variant={'multiColorButtton'}
+            handlerFunction={() => dispatch(signOutThunk())}
+          />
+
+          <FormButton
+            type="button"
+            text={'Cancel'}
+            variant={'whiteButtton'}
+            handlerFunction={onClose}
+          />
         </div>
       </div>
     </div>
