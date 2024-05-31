@@ -1,5 +1,5 @@
 .wrapper {
-  width: 480px;
+  width: 320px;
 }
 .table {
   width: 100%;
@@ -11,6 +11,19 @@
   td {
     padding: 16px;
     text-align: center;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .wrapper {
+    width: 336px;
+  }
+  tr > td {
+    padding: 0;
+  }
+}
+@media only screen and (min-width: 1280px) {
+  .wrapper {
+    width: 480px;
   }
   tr > td:first-child {
     padding-left: 60px;
