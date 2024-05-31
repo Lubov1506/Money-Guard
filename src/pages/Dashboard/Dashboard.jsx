@@ -13,7 +13,7 @@ const Dashboard = () => {
   const isTablet = useMediaQuery({ query: '(min-width: 768px)' });
 
   return (
-    <>
+    <div className={s.wrapper}>
       {!isTablet && !isDesktop && (
         <>
           <Header />
@@ -53,7 +53,7 @@ const Dashboard = () => {
           </div>
         </>
       )}
-    </>
+    </div>
   );
 };
 
