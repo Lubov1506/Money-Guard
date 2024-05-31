@@ -26,7 +26,12 @@ const Header = () => {
     <>
       <header className={s.header}>
         <a className={s.logo} href="#">
-          <img src="/money-guard.svg" alt="Company Logo" />
+          <img
+            src="/money-guard.svg"
+            width="17"
+            height="17"
+            alt="Company Logo"
+          />
           <p>Money Guard</p>
         </a>
         <div className={s.user}>
