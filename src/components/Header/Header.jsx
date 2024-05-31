@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import s from "./Header.module.css";
 import { selectUser } from "../../redux/auth/selectors";
 import { ImExit } from "react-icons/im";
+import LogoutModal from "../LogoutModal/LogoutModal";
 
 const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -45,11 +46,7 @@ const Header = () => {
         </button>
       </div>
       {isModalOpen && (
-        <Modal title="Log Out" onClose={() => setIsModalOpen(false)}>
-          <p>Are you sure you want to log out?</p>
-          <button onClick={handleLogout}>Log out</button>
-          <button onClick={() => setIsModalOpen(false)}>Cancel</button>
-        </Modal>
+        <LogoutModal/>
       )}
     </header>
   );
