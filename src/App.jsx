@@ -2,7 +2,6 @@ import { Route, Routes } from "react-router-dom";
 import PrivateRoute from "./routes/PrivateRoute";
 import PublicRoute from "./routes/PublicRoute";
 import Dashboard from "./pages/Dashboard/Dashboard";
-import NotFound from "./pages/NotFound/NotFound";
 
 function App() {
   return (
@@ -36,7 +35,7 @@ function App() {
           </PublicRoute>
         }
       />
-      <Route path="*" element={<NotFound />} />
+      <Route path="*" element={<p>NotFoundPage</p>} />
     </Routes>
   );
 }
