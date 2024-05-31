@@ -10,20 +10,20 @@ function App() {
         path="/"
         element={
           <PrivateRoute>
-            <p>Layout</p>
+            <Dashboard />
           </PrivateRoute>
         }
       >
-        <Route index element={<Dashboard />} />
-        <Route path="home" element={<p>Home Tab</p>} />
-        <Route path="statistics" element={<p>Statistics Tab</p>} />
-        <Route path="currency" element={<p>Currency Tab</p>} />
+        <Route index element={<HomeTab />} />
+        <Route path="statistics" element={<StatisticsTab />} />
+        <Route path="currency" element={<CurrencyTab />} />
       </Route>
+
       <Route
         path="register"
         element={
           <PublicRoute>
-            <p>Registration Page</p>
+            <RegistrationPage />
           </PublicRoute>
         }
       />
@@ -31,7 +31,7 @@ function App() {
         path="login"
         element={
           <PublicRoute>
-            <p>Login Page</p>
+            <LoginPage />
           </PublicRoute>
         }
       />
