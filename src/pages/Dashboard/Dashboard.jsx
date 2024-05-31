@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import s from './Dashboard.module.css';
 import { useMediaQuery } from 'react-responsive';
+import Header from '../../components/Header/Header';
 
 const Dashboard = () => {
   const isDesktop = useMediaQuery({
@@ -12,13 +13,13 @@ const Dashboard = () => {
     <>
       {!isTablet && !isDesktop && (
         <>
-          Header
+          <Header />
           <div className={s.divBackground}>Navigation Balance Outlet</div>
         </>
       )}
       {isTablet && (
         <>
-          Header
+          <Header />
           <div className={s.divBackground}>
             <div className={s.noOutletWrapper}>
               <div className={s.navBalWrapper}>Navigation Balance</div>
@@ -31,7 +32,7 @@ const Dashboard = () => {
 
       {isDesktop && (
         <>
-          Header
+          <Header />
           <div className={s.divBackground}>
             <div className={s.noOutletWrapper}>Navigation Balance Currency</div>
             <Outlet />
