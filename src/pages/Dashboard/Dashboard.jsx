@@ -12,28 +12,39 @@ const Dashboard = () => {
     <>
       {!isTablet && !isDesktop && (
         <>
-          Header
-          <div className={s.divBackground}>Navigation Balance Outlet</div>
+          <Header />
+          <div className={s.divBackground}>
+            <Navigation />
+            <Balance />
+            <Outlet />
+          </div>
         </>
       )}
       {isTablet && (
         <>
-          Header
+          <Header />
           <div className={s.divBackground}>
             <div className={s.noOutletWrapper}>
-              <div className={s.navBalWrapper}>Navigation Balance</div>
-              Currency
+              <div className={s.navBalWrapper}>
+                <Navigation />
+                <Balance />
+              </div>
+              <Currency />
             </div>
             <Outlet />
           </div>
         </>
       )}
 
-      {isDesktop && (
+      {isDesktop && !isTablet && (
         <>
-          Header
+          <Header />
           <div className={s.divBackground}>
-            <div className={s.noOutletWrapper}>Navigation Balance Currency</div>
+            <div className={s.noOutletWrapper}>
+              <Navigation />
+              <Balance />
+              <Currency />
+            </div>
             <Outlet />
           </div>
         </>
