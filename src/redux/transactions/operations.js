@@ -71,3 +71,16 @@ export const deleteTrnThunk = createAsyncThunk(
     }
   }
 );
+
+export const getCategoriesThunk = createAsyncThunk(
+  'transactions/getCategories',
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await walletAPI.get('/transaction-categories');
+      console.log(data);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
