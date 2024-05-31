@@ -36,8 +36,8 @@ const Currency = () => {
     getData();
   }, []);
 
-  return (
-    <div className={s.wrapper}>
+  return (<>
+    {currency && (<div className={s.wrapper}>
       <table className={s.table}>
         <thead>
           <tr>
@@ -60,7 +60,9 @@ const Currency = () => {
         </tbody>
       </table>
       <CurrencyChart usd={ currency.usd.rateBuy.toFixed(2)} eur={currency.eur.rateBuy.toFixed(2)} />
-    </div>
+    </div>)
+    }</>
+
   );
 };
 
