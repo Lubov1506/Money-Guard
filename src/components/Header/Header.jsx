@@ -1,19 +1,18 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom"; // Для перенаправлення
+import { useNavigate } from "react-router-dom";
 import Modal from "../Modal/Modal";
-import { toast } from "react-toastify"; // Для спливаючих повідомлень
+import { toast } from "react-toastify";
 import s from "./Header.module.css";
 import { selectUser } from "../../redux/auth/selectors";
 import { ImExit } from "react-icons/im";
-// import { signOutThunk } from "../../redux/auth/operations"; // Ваш Thunk для виходу
 
 const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const user = useSelector(selectUser);
   const userName = user ? user.email.split("@")[0] : "";
   const dispatch = useDispatch();
-  const history = useNavigate(); // Ініціалізація useHistory
+  const history = useNavigate();
 
   const handleLogout = async () => {
     try {
@@ -26,12 +25,10 @@ const Header = () => {
         throw new Error("Logout failed");
       }
 
-      // Якщо запит пройшов успішно, переадресовуємо користувача
       history.push("/login");
     } catch (error) {
       toast.error(error.message);
     } finally {
-      // Незалежно від відповіді, деавторизуємо користувача
       dispatch({ type: "LOGOUT" });
       localStorage.clear();
     }
