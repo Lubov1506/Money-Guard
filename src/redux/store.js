@@ -24,7 +24,7 @@ export const store = configureStore({
     auth: persistReducer(authPersistConfig, authReducer),
     transitions: transactionsReducer,
   },
-  middleware: (getDefaultMiddleware) =>
+  middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
