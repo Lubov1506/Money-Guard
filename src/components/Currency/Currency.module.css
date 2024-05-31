@@ -1,0 +1,22 @@
+.wrapper {
+  width: 480px;
+  background-color: #56117b;
+}
+.table {
+  width: 100%;
+  color: var(--white);
+  thead {
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.2);
+  }
+  td {
+    padding: 16px;
+    text-align: center;
+  }
+  tr > td:first-child {
+    padding-left: 60px;
+  }
+  td:nth-child(3n) {
+    padding-right: 100px;
+  }
+}
