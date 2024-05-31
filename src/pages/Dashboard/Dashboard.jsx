@@ -2,6 +2,9 @@ import { Outlet } from "react-router-dom";
 import s from "./Dashboard.module.css";
 import { useMediaQuery } from "react-responsive";
 import Header from "../../components/Header/Header";
+import Navigation from "../../components/Navigation/Navigation";
+import Balance from "../../components/Balance/Balance";
+import Currency from "../../components/Currency/Currency";
 
 const Dashboard = () => {
   const isDesktop = useMediaQuery({
