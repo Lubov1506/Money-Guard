@@ -5,6 +5,12 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
 }
 @media only screen and (min-width: 768px) {
   .wrapper {
@@ -17,15 +23,26 @@
     background-image: url("../../images/Dashboard/background-desc.png");
   }
 }
-.link {
-  font-family: "Montserrat", sans-serif;
-  font-size: 40px;
-  padding: 15px;
 
-  text-decoration: none;
-  color: lightgray;
-  transition: color 0.3s;
+.error {
+  color: var(--white);
+  font-family: var(--font-family);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
-.link:hover {
-  color: black;
+.link {
+  display: inline-block;
+  color: var(--white);
+  font-family: var(--font-family);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  transition: transform 0.3s ease-in-out;
+}
+.link:hover,
+.link:focus {
+  transform: scale(1.1);
 }

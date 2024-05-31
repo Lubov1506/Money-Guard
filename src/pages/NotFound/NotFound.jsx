@@ -7,7 +7,7 @@ const NotFound = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   return (
     <div className={s.wrapper}>
-      <p>The page you requested does not exist</p>
+      <p className={s.error}>The page you requested does not exist</p>
       {isLoggedIn ? (
         <Link className={s.link} to="/home">
           Home
