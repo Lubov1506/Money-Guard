@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { ImExit } from 'react-icons/im';
 import LogoutModal from '../LogoutModal/LogoutModal';
 import { selectUser } from '../../redux/auth/selectors';
 import s from './Header.module.css';
+import Loader from '../Loader/Loader';
 
 const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -37,7 +38,11 @@ const Header = () => {
         </div>
       </header>
 
-      {isModalOpen && <LogoutModal onClose={close} />}
+      {isModalOpen && (
+        <Suspense fallback={<Loader />}>
+          <LogoutModal onClose={close} />
+        </Suspense>
+      )}
     </>
   );
 };
