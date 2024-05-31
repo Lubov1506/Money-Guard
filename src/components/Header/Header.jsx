@@ -6,13 +6,14 @@ import LogoutModal from '../LogoutModal/LogoutModal';
 import { selectUser } from '../../redux/auth/selectors';
 import s from './Header.module.css';
 import Loader from '../Loader/Loader';
+import { useMediaQuery } from 'react-responsive';
 
 const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const user = useSelector(selectUser);
   const userName = user ? user.email.split('@')[0] : '';
   const navigate = useNavigate(); // useNavigate is the correct hook to navigate programmatically
-
+  const isTablet = useMediaQuery({ query: '(min-width: 768px)' });
   const open = () => {
     setIsModalOpen(true);
     console.log('modal is open');
@@ -27,7 +28,12 @@ const Header = () => {
     <>
       <header className={s.header}>
         <a className={s.logo} href="#">
-          <img src="/money-guard.svg" alt="Company Logo" />
+          <img
+            src="/money-guard.svg"
+            width={isTablet ? '22.5' : '17.1'}
+            alt="Company Logo"
+          />
+
           <p>Money Guard</p>
         </a>
         <div className={s.user}>
