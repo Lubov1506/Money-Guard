@@ -1,0 +1,29 @@
+.chart_wrapper {
+  max-width: 480px;
+  position: relative;
+  margin-top: 50px;
+}
+.first_circle {
+  p {
+    color: #ff868d;
+    transform: translateX(-45%);
+  }
+  left: 57px;
+  top: -5px;
+  position: absolute;
+  z-index: 1;
+}
+.second_circle {
+  p {
+    color: #ff868d;
+    transform: translateX(-45%);
+  }
+  z-index: 1;
+  right: 75px;
+  top: -39px;
+  position: absolute;
+}
+.line_chart {
+  position: absolute;
+  top: -16px;
+}
