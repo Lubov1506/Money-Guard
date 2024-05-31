@@ -1,6 +1,8 @@
 import React from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../redux/auth/selectors";
 import css from "./DoughnutChart.module.css";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
@@ -65,9 +67,12 @@ const options = {
 };
 
 const DoughnutChart = () => {
+  const user = useSelector(selectUser); // Використовуйте селектор для отримання об'єкта користувача
+  const balance = user ? user.balance : 0; // Отримайте баланс з об'єкта користувача
+
   return (
     <div className={css.doughnut}>
-      <div className={css.balance}>₴ {Math.abs(Total).toFixed(2)}</div>
+      <div className={css.balance}>₴ {Math.abs(balance).toFixed(2)}</div>
       <Doughnut data={data} options={options} />
     </div>
   );
