@@ -1,4 +1,5 @@
 .modal {
+  z-index: 10;
   display: flex;
   flex-direction: column;
   align-self: center;
@@ -15,16 +16,16 @@
   bottom: 0;
   left: 0;
   padding: 238px 20px;
-  background-image: url("/login-modal-mob@1x.webp"),
-    url("/login-modal-circle-mob@1x.webp");
+  background-image: url('/login-modal-mob@1x.webp'),
+    url('/login-modal-circle-mob@1x.webp');
   background-color: var(--form-color);
   background-repeat: no-repeat;
   background-size: 100% 100%, 100% 100%;
 }
 @media only screen and (min-resolution: 192dpi) {
   .modal {
-    background-image: url("/public/login-modal-mob@2x.webp"),
-      url("/public/login-modal-circle-mob@2x.webp");
+    background-image: url('/public/login-modal-mob@2x.webp'),
+      url('/public/login-modal-circle-mob@2x.webp');
     background-color: var(--form-color);
     background-repeat: no-repeat;
   }

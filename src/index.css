@@ -1,5 +1,5 @@
-@import url("./css/reset.css");
-@import url("./css/fonts.css");
+@import url('./css/reset.css');
+@import url('./css/fonts.css');
 
 :root {
   --yellow: #ffb627;
@@ -11,9 +11,10 @@
   --dashboard-text: #ff868d;
   --form-color: rgba(255, 255, 255, 0.1);
 
-  --font-family: "Poppins", sans-serif;
-  --second-family: "Circe", sans-serif;
+  --font-family: 'Poppins', sans-serif;
+  --second-family: 'Circe', sans-serif;
 }
 body {
   font-family: var(--font-family);
+  color: var(--white);
 }
