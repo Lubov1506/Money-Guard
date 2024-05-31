@@ -23,7 +23,7 @@ const TransactionsItem = () => {
         </tr>
         <tr className={s.t_row}>
           <td className={s.title}>Sum</td>
-          <td className={s.sum}>300.00</td>
+          <td className={s.minus}>300.00</td>
         </tr>
         <tr className={s.t_row}>
           <td>

@@ -1,7 +1,6 @@
-import TransactionsList from "./components/TransactionsList/TransactionsList";
 
 function App() {
-  return <><TransactionsList /></>;
+  return <></>;
 }
 
 export default App;

@@ -29,13 +29,17 @@
   text-align: right;
   color: var(--white);
 }
-.sum {
+.minus {
   font-family: var(--font-family);
   font-weight: 600;
   font-size: 16px;
   text-align: right;
   color: var(--dashboard-text);
 }
+.plus {
+    columns: plus;
+    color: var(--yellow);
+  }
 .btn_edit {
   display: flex;
   gap: 4px;
