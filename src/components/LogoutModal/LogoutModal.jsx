@@ -1,27 +1,55 @@
-import { useDispatch } from "react-redux";
-import s from "./LogoutModal.module.css";
-import { signOutThunk } from "../../redux/auth/operations";
-const LogoutModal = () => {
-  const dispatch = useDispatch()
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import s from './LogoutModal.module.css';
+import { signOutThunk } from '../../redux/auth/operations';
+
+const LogoutModal = ({ onClose }) => { // Destructure the onClose prop
+  const dispatch = useDispatch();
+
+  const handleBackDropClick = e => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+
+  useEffect(() => {
+    const handleKeyDown = e => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [onClose]);
+
   return (
-    <div className={s.modal}>
-      <div className={s.logo}>
-        <img
-          src="/public/money-guard.svg"
-          alt="Money Guard Logo"
-          width={36}
-          height={36}
-        />
-        <h2>Money Guard</h2>
-      </div>
-      <h3 className={s.text}>Are you sure you want to log out?</h3>
-      <div className={s.btns}>
-        <button type="submit" className={s.btnColor} onClick={()=>dispatch(signOutThunk())}>
-          Logout
-        </button>
-        <button type="button" className={s.btnWhite} >
-          Cancel
-        </button>
+    <div className={s.wrapper} onClick={handleBackDropClick}>
+      <div className={s.modal}>
+        <div className={s.logo}>
+          <img
+            src="/public/money-guard.svg"
+            alt="Money Guard Logo"
+            width={36}
+            height={36}
+          />
+          <h2>Money Guard</h2>
+        </div>
+        <h3 className={s.text}>Are you sure you want to log out?</h3>
+        <div className={s.btns}>
+          <button
+            type="button" // Changed to button for consistency
+            className={s.btnColor}
+            onClick={() => dispatch(signOutThunk())}
+          >
+            Logout
+          </button>
+          <button type="button" className={s.btnWhite} onClick={onClose}>
+            Cancel
+          </button>
+        </div>
       </div>
     </div>
   );

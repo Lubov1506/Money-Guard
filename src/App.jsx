@@ -11,6 +11,8 @@ import Loader from './components/Loader/Loader';
 import RegistrationPage from './pages/RegistrationPage';
 import LoginPage from './pages/LoginPage';
 import CurrencyTab from './components/CurrencyTab/CurrencyTab';
+import NotFound from "./pages/NotFound/NotFound";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -23,6 +25,7 @@ function App() {
   return (
     <>
       {(isLoading || isRefreshing) && <Loader />}
+
       <Routes>
         <Route
           path="/"
@@ -53,7 +56,7 @@ function App() {
             </PublicRoute>
           }
         />
-        <Route path="*" element={<p>NotFoundPage</p>} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );
