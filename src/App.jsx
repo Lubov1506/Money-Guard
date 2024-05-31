@@ -7,7 +7,14 @@ import Loader from './components/Loader/Loader';
 import Currency from './components/Currency/Currency';
 
 function App() {
-  return <></>;
+  const dispatch = useDispatch();
+  const isRefreshing = useSelector(selectIsRefreshing);
+
+  const isLoading = useSelector(selectIsLoading);
+  useEffect(() => {
+    dispatch(refreshUserThunk());
+  }, [dispatch]);
+  return <>{(isLoading || isRefreshing) && <Loader />}</>;
 }
 
 export default App;
