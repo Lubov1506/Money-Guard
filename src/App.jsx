@@ -12,6 +12,7 @@ import RegistrationPage from './pages/RegistrationPage';
 import LoginPage from './pages/LoginPage';
 import CurrencyTab from './components/CurrencyTab/CurrencyTab';
 import NotFound from "./pages/NotFound/NotFound";
+import TransactionsList from './components/TransactionsList/TransactionsList';
 
 
 function App() {
@@ -35,7 +36,7 @@ function App() {
             </PrivateRoute>
           }
         >
-          <Route index element={<p>HomeTab</p>} />
+          <Route index element={<TransactionsList />} />
           <Route path="statistics" element={<p>StatisticsTab</p>} />
           <Route path="currency" element={<CurrencyTab/>} />
         </Route>
