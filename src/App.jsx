@@ -14,8 +14,7 @@ function App() {
   useEffect(() => {
     dispatch(refreshUserThunk());
   }, [dispatch]);
-  return <>{(isLoading || isRefreshing) && <Loader />}
-  <Currency/></>;
+  return <>{(isLoading || isRefreshing) && <Loader />}</>;
 }
 
 export default App;
