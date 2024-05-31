@@ -7,15 +7,20 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  min-height: 100vh;
+  height: calc(100vh - 60px);
 }
 
 @media only screen and (min-width: 768px) {
   .divBackground {
     background-image: url('../../images/Dashboard/background-tab.png');
+    height: calc(100vh - 80px);
+    align-items: unset;
+    padding: 0px 32px;
   }
   .noOutletWrapper {
     display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
   }
   .navBalWrapper {
     display: flex;
@@ -27,8 +32,10 @@
   .divBackground {
     flex-direction: row;
     background-image: url('../../images/Dashboard/background-desc.png');
+    padding: 0px;
   }
   .noOutletWrapper {
     flex-direction: column;
+    border-right: solid 2px var(--white-60);
   }
 }
