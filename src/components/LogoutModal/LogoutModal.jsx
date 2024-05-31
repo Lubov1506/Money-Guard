@@ -31,7 +31,7 @@ const LogoutModal = ({ onClose }) => {
       <div className={s.modal}>
         <div className={s.logo}>
           <img
-            src="/public/money-guard.svg"
+            src="/money-guard.svg"
             alt="Money Guard Logo"
             width={36}
             height={36}
