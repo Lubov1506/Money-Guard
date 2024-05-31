@@ -1,17 +1,28 @@
 import { useEffect, useState } from "react";
 import s from "./Currency.module.css";
 import getCurrency from "../../helpers/getCurrencyApi";
+
 const Currency = () => {
   const [currency, setCurrency] = useState(localStorage.getItem("currency"));
+  console.log(Date.now());
   useEffect(() => {
-    const getData = async () => {
-      const data = await getCurrency();
 
-      console.log(data);
+    const getData = async () => {
+      try {
+        const [usd, eur] = await getCurrency();
+      localStorage.setItem(
+        "currency",
+        JSON.stringify({ date: usd.date, usd,eur })
+      );
+      console.log(usd, eur);
+      } catch (err) {
+        throw new Error(err.message)
+      }
+      
     };
     getData();
   }, []);
-  
+
   return (
     <div className={s.wrapper}>
       <table className={s.table}>
@@ -35,8 +46,6 @@ const Currency = () => {
           </tr>
         </tbody>
       </table>
-
-
     </div>
   );
 };
