@@ -17,8 +17,11 @@ export const RegistrationForm = () => {
   };
 
   const handleSubmit = (values, actions) => {
-    dispatch(signUpThunk(values));
+    const { name: username, email, password } = values;
+    const signUpData = { username, email, password };
+    dispatch(signUpThunk(signUpData));
     console.log(values);
+    console.log(signUpData);
     actions.resetForm();
   };
 
