@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import PrivateRoute from "./routes/PrivateRoute";
 import PublicRoute from "./routes/PublicRoute";
+import Dashboard from "./pages/Dashboard/Dashboard";
 
 function App() {
   return (
@@ -13,8 +14,8 @@ function App() {
           </PrivateRoute>
         }
       >
-        <Route index element={<p>Home Tab</p>} />
-        <Route path="dashboard" element={<p>Dashboard Page</p>} />
+        <Route index element={<Dashboard />} />
+        <Route path="home" element={<p>Home Tab</p>} />
         <Route path="statistics" element={<p>Statistics Tab</p>} />
         <Route path="currency" element={<p>Currency Tab</p>} />
       </Route>
