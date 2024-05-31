@@ -1,9 +1,10 @@
 import 'react-datepicker/dist/react-datepicker.css';
 import { useState } from 'react';
-import DatePicker from 'react-datepicker';
 import s from './StatisticDatePicker.module.css';
 import { getYear } from 'date-fns';
 import Select from 'react-select';
+import { useDispatch } from 'react-redux';
+import { selectTransactions } from '../../redux/transactions/selectors';
 
 export const StatisticDatePicker = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -32,8 +33,9 @@ export const StatisticDatePicker = () => {
   }));
 
   return (
-    <div>
+    <div className={s.monthYearPick}>
       <Select
+        className={s.select}
         options={yearOptions}
         onChange={handleYearChange}
         placeholder="Select year"
