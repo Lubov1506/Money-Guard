@@ -32,28 +32,28 @@ const options = {
 const DoughnutChart = () => {
   const user = useSelector(selectUser);
   const balance = user ? user.balance : 0;
-  const getCurrentMonthYear = () => {
-    const currentDate = new Date();
-    const month = currentDate.getMonth() + 1;
-    const year = currentDate.getFullYear();
-    return { month, year };
-  };
+  // const getCurrentMonthYear = () => {
+  //   const currentDate = new Date();
+  //   const month = currentDate.getMonth() + 1;
+  //   const year = currentDate.getFullYear();
+  //   return { month, year };
+  // };
 
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchPeriodTrnThunk(getCurrentMonthYear()));
-  }, [dispatch]);
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(fetchPeriodTrnThunk(getCurrentMonthYear()));
+  // }, [dispatch]);
 
   const transactions = useSelector(selectPeriodTransactions);
   console.log(transactions);
-  const isLoading = useSelector(selectIsLoading);
-  if (isLoading) {
-    return (
-      <>
-        <Loader />
-      </>
-    );
-  }
+  // const isLoading = useSelector(selectIsLoading);
+  // if (isLoading) {
+  //   return (
+  //     <>
+  //       <Loader />
+  //     </>
+  //   );
+  // }
 
   const expense = transactions.categoriesSummary
     ? transactions.categoriesSummary.filter(

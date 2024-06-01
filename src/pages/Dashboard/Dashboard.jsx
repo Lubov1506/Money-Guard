@@ -17,9 +17,9 @@ const Dashboard = () => {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const openAddModal = () => setIsAddModalOpen(true);
-  const openEditModal = () => setIsEditModalOpen(true);
+  // const openEditModal = () => setIsEditModalOpen(true);
   const closeAddModal = () => setIsAddModalOpen(false);
-  const closeEditModal = () => setIsEditModalOpen(false);
+  // const closeEditModal = () => setIsEditModalOpen(false);
   return (
     <>
       {isAddModalOpen && <ModalAddTransactionNew closeModal={closeAddModal} />}
@@ -54,7 +54,7 @@ const Dashboard = () => {
           <Outlet
             context={{
               openAddModal,
-              openEditModal,
+              // openEditModal,
             }}
           />
         </Suspense>
