@@ -1,23 +1,16 @@
 import { Route, Routes } from 'react-router-dom';
-import PrivateRoute from './routes/PrivateRoute';
-import PublicRoute from './routes/PublicRoute';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsRefreshing } from './redux/auth/selectors';
 import { refreshUserThunk } from './redux/auth/operations';
-import Loader from './components/Loader/Loader';
 import { lazy } from 'react';
-import RegistrationPage from './pages/RegistrationPage';
-import LoginPage from './pages/LoginPage';
-import Dashboard from './pages/Dashboard/Dashboard';
-import NotFound from './pages/NotFound/NotFound';
+import Loader from './components/Loader/Loader';
+import { Dashboard, LoginPage, NotFound, RegistrationPage } from './pages';
+import { PrivateRoute, PublicRoute } from './routes';
 
-import TransactionsList from './components/TransactionsList/TransactionsList';
 const CurrencyTab = lazy(() => import('./pages/CurrencyTab/CurrencyTab'));
 const HomeTab = lazy(() => import('./pages/HomeTab/HomeTab'));
-const StatisticsTab = lazy(() =>
-  import('./pages/StatisticsTab/StatisticsTab')
-);
+const StatisticsTab = lazy(() => import('./pages/StatisticsTab/StatisticsTab'));
 
 function App() {
   const dispatch = useDispatch();

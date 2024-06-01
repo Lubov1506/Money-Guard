@@ -1,5 +1,3 @@
-import { useMediaQuery } from 'react-responsive';
-
 import TransactionsDescItem from '../TransactionsDescItem/TransactionsDescItem';
 import TransactionsMobileItem from '../TransactionsMobileItem/TransactionsMobileItem';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,7 +5,7 @@ import { selectTransactions } from '../../redux/transactions/selectors';
 import { useEffect } from 'react';
 import { fetchAllTrnThunk } from '../../redux/transactions/operations';
 import { useMedia } from '../../hooks/useMedia';
-import s from './TransactionsList.module.css'
+import s from './TransactionsList.module.css';
 
 const TransactionsList = () => {
   const transactions = useSelector(selectTransactions);
@@ -41,11 +39,11 @@ const TransactionsList = () => {
           </tbody>
         </table>
       ) : (
-        <>
+        <ul className={s.list}>
           {transactions.map(item => (
             <TransactionsMobileItem key={item.id} item={item} />
           ))}
-        </>
+        </ul>
       )}
     </>
   );

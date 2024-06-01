@@ -5,7 +5,9 @@ import { getYear } from 'date-fns';
 import Select from 'react-select';
 import { useDispatch } from 'react-redux';
 import { fetchPeriodTrnThunk } from '../../redux/transactions/operations';
-const StatisticDatePicker = () => {
+import { StatisticsTable } from '../StatisticsTable/StatisticsTable';
+
+export const StatisticDatePicker = () => {
   const currentMonth = new Date().getMonth();
   const currentYear = getYear(new Date());
   const [selectedYear, setSelectedYear] = useState(currentYear);
