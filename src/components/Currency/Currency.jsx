@@ -12,7 +12,6 @@ const Currency = () => {
     const getData = async () => {
       const data = await getCurrency();
       setCurrency(data);
-      console.log(data);
     };
     getData();
   }, []);
@@ -47,7 +46,7 @@ const Currency = () => {
           <CurrencyChart
             usd={currency.usd.buy}
             eur={currency.eur.buy}
-            type={isDesktop ? 'desc' : isTablet ? 'tab' : 'mob'}
+            type={isDesktop ? 'desk' : isTablet ? 'tab' : 'mob'}
           />
         </div>
       )}

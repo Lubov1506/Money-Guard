@@ -8,7 +8,6 @@ const CurrencyChart = ({ usd, eur, type = 'mob' }) => {
     tab: '336',
     mob: '320',
   };
-  console.log(typeOfWidth[type]);
   return (
     <div className={s.chart_wrapper}>
       <div className={s.first_circle}>

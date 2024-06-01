@@ -1,4 +1,4 @@
-const AreaChartSVG = width => {
+const AreaChartSVG = ({width}) => {
   return (
     <svg
       width={width}

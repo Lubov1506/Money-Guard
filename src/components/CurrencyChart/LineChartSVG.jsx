@@ -1,5 +1,4 @@
-const LineChartSVG = width => {
-  console.log(width);
+const LineChartSVG = ({width}) => {
   return (
     <svg
       width={width}
