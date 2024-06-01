@@ -32,28 +32,28 @@ const options = {
 const DoughnutChart = () => {
   const user = useSelector(selectUser);
   const balance = user ? user.balance : 0;
-  const getCurrentMonthYear = () => {
-    const currentDate = new Date();
-    const month = currentDate.getMonth() + 1;
-    const year = currentDate.getFullYear();
-    return { month, year };
-  };
+  // const getCurrentMonthYear = () => {
+  //   const currentDate = new Date();
+  //   const month = currentDate.getMonth() + 1;
+  //   const year = currentDate.getFullYear();
+  //   return { month, year };
+  // };
 
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchPeriodTrnThunk(getCurrentMonthYear()));
-  }, [dispatch]);
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(fetchPeriodTrnThunk(getCurrentMonthYear()));
+  // }, [dispatch]);
 
   const transactions = useSelector(selectPeriodTransactions);
   console.log(transactions);
-  const isLoading = useSelector(selectIsLoading);
-  if (isLoading) {
-    return (
-      <>
-        <Loader />
-      </>
-    );
-  }
+  // const isLoading = useSelector(selectIsLoading);
+  // if (isLoading) {
+  //   return (
+  //     <>
+  //       <Loader />
+  //     </>
+  //   );
+  // }
 
   const expense = transactions.categoriesSummary
     ? transactions.categoriesSummary.filter(
@@ -75,7 +75,7 @@ const DoughnutChart = () => {
     labels: data.map(expense => expense.name),
     datasets: [
       {
-        label: ' Expenses ',
+        label: ' Expenses',
         data: !data.length ? [0] : data.map(expense => expense.total),
         backgroundColor: data.map(expense => expense.color),
         borderColor: data.map(expense => expense.color),
@@ -105,16 +105,14 @@ const DoughnutChart = () => {
             <div>
               <p className={css.text}>Add expenses</p>
               <p className={css.text}>
-                Your income is ₴ {Math.abs(incomeTotal).toFixed(2)}
+                Your income is {Math.abs(incomeTotal).toFixed(2)}₴
               </p>
             </div>
           );
         } else {
           return (
             <>
-              <div className={css.balance}>
-                ₴ {Math.abs(balance).toFixed(2)}
-              </div>
+              <div className={css.balance}>₴ {balance.toFixed(2)}</div>
               <Doughnut
                 className={css.doughnut}
                 data={doughnutData}
