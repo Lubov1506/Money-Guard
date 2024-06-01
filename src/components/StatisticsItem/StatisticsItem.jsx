@@ -1,7 +1,7 @@
 import s from './StatisticsItem.module.css';
-export const StatisticsItem = ({ item }) => {
+const StatisticsItem = ({ item }) => {
   return (
-    <tr >
+    <tr>
       <th scope="row" className={s.row}>
         <td>
           <span className={s.color}></span>
@@ -12,3 +12,4 @@ export const StatisticsItem = ({ item }) => {
     </tr>
   );
 };
+export default StatisticsItem;

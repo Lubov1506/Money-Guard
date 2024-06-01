@@ -1,5 +1,5 @@
 import DoughnutChart from '../DoughnutChart/DoughnutChart';
-import { StatisticDatePicker } from '../StatisticsDashboard/StatisticDatePicker';
+import { StatisticDatePicker } from '../StatisticDatePicker/StatisticDatePicker';
 import { StatisticsTable } from '../StatisticsTable/StatisticsTable';
 import s from './StatisticsTab.module.css';
 
@@ -10,7 +10,7 @@ const StatisticsTab = () => {
       <div>
         <StatisticDatePicker />
         <StatisticsTable />
-      </div> 
+      </div>
     </div>
   );
 };

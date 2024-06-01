@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux';
-import { StatisticsItem } from '../StatisticsItem/StatisticsItem';
+import StatisticsItem from '../StatisticsItem/StatisticsItem';
 import s from './StatisticsTable.module.css';
 import { selectPeriodTransactions } from '../../redux/transactions/selectors';
 
-export const StatisticsTable = () => {
+const StatisticsTable = () => {
   const transactions = useSelector(selectPeriodTransactions);
   console.log(transactions);
 
@@ -14,7 +14,7 @@ export const StatisticsTable = () => {
   console.log(incomeSummary);
   console.log(categoriesSummary);
 
-  if (!transactions.length) return null;
+  //   if (!transactions)
   return (
     <div className={s.all}>
       <table className={s.table}>
@@ -39,3 +39,4 @@ export const StatisticsTable = () => {
     </div>
   );
 };
+export default StatisticsTable;
