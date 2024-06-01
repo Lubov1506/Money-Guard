@@ -13,6 +13,7 @@ import LoginPage from './pages/LoginPage';
 import Dashboard from './pages/Dashboard/Dashboard';
 import NotFound from './pages/NotFound/NotFound';
 import HomeTab from './components/HomeTab/HomeTab';
+import TransactionsList from './components/TransactionsList/TransactionsList';
 const CurrencyTab = lazy(() => import('./components/CurrencyTab/CurrencyTab'));
 // const HomeTab = lazy(() => import('enter path here'));
 const StatisticsTab = lazy(() => import('./components/StatisticsTab/StatisticsTab'));
@@ -38,7 +39,6 @@ function App() {
             </PrivateRoute>
           }
         >
-
           <Route index element={<HomeTab />} />
           <Route path="statistics" element={<StatisticsTab/>} />
           <Route path="currency" element={<CurrencyTab />} />
