@@ -17,12 +17,13 @@ const initialState = {
 const transactionsSlice = createSlice({
   name: 'transactions',
   initialState,
+
   reducers: {
     addCurrentTransaction(state, { payload }) {
       state.currentTransaction = payload;
     },
   },
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
       .addCase(fetchAllTrnThunk.fulfilled, (state, { payload }) => {
         state.items = payload;
@@ -35,25 +36,25 @@ const transactionsSlice = createSlice({
         state.items.push(payload);
       })
       .addCase(deleteTrnThunk.fulfilled, (state, { payload }) => {
-        state.items.map((trn) => trn.id !== payload);
+        state.items.map(trn => trn.id !== payload);
       })
       .addMatcher(
         ({ type }) => type.endsWith('/pending'),
-        (state) => {
+        state => {
           state.loading = true;
           state.error = null;
         }
       )
       .addMatcher(
         ({ type }) => type.endsWith('/fulfilled'),
-        (state) => {
+        state => {
           state.loading = false;
           state.error = null;
         }
       )
       .addMatcher(
         ({ type }) => type.endsWith('/rejected'),
-        (state) => {
+        state => {
           state.loading = false;
           state.error = true;
         }
