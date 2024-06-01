@@ -6,6 +6,7 @@ import Select from 'react-select';
 import { useDispatch } from 'react-redux';
 import { fetchPeriodTrnThunk } from '../../redux/transactions/operations';
 import { StatisticsTable } from '../StatisticsTable/StatisticsTable';
+
 export const StatisticDatePicker = () => {
   const currentMonth = new Date().getMonth();
   const currentYear = getYear(new Date());

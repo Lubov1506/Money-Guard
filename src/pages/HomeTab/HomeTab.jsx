@@ -1,5 +1,4 @@
-import CreateButton from '../../components/CreateButton/CreateButton';
-import TransactionsList from '../../components/TransactionsList/TransactionsList';
+import { CreateButton, TransactionsList } from '../../components';
 import s from './HomeTab.module.css';
 
 const HomeTab = () => {
