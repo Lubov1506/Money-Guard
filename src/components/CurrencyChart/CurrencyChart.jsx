@@ -11,11 +11,11 @@ const CurrencyChart = ({ usd, eur, type = 'mob' }) => {
   return (
     <div className={s.chart_wrapper}>
       <div className={s.first_circle}>
-        {type === 'desc' && <p>{usd}</p>}
+        {type === 'desk' && <p>{usd}</p>}
         <CircleSVG />
       </div>
       <div className={s.second_circle}>
-        {type === 'desc' && <p>{eur}</p>}
+        {type === 'desk' && <p>{eur}</p>}
         <CircleSVG />
       </div>
       <div className={s.line_chart}>
