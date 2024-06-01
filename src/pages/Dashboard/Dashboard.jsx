@@ -1,12 +1,14 @@
 import { Outlet } from 'react-router-dom';
 import s from './Dashboard.module.css';
-import Header from '../../components/Header/Header';
-import Navigation from '../../components/Navigation/Navigation';
-import Balance from '../../components/Balance/Balance';
-import Currency from '../../components/Currency/Currency';
 import { Suspense } from 'react';
-import MoneyLoader from '../../components/MoneyLoader/MoneyLoader';
 import { useMedia } from '../../hooks/useMedia';
+import {
+  Balance,
+  Currency,
+  Header,
+  MoneyLoader,
+  Navigation,
+} from '../../components';
 
 const Dashboard = () => {
   const { isDesktop, isTablet } = useMedia();

@@ -1,4 +1,4 @@
-import DoughnutChart from '../../components/DoughnutChart/DoughnutChart';
+import { DoughnutChart } from '../../components';
 import { StatisticDatePicker } from '../../components/StatisticsDashboard/StatisticDatePicker';
 import { StatisticsTable } from '../../components/StatisticsTable/StatisticsTable';
 import s from './StatisticsTab.module.css';
@@ -10,7 +10,7 @@ const StatisticsTab = () => {
       <div>
         <StatisticDatePicker />
         <StatisticsTable />
-      </div> 
+      </div>
     </div>
   );
 };
