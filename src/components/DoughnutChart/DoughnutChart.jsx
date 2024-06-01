@@ -2,9 +2,9 @@ import { useEffect } from 'react'; // Імпортуйте useEffect з React
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectUser } from '../../redux/Auth/selectors';
-import { selectPeriodTransactions } from '../../redux/Transactions/selectors';
-import { fetchPeriodTrnThunk } from '../../redux/Transactions/operations';
+import { selectUser } from '../../redux/auth/selectors';
+import { selectPeriodTransactions } from '../../redux/transactions/selectors';
+import { fetchPeriodTrnThunk } from '../../redux/transactions/operations';
 import css from './DoughnutChart.module.css';
 import { getTrasactionCategoryColor } from '../../constants/TransactionConstants';
 
@@ -28,7 +28,7 @@ const DoughnutChart = () => {
   const balance = user ? user.balance : 0;
   function getCurrentMonthYear() {
     const currentDate = new Date();
-    const month = currentDate.getMonth() + 1;
+    const month = currentDate.getMonth(); // + 1;
     const year = currentDate.getFullYear();
     return { month, year };
   }
