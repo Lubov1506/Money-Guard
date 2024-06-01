@@ -92,15 +92,21 @@ const DoughnutChart = () => {
         if (!expenseTotal && !incomeTotal) {
           return (
             <div>
-              <p>Add expenses and incomes to see the chart</p>
-              <p>Your balance is ₴ {Math.abs(balance).toFixed(2)}</p>
+              <p className={css.text}>
+                Add expenses and incomes to see the chart
+              </p>
+              <p className={css.text}>
+                Your balance is ₴ {Math.abs(balance).toFixed(2)}
+              </p>
             </div>
           );
         } else if (!expenseTotal && incomeTotal) {
           return (
             <div>
-              <p>Add expenses</p>
-              <p>Your income is ₴ {Math.abs(incomeTotal).toFixed(2)}</p>
+              <p className={css.text}>Add expenses</p>
+              <p className={css.text}>
+                Your income is ₴ {Math.abs(incomeTotal).toFixed(2)}
+              </p>
             </div>
           );
         } else {

@@ -3,9 +3,12 @@
   justify-content: center;
   width: 100%;
   padding: 46px;
-  overflow: scroll;
+  overflow-y: scroll;
   max-height: calc(100vh - 60px);
   @media only screen and (min-width: 768px) {
     max-height: calc(100vh - 404px);
+  }
+  @media only screen and (min-width: 1280px) {
+    max-height: calc(100vh - 80px);
   }
 }
