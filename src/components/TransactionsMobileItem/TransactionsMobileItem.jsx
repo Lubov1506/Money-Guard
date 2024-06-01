@@ -33,9 +33,9 @@ const TransactionsMobileItem = ({ item = {} }) => {
               <button className={s.btn_delete}>Delete</button>
             </td>
             <td className={s.value}>
-              <button onClick={openEditModal()} className={s.btn_edit}>
+              {/* <button onClick={openEditModal()} className={s.btn_edit}>
                 <GoPencil /> Edit
-              </button>
+              </button> */}
             </td>
           </tr>
         </tbody>

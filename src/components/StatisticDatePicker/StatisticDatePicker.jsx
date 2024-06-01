@@ -1,5 +1,5 @@
 import 'react-datepicker/dist/react-datepicker.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import s from './StatisticDatePicker.module.css';
 import { getYear } from 'date-fns';
 import Select from 'react-select';
@@ -12,37 +12,53 @@ const StatisticDatePicker = () => {
   const currentYear = getYear(new Date());
   const [selectedYear, setSelectedYear] = useState(currentYear);
   const [selectedMonth, setSelectedMonth] = useState(currentMonth);
-
   const dispatch = useDispatch();
-
-  const handleYearChange = selectedOption => {
-    setSelectedYear(selectedOption.value);
-    console.log(selectedOption.value);
-    dispatch(
-      fetchPeriodTrnThunk({
-        month: selectedMonth,
-        year: selectedOption.value,
-      })
-    )
-      .unwrap()
-      .then(data => {
-        console.log(data);
-      });
-  };
-  const handleMonthChange = selectedOption => {
-    setSelectedMonth(selectedOption.value);
-    dispatch(
-      fetchPeriodTrnThunk({
-        month: selectedOption.value,
-        year: selectedYear,
-      })
-    )
-      .unwrap()
-      .then(data => {
-        console.log(data);
-      });
-    console.log(selectedOption.value);
-  };
+  useEffect(() => {
+  dispatch(fetchPeriodTrnThunk({year:selectedYear, month:selectedMonth}))
+  }, [selectedMonth, selectedYear])
+console.log(currentMonth);
+  // const handleChange = (setFunc,selectedOption) => {
+  //   setFunc(selectedOption.value);
+  //   console.log(selectedOption.value);
+  //   dispatch(
+  //     fetchPeriodTrnThunk({
+  //       month: selectedMonth,
+  //       year: selectedOption.value,
+  //     })
+  //   )
+  //     .unwrap()
+  //     .then(data => {
+  //       console.log(data);
+  //     });
+  // };
+  // const handleYearChange = selectedOption => {
+  //   setSelectedYear(selectedOption.value);
+  //   console.log(selectedOption.value);
+  //   dispatch(
+  //     fetchPeriodTrnThunk({
+  //       month: selectedMonth,
+  //       year: selectedOption.value,
+  //     })
+  //   )
+  //     .unwrap()
+  //     .then(data => {
+  //       console.log(data);
+  //     });
+  // };
+  // const handleMonthChange = selectedOption => {
+  //   setSelectedMonth(selectedOption.value);
+  //   dispatch(
+  //     fetchPeriodTrnThunk({
+  //       month: selectedOption.value,
+  //       year: selectedYear,
+  //     })
+  //   )
+  //     .unwrap()
+  //     .then(data => {
+  //       console.log(data);
+  //     });
+  //   console.log(selectedOption.value);
+  // };
 
   const years = Array.from(
     { length: getYear(new Date()) - 2020 + 1 },
@@ -52,22 +68,22 @@ const StatisticDatePicker = () => {
   const monthsOptions = Array.from({ length: 12 }, (e, i) => {
     const month = new Date(0, i).toLocaleString('en', { month: 'long' });
     return {
-      value: i + 1,
+      value: i ,
       label: month,
-      isDisabled: i + 1 > currentMonth && selectedYear === currentYear,
+      isDisabled: i > currentMonth && selectedYear === currentYear,
     };
   });
   return (
     <div>
       <div className={s.monthYearPick}>
         <Select
-          onChange={handleYearChange}
+          onChange={(selectedOption)=>{setSelectedYear(selectedOption.value)}}
           placeholder="Select year"
           options={yearOptions}
           // value={yearOptions.find(option => option.value === selectedYear)}
         />
         <Select
-          onChange={handleMonthChange}
+          onChange={(selectedOption)=>setSelectedMonth(selectedOption.value)}
           options={monthsOptions}
           placeholder="Select month"
           // value={monthsOptions.find(option => option.value === selectedMonth)}
