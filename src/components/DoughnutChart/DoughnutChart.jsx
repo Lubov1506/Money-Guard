@@ -1,16 +1,21 @@
-import { useEffect } from 'react'; // Імпортуйте useEffect з React
+import { useEffect } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectUser } from '../../redux/auth/selectors';
-import { selectPeriodTransactions } from '../../redux/transactions/selectors';
+import {
+  selectPeriodTransactions,
+  selectIsLoading,
+} from '../../redux/transactions/selectors';
 import { fetchPeriodTrnThunk } from '../../redux/transactions/operations';
 import css from './DoughnutChart.module.css';
 import { getTrasactionCategoryColor } from '../../constants/TransactionConstants';
+import Loader from '../Loader/Loader';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const options = {
+  cutout: '75%',
   responsive: true,
   maintainAspectRatio: false,
   plugins: {
@@ -20,18 +25,19 @@ const options = {
   animation: {
     animateRotate: true,
     animateScale: true,
+    duration: 2000,
   },
 };
 
 const DoughnutChart = () => {
   const user = useSelector(selectUser);
   const balance = user ? user.balance : 0;
-  function getCurrentMonthYear() {
+  const getCurrentMonthYear = () => {
     const currentDate = new Date();
-    const month = currentDate.getMonth(); // + 1;
+    const month = currentDate.getMonth() + 1;
     const year = currentDate.getFullYear();
     return { month, year };
-  }
+  };
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -40,6 +46,14 @@ const DoughnutChart = () => {
 
   const transactions = useSelector(selectPeriodTransactions);
   console.log(transactions);
+  const isLoading = useSelector(selectIsLoading);
+  if (isLoading) {
+    return (
+      <>
+        <Loader />
+      </>
+    );
+  }
 
   const expense = transactions.categoriesSummary
     ? transactions.categoriesSummary.filter(
@@ -73,23 +87,37 @@ const DoughnutChart = () => {
   };
 
   return (
-    <div className={css.doughnut}>
-      {!expenseTotal && !incomeTotal ? (
-        <div>
-          <p>Add expenses and incomes to see the chart</p>
-          <p>Your balance is ₴ {Math.abs(balance).toFixed(2)}</p>
-        </div>
-      ) : !expenseTotal && incomeTotal ? (
-        <div>
-          <p>Add some expenses</p>
-          <p>Your income is ₴ {Math.abs(incomeTotal).toFixed(2)}</p>
-        </div>
-      ) : (
-        <>
-          <div className={css.balance}>₴ {Math.abs(balance).toFixed(2)}</div>
-          <Doughnut data={doughnutData} options={options} />
-        </>
-      )}
+    <div className={css.doughnutContainer}>
+      {(() => {
+        if (!expenseTotal && !incomeTotal) {
+          return (
+            <div>
+              <p>Add expenses and incomes to see the chart</p>
+              <p>Your balance is ₴ {Math.abs(balance).toFixed(2)}</p>
+            </div>
+          );
+        } else if (!expenseTotal && incomeTotal) {
+          return (
+            <div>
+              <p>Add expenses</p>
+              <p>Your income is ₴ {Math.abs(incomeTotal).toFixed(2)}</p>
+            </div>
+          );
+        } else {
+          return (
+            <>
+              <div className={css.balance}>
+                ₴ {Math.abs(balance).toFixed(2)}
+              </div>
+              <Doughnut
+                className={css.doughnut}
+                data={doughnutData}
+                options={options}
+              />
+            </>
+          );
+        }
+      })()}
     </div>
   );
 };
