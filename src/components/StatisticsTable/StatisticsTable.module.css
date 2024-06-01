@@ -1,23 +1,34 @@
 .table {
-  width: 395px;
+  max-width: 295px;
+  display: grid;
+  border: 1px solid #ff868d;
 }
-.thread {
-  padding-top: 16px;
-  padding-bottom: 16px;
+.heading {
+  max-width: 280px;
+  padding: 16px;
   display: flex;
   justify-content: space-between;
   border-radius: 8px;
   background: rgba(82, 59, 126, 0.6);
   box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(50px);
-  th {
-    padding: 8px 10px;
-  }
 }
 
-.all {
+.expences {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 4fr 1fr;
+  align-self: start;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  color: #ff868d;
+  text-align: left;
+  line-height: normal;
 }
-.expenses {
+.income {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  color: #ffb627;
+  margin-bottom: 16px;
+
+  text-align: left;
 }

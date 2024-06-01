@@ -14,10 +14,10 @@ const StatisticsTable = () => {
   // console.log(incomeSummary);
   // console.log(categoriesSummary);
 
-  //   if (!transactions)
   return (
     <div className={s.all}>
       <table className={s.table}>
+<<<<<<< Updated upstream
         <thead className={s.thread}>
           <tr>
             <th scope="col" className={s.th}>
@@ -41,6 +41,28 @@ const StatisticsTable = () => {
             <td> Income: {incomeSummary}</td>
           </tr>
         </tbody>
+=======
+        <tr className={s.heading}>
+          <th className={s.th}>Category</th>
+          <th className={s.th}>Total</th>
+        </tr>
+
+        {categoriesSummary
+          ? categoriesSummary.map((item, idx) => (
+              <StatisticsItem key={idx} item={item} />
+            ))
+          : null}
+
+        <tr className={s.expences}>
+          <th className={s.exText}>Expences:</th>
+          <th>{expenseSummary}</th>
+        </tr>
+
+        <tr className={s.income}>
+          <th className={s.inText}>Income:</th>
+          <th>{incomeSummary}</th>
+        </tr>
+>>>>>>> Stashed changes
       </table>
     </div>
   );
