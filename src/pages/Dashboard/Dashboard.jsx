@@ -11,24 +11,19 @@ import { useMedia } from '../../hooks/useMedia';
 const Dashboard = () => {
   const { isDesktop, isTablet } = useMedia();
   return (
-    // FIXME: CHANGE TO NORMAL
-    <div className={s.wrapper}>
-      {!isTablet && !isDesktop && (
-        <>
-          <Header />
-          <div className={s.divBackground}>
-            <Navigation />
-            <Balance />
-            <Suspense fallback={<MoneyLoader />}>
-              <Outlet />
-            </Suspense>
-          </div>
-        </>
-      )}
-      {isTablet && (
-        <>
-          <Header />
-          <div className={s.divBackground}>
+    <>
+      <Header />
+      <div className={s.divBackground}>
+        {isDesktop ? (
+          <>
+            <div className={s.noOutletWrapper}>
+              <Navigation />
+              <Balance />
+              <Currency />
+            </div>
+          </>
+        ) : isTablet ? (
+          <>
             <div className={s.noOutletWrapper}>
               <div className={s.navBalWrapper}>
                 <Navigation />
@@ -36,29 +31,18 @@ const Dashboard = () => {
               </div>
               <Currency />
             </div>
-            <Suspense fallback={<MoneyLoader />}>
-              <Outlet />
-            </Suspense>
-          </div>
-        </>
-      )}
-
-      {isDesktop && !isTablet && (
-        <>
-          <Header />
-          <div className={s.divBackground}>
-            <div className={s.noOutletWrapper}>
-              <Navigation />
-              <Balance />
-              <Currency />
-            </div>
-            <Suspense fallback={<MoneyLoader />}>
-              <Outlet />
-            </Suspense>
-          </div>
-        </>
-      )}
-    </div>
+          </>
+        ) : (
+          <>
+            <Navigation />
+            <Balance />
+          </>
+        )}
+        <Suspense fallback={<MoneyLoader />}>
+          <Outlet />
+        </Suspense>
+      </div>
+    </>
   );
 };
 
