@@ -5,14 +5,14 @@ import { selectPeriodTransactions } from '../../redux/transactions/selectors';
 
 const StatisticsTable = () => {
   const transactions = useSelector(selectPeriodTransactions);
-  console.log(transactions);
+  // console.log(transactions);
 
   const { expenseSummary, incomeSummary, categoriesSummary } = transactions;
   //   console.log({ expenseSummary, incomeSummary, categoriesSummary });
 
-  console.log(expenseSummary);
-  console.log(incomeSummary);
-  console.log(categoriesSummary);
+  // console.log(expenseSummary);
+  // console.log(incomeSummary);
+  // console.log(categoriesSummary);
 
   //   if (!transactions)
   return (
