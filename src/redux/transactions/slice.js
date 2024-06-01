@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import {
   addTrnThunk,
   deleteTrnThunk,
@@ -39,21 +39,36 @@ const transactionsSlice = createSlice({
         state.items.map(trn => trn.id !== payload);
       })
       .addMatcher(
-        ({ type }) => type.endsWith('/pending'),
+        isAnyOf(
+          fetchAllTrnThunk.pending,
+          fetchPeriodTrnThunk.pending,
+          addTrnThunk.pending,
+          deleteTrnThunk.pending
+        ),
         state => {
           state.loading = true;
           state.error = null;
         }
       )
       .addMatcher(
-        ({ type }) => type.endsWith('/fulfilled'),
+        isAnyOf(
+          fetchAllTrnThunk.fulfilled,
+          fetchPeriodTrnThunk.fulfilled,
+          addTrnThunk.fulfilled,
+          deleteTrnThunk.fulfilled
+        ),
         state => {
           state.loading = false;
           state.error = null;
         }
       )
       .addMatcher(
-        ({ type }) => type.endsWith('/rejected'),
+        isAnyOf(
+          fetchAllTrnThunk.rejected,
+          fetchPeriodTrnThunk.rejected,
+          addTrnThunk.rejected,
+          deleteTrnThunk.rejected
+        ),
         state => {
           state.loading = false;
           state.error = true;
