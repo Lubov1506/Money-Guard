@@ -11,12 +11,12 @@ import RegistrationPage from './pages/RegistrationPage';
 import LoginPage from './pages/LoginPage';
 import Dashboard from './pages/Dashboard/Dashboard';
 import NotFound from './pages/NotFound/NotFound';
-import HomeTab from './components/HomeTab/HomeTab';
+
 import TransactionsList from './components/TransactionsList/TransactionsList';
-const CurrencyTab = lazy(() => import('./components/CurrencyTab/CurrencyTab'));
-// const HomeTab = lazy(() => import('enter path here'));
+const CurrencyTab = lazy(() => import('./pages/CurrencyTab/CurrencyTab'));
+const HomeTab = lazy(() => import('./pages/HomeTab/HomeTab'));
 const StatisticsTab = lazy(() =>
-  import('./components/StatisticsTab/StatisticsTab')
+  import('./pages/StatisticsTab/StatisticsTab')
 );
 
 function App() {
