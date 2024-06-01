@@ -8,8 +8,8 @@ const StatisticsTab = () => {
     <div className={s.stat_wrap}>
       <DoughnutChart />
       <div>
-        {/* <StatisticDatePicker /> */}
-        {/* <StatisticsTable /> */}
+        <StatisticDatePicker />
+        <StatisticsTable />
       </div>
     </div>
   );

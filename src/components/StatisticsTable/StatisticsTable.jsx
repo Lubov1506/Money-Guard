@@ -5,26 +5,30 @@ import { selectPeriodTransactions } from '../../redux/transactions/selectors';
 
 export const StatisticsTable = () => {
   const transactions = useSelector(selectPeriodTransactions);
-  console.log(transactions);
+  // console.log(transactions);
 
   const { expenseSummary, incomeSummary, categoriesSummary } = transactions;
   //   console.log({ expenseSummary, incomeSummary, categoriesSummary });
 
-  console.log(expenseSummary);
-  console.log(incomeSummary);
-  console.log(categoriesSummary);
+  // console.log(expenseSummary);
+  // console.log(incomeSummary);
+  // console.log(categoriesSummary);
 
   return (
     <div className={s.all}>
       <table className={s.table}>
-        <tr className={s.thread}>
-          <th scope="col" className={s.th}>
-            Category
-          </th>
-          <th scope="col" className={s.th}>
-            Total
-          </th>
-        </tr>
+        <thead>
+
+          <tr className={s.thread}>
+            <th scope="col" className={s.th}>
+              Category
+            </th>
+            <th scope="col" className={s.th}>
+              Total
+            </th>
+          </tr>
+        </thead>
+
         <tbody>
           {categoriesSummary
             ? categoriesSummary.map((item, idx) => (

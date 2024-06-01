@@ -11,7 +11,7 @@ const Navigation = () => {
   return (
     <ul className={s.link_icon_wrapper}>
       <li>
-        <NavLink to="/" exact className={buildLinkClass}>
+        <NavLink to="/"  className={buildLinkClass}>
           <svg className={s.icon}>
             <use href={`${icons}#icon-home`} />
           </svg>
