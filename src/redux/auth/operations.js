@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { walletAPI } from '../../helpers/api';
 
-const setAuthHeader = (token) => {
+const setAuthHeader = token => {
   walletAPI.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
@@ -62,6 +62,18 @@ export const refreshUserThunk = createAsyncThunk(
       const { data } = await walletAPI.get('/users/current');
 
       return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+export const getBalanceThunk = createAsyncThunk(
+  'auth/getBalance',
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await walletAPI.get('/users/current');
+
+      return data.balance;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

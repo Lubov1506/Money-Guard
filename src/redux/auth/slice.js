@@ -4,6 +4,7 @@ import {
   refreshUserThunk,
   signInThunk,
   signOutThunk,
+  getBalanceThunk,
 } from './operations';
 
 const authSlice = createSlice({
@@ -17,7 +18,7 @@ const authSlice = createSlice({
     isLoggedIn: false,
     isRefreshing: false,
   },
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
       .addCase(signUpThunk.fulfilled, (state, action) => {
         state.user = action.payload.user;
@@ -29,12 +30,12 @@ const authSlice = createSlice({
         state.token = action.payload.token;
         state.isLoggedIn = true;
       })
-      .addCase(signOutThunk.fulfilled, (state) => {
+      .addCase(signOutThunk.fulfilled, state => {
         state.user = { name: null, email: null };
         state.token = null;
         state.isLoggedIn = false;
       })
-      .addCase(refreshUserThunk.pending, (state) => {
+      .addCase(refreshUserThunk.pending, state => {
         state.isRefreshing = true;
       })
       .addCase(refreshUserThunk.fulfilled, (state, action) => {
@@ -42,7 +43,10 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })
-      .addCase(refreshUserThunk.rejected, (state) => {
+      .addCase(getBalanceThunk.fulfilled, (state, action) => {
+        state.user.balance = action.payload;
+      })
+      .addCase(refreshUserThunk.rejected, state => {
         state.isRefreshing = false;
       });
   },

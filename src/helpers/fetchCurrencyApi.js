@@ -13,27 +13,26 @@ const getCurrency = async () => {
 
   if (cachedCurrency && now - cachedCurrency.date < 3600000) {
     return cachedCurrency;
-  } else {
-    try {
-      const data = await fetchCurrency();
-      const usd = data.find(
-        item => item.currencyCodeA === 840 && item.currencyCodeB === 980
-      );
-      const eur = data.find(
-        item => item.currencyCodeA === 978 && item.currencyCodeB === 980
-      );
+  }
 
-      const currencyData = {
-        date: now,
-        usd,
-        eur,
-      };
+  try {
+    const data = await fetchCurrency();
+    const usd = data.find(
+      item => item.currencyCodeA === 840 && item.currencyCodeB === 980
+    );
+    const eur = data.find(
+      item => item.currencyCodeA === 978 && item.currencyCodeB === 980
+    );
+    const currencyData = {
+      date: now,
+      usd,
+      eur,
+    };
 
-      localStorage.setItem('currency', JSON.stringify(currencyData));
-      return currencyData;
-    } catch (err) {
-      console.error('Failed to fetch currency data:', err.message);
-    }
+    localStorage.setItem('currency', JSON.stringify(currencyData));
+    return currencyData;
+  } catch (err) {
+    console.error('Failed to fetch currency data:', err.message);
   }
 };
 

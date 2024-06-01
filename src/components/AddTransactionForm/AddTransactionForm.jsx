@@ -16,7 +16,7 @@ import {
 } from '../../constants/TransactionConstants';
 
 import { addTrnThunk } from '../../redux/transactions/operations';
-import { refreshUserThunk } from '../../redux/auth/operations';
+import { getBalanceThunk } from '../../redux/auth/operations';
 
 import { FiCalendar } from 'react-icons/fi';
 
@@ -61,7 +61,7 @@ const AddTransactionFormNew = ({ closeModal }) => {
       .unwrap()
       .then(() => {
         closeModal();
-        dispatch(refreshUserThunk());
+        dispatch(getBalanceThunk());
       })
       .catch(error => {
         setStatus({ success: false, error: error });
@@ -88,7 +88,7 @@ const AddTransactionFormNew = ({ closeModal }) => {
             <h2 className={styles.formTitle}>Add transaction</h2>
 
             <div className={styles.switcheWrapper}>
-              <span className={`${isOnIncomeTab ? styles.income : null}`}>
+              <span className={`${isOnIncomeTab && styles.income}`}>
                 Income
               </span>
 

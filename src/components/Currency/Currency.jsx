@@ -7,7 +7,7 @@ import { useMediaQuery } from 'react-responsive';
 
 const Currency = () => {
   const [currency, setCurrency] = useState(
-    JSON.parse(localStorage.getItem('currency')) || ''
+    () => JSON.parse(localStorage.getItem('currency')) || ''
   );
   useEffect(() => {
     const getData = async () => {
@@ -49,27 +49,12 @@ const Currency = () => {
             </tr>
           </tbody>
         </table>
-        {isDesktop && (
-          <CurrencyChart
-            usd={currency.usd.rateBuy.toFixed(2)}
-            eur={currency.eur.rateBuy.toFixed(2)}
-            type="desc"
-          />
-        )}
-        {isTablet && !isDesktop && (
-          <CurrencyChart
-            usd={currency.usd.rateBuy.toFixed(2)}
-            eur={currency.eur.rateBuy.toFixed(2)}
-            type="tab"
-          />
-        )}
-        {!isTablet && !isDesktop && (
-          <CurrencyChart
-            usd={currency.usd.rateBuy.toFixed(2)}
-            eur={currency.eur.rateBuy.toFixed(2)}
-            type="mob"
-          />
-        )}
+
+        <CurrencyChart
+          usd={currency.usd.rateBuy.toFixed(2)}
+          eur={currency.eur.rateBuy.toFixed(2)}
+          type={isDesktop ? 'desc' : isTablet ? 'tab' : 'mob'}
+        />
       </div>
     </>
   );

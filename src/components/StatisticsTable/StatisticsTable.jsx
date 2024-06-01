@@ -14,6 +14,7 @@ export const StatisticsTable = () => {
   console.log(incomeSummary);
   console.log(categoriesSummary);
 
+  if (!transactions.length) return null;
   return (
     <div className={s.all}>
       <table className={s.table}>
@@ -31,12 +32,8 @@ export const StatisticsTable = () => {
                 <StatisticsItem key={idx} item={item} />
               ))
             : null}
-          {expenseSummary ? (
-            <tr className={s.expences}>Expences: {expenseSummary}</tr>
-          ) : null}
-          {incomeSummary ? (
-            <tr className={s.income}>Income: {incomeSummary}</tr>
-          ) : null}
+          <tr className={s.expences}>Expences: {expenseSummary}</tr>
+          <tr className={s.income}>Income: {incomeSummary}</tr>
         </tbody>
       </table>
     </div>

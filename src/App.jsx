@@ -4,7 +4,6 @@ import PublicRoute from './routes/PublicRoute';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsRefreshing } from './redux/auth/selectors';
-import { selectIsLoading } from './redux/transactions/selectors';
 import { refreshUserThunk } from './redux/auth/operations';
 import Loader from './components/Loader/Loader';
 import { lazy } from 'react';
@@ -16,53 +15,55 @@ import HomeTab from './components/HomeTab/HomeTab';
 import TransactionsList from './components/TransactionsList/TransactionsList';
 const CurrencyTab = lazy(() => import('./components/CurrencyTab/CurrencyTab'));
 // const HomeTab = lazy(() => import('enter path here'));
-const StatisticsTab = lazy(() => import('./components/StatisticsTab/StatisticsTab'));
+const StatisticsTab = lazy(() =>
+  import('./components/StatisticsTab/StatisticsTab')
+);
 
 function App() {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
-
-  const isLoading = useSelector(selectIsLoading);
   useEffect(() => {
     dispatch(refreshUserThunk());
   }, [dispatch]);
   return (
     <>
-      {(isLoading || isRefreshing) && <Loader />}
+      {isRefreshing ? (
+        <Loader />
+      ) : (
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            }
+          >
+            <Route index element={<HomeTab />} />
+            <Route path="statistics" element={<StatisticsTab />} />
+            <Route path="currency" element={<CurrencyTab />} />
+          </Route>
 
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <PrivateRoute>
-              <Dashboard />
-            </PrivateRoute>
-          }
-        >
-          <Route index element={<HomeTab />} />
-          <Route path="statistics" element={<StatisticsTab/>} />
-          <Route path="currency" element={<CurrencyTab />} />
-        </Route>
+          <Route
+            path="/register"
+            element={
+              <PublicRoute>
+                <RegistrationPage />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <PublicRoute>
+                <LoginPage />
+              </PublicRoute>
+            }
+          />
 
-        <Route
-          path="/register"
-          element={
-            <PublicRoute>
-              <RegistrationPage />
-            </PublicRoute>
-          }
-        />
-        <Route
-          path="/login"
-          element={
-            <PublicRoute>
-              <LoginPage />
-            </PublicRoute>
-          }
-        />
-
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      )}
     </>
   );
 }

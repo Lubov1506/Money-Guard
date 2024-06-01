@@ -1,7 +1,7 @@
 import s from './StatisticsItem.module.css';
-export const StatisticsItem = ({ item, idx }) => {
+export const StatisticsItem = ({ item }) => {
   return (
-    <tr key={idx}>
+    <tr >
       <th scope="row" className={s.row}>
         <td>
           <span className={s.color}></span>
