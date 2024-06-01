@@ -1,4 +1,4 @@
-import Currency from "../Currency/Currency"
+import Currency from "../../components/Currency/Currency"
 
 const CurrencyTab = () => {
   return (
