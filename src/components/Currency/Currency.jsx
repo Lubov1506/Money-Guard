@@ -3,7 +3,7 @@ import s from './Currency.module.css';
 import CurrencyChart from '../CurrencyChart/CurrencyChart';
 import getCurrency from '../../helpers/fetchCurrencyApi';
 import Loader from '../Loader/Loader';
-import { useMediaQuery } from 'react-responsive';
+import { useMedia } from '../../hooks/useMedia';
 
 const Currency = () => {
   const [currency, setCurrency] = useState(
@@ -16,12 +16,7 @@ const Currency = () => {
     };
     getData();
   }, []);
-  const isDesktop = useMediaQuery({
-    query: '(min-width: 1280px)',
-  });
-  const isTablet = useMediaQuery({
-    query: '(min-width: 768px)',
-  });
+  const {isDesktop, isTablet} = useMedia()
   if (!currency) {
     return <Loader />;
   }
