@@ -4,7 +4,7 @@ import LineChartSVG from './LineChartSVG';
 import AreaChartSVG from './AreaChartSVG';
 const CurrencyChart = ({ usd, eur, type = 'mob' }) => {
   const typeOfWidth = {
-    desk: '400',
+    desk: '480',
     tab: '336',
     mob: '320',
   };
