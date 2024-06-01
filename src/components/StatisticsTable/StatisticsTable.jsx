@@ -4,7 +4,7 @@ import s from './StatisticsTable.module.css';
 import { selectPeriodTransactions } from '../../redux/transactions/selectors';
 
 export const StatisticsTable = () => {
-  const transactions = useSelector(selectPeriodTransactions).periodTransactions;
+  const transactions = useSelector(selectPeriodTransactions);
   console.log(transactions);
 
   const { expenseSummary, incomeSummary, categoriesSummary } = transactions;
