@@ -4,37 +4,30 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background: #101010;
+  background: var(--background);
+  background-repeat: no-repeat;
   background-size: 100% 100%;
 }
 
 @media only screen and (min-width: 768px) {
   .backdrop {
     background-image: url('../../images/register/bg-register-tab@1x.webp');
-    background-color: #101010;
-    background-repeat: no-repeat;
   }
 }
 @media only screen and (min-width: 768px) and (min-resolution: 192dpi) {
   .backdrop {
     background-image: url('../../images/register/bg-register-tab@2x.webp');
-    background-color: #101010;
-    background-repeat: no-repeat;
   }
 }
 
 @media only screen and (min-width: 1440px) {
   .backdrop {
     background-image: url('../../images/register/bg-register-desk@1x.webp');
-    background-color: #101010;
-    background-repeat: no-repeat;
   }
 }
 @media only screen and (min-width: 1440px) and (min-resolution: 192dpi) {
   .backdrop {
     background-image: url('../../images/register/bg-register-desk@1x.webp');
-    background-color: #101010;
-    background-repeat: no-repeat;
   }
 }
 
@@ -46,50 +39,44 @@
   margin: 0 auto;
   width: 100%;
   height: 100%;
-  border-radius: 8px;
-  backdrop-filter: blur(100px);
-  box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
   padding: 98px 20px;
-  background-image: url('/login-modal-mob@1x.webp'),
-    url('/login-modal-circle-mob@1x.webp');
+  background-image: url('../../images/login/login-modal-mob@1x.webp'),
+    url('../../images/login/login-modal-circle-mob@1x.webp');
   background-color: var(--form-color);
   background-repeat: no-repeat;
-  background-size: 100% 100%, 100% 100%;
 }
 @media only screen and (min-resolution: 192dpi) {
   .modal {
-    background-image: url('/public/login-modal-mob@2x.webp'),
-      url('/public/login-modal-circle-mob@2x.webp');
-    background-color: var(--form-color);
-    background-repeat: no-repeat;
+    background-image: url('../../images/login/login-modal-mob@2x.webp'),
+      url('../../images/login/login-modal-circle-mob@2x.webp');
   }
 }
 
 @media only screen and (min-width: 768px) {
   .modal {
+    border-radius: 8px;
+    backdrop-filter: blur(100px);
+    box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     width: 533px;
     height: 624px;
     padding: 40px 62px;
-    /* background-position: center, 148px 320px;
-    background-image: url("/login-modal-desk@1x.webp"),
-      url("/login-modal-circle-desk@1x.webp");
-    background-color: var(--form-color);
-    background-repeat: no-repeat; */
+    background-position: -60px -60px;
+    background-size: 125% 125%;
+    background-image: url('../../images/register/register-modal-tab@1x.webp'),
+      url('../../images/register/register-circle-tab@1x.webp');
   }
 }
-/* @media only screen and (min-width: 768px) and (min-resolution: 192dpi) {
+@media only screen and (min-width: 768px) and (min-resolution: 192dpi) {
   .modal {
-    background-image: url("/login-modal-desk@2x.webp"),
-      url("/login-modal-circle-desk@2x.webp");
-    background-color: var(--form-color);
-    background-repeat: no-repeat;
+    background-image: url('../../images/register/register-modal-tab@2x.webp'),
+      url('../../images/register/register-circle-tab@2x.webp');
   }
-} */
+}
 
 .logo {
   display: flex;
@@ -147,11 +134,11 @@
   width: 25px;
   height: 24px;
   font-size: 20px;
-  color: gray; /* Колір іконки */
+  color: var(--white-40);
 }
 
 .error {
-  color: red;
+  color: var(--yellow);
   position: absolute;
   top: 3em;
   font-size: 0.7em;
@@ -164,45 +151,4 @@
   align-items: center;
   justify-content: center;
   gap: 20px;
-
-  font-family: var(--font-family);
-  font-weight: 400;
-  font-size: 18px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  text-align: center;
-}
-
-.btnColor {
-  border-radius: 20px;
-  width: 280px;
-  height: 50px;
-  box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
-  background: linear-gradient(
-    167deg,
-    rgb(255, 199, 39) 0%,
-    rgb(158, 64, 186) 61.46%,
-    rgb(112, 0, 255) 90.54%
-  );
-  color: var(--white);
-}
-@media only screen and (min-width: 768px) {
-  .btnColor {
-    width: 300px;
-  }
-}
-
-.btnWhite {
-  border: 1px solid #4a56e2;
-  border-radius: 20px;
-  width: 280px;
-  height: 50px;
-  box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
-  background: #fcfcfc;
-  color: var(--text-button);
-}
-@media only screen and (min-width: 768px) {
-  .btnWhite {
-    width: 300px;
-  }
 }

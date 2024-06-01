@@ -4,7 +4,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background: #101010;
+  background: var(--background);
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
@@ -47,7 +47,7 @@
 }
 @media only screen and (min-resolution: 192dpi) {
   .modal {
-    background-image: url('../../images/login/login-modal-circle-mob@2x.webp'),
+    background-image: url('../../images/login/login-modal-mob@2x.webp'),
       url('../../images/login/login-modal-circle-mob@2x.webp');
   }
 }
