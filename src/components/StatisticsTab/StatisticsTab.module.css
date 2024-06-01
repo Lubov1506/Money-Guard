@@ -1,3 +1,13 @@
 .stat_wrap {
   display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 46px;
+  overflow: scroll;
+  max-height: calc(100vh - 60px);
+  @media only screen and (min-width: 768px) {
+    max-height: calc(100vh - 80px);
+    flex-direction: row;
+    gap: 32px;
+  }
 }
