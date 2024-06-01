@@ -35,6 +35,7 @@ const Dashboard = () => {
         ) : (
           <>
             <Navigation />
+            <Balance />
           </>
         )}
         <Suspense fallback={<MoneyLoader />}>
