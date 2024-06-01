@@ -18,22 +18,28 @@ const StatisticsTable = () => {
   return (
     <div className={s.all}>
       <table className={s.table}>
-        <tr className={s.thread}>
-          <th scope="col" className={s.th}>
-            Category
-          </th>
-          <th scope="col" className={s.th}>
-            Total
-          </th>
-        </tr>
+        <thead className={s.thread}>
+          <tr>
+            <th scope="col" className={s.th}>
+              Category
+            </th>
+            <th scope="col" className={s.th}>
+              Total
+            </th>
+          </tr>
+        </thead>
         <tbody>
           {categoriesSummary
             ? categoriesSummary.map((item, idx) => (
                 <StatisticsItem key={idx} item={item} />
               ))
             : null}
-          <tr className={s.expences}>Expences: {expenseSummary}</tr>
-          <tr className={s.income}>Income: {incomeSummary}</tr>
+          <tr className={s.expences}>
+            <td> Expenses: {expenseSummary}</td>
+          </tr>
+          <tr className={s.income}>
+            <td> Income: {incomeSummary}</td>
+          </tr>
         </tbody>
       </table>
     </div>
