@@ -38,6 +38,7 @@ const TransactionsDescItem = ({ transactions }) => {
 
               <FormButton
                 type="button"
+                text='Delete'
                 variant={'multiColorButtton'}
                 onClick={() => dispatch(deleteTrnThunk(item.id))}
               >
