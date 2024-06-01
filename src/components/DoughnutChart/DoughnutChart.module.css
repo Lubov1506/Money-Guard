@@ -1,4 +1,5 @@
 .doughnutContainer {
+  margin: 0 auto;
   width: 280px;
   position: relative;
   display: flex;
@@ -25,4 +26,8 @@
 }
 .doughnut {
   z-index: 1000;
+}
+
+.text {
+  text-align: center;
 }

@@ -37,5 +37,6 @@
   .noOutletWrapper {
     flex-direction: column;
     border-right: solid 2px var(--white-60);
+    justify-content: unset;
   }
 }

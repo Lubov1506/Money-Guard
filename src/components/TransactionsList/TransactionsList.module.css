@@ -8,17 +8,12 @@
 
 } */
 .table {
-  max-width: 704px;
   width: 100%;
   /* border-collapse:separate; */
   /* border-spacing: 1px; */
   overflow: hidden;
 }
-@media only screen and (min-width: 1280px) {
-  .table {
-    max-width: 715px;
-  }
-}
+
 .tbody {
   width: 100%;
 }
