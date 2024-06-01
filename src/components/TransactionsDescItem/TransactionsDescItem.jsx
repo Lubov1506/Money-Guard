@@ -20,7 +20,9 @@ const TransactionsDescItem = ({ item }) => {
       <td className={s.value}>{item.comment}</td>
       <td className={s.minus}>{item.amount}</td>
       <td className={`${s.value} ${s.value_end}`}>
-        <button onClick={openEditModal()} className={s.btn_edit}>
+        <button
+          // onClick={openEditModal()}
+          className={s.btn_edit}>
           <GoPencil />
         </button>
 
