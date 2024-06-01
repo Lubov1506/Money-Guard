@@ -1,6 +1,6 @@
-import DoughnutChart from '../DoughnutChart/DoughnutChart';
-import { StatisticDatePicker } from '../StatisticsDashboard/StatisticDatePicker';
-import { StatisticsTable } from '../StatisticsTable/StatisticsTable';
+import DoughnutChart from '../../components/DoughnutChart/DoughnutChart';
+import { StatisticDatePicker } from '../../components/StatisticsDashboard/StatisticDatePicker';
+import { StatisticsTable } from '../../components/StatisticsTable/StatisticsTable';
 import s from './StatisticsTab.module.css';
 
 const StatisticsTab = () => {
