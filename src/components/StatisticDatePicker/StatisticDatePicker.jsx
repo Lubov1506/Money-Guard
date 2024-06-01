@@ -73,9 +73,9 @@ export const StatisticDatePicker = () => {
           // value={monthsOptions.find(option => option.value === selectedMonth)}
         />
       </div>
-      <div>
-        <StatisticsTable />
-      </div>
+      <div></div>
     </div>
   );
 };
+
+export default StatisticDatePicker;
