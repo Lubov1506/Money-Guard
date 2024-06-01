@@ -1,0 +1,15 @@
+.row {
+  border-bottom: 1px solid rgb(160 160 160);
+  padding: 8px 10px;
+  td {
+    padding: 8px 10px;
+  }
+
+  .color {
+    width: 24px;
+    height: 24px;
+    border-radius: 2px;
+
+    background: #802e2e;
+  }
+}
