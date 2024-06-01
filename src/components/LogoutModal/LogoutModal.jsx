@@ -3,9 +3,12 @@ import { useEffect } from 'react';
 import s from './LogoutModal.module.css';
 import { signOutThunk } from '../../redux/auth/operations';
 import FormButton from '../common/FormButton/FormButton';
+import { useMedia } from '../../hooks/useMedia';
+import Logo from '../common/Logo/Logo';
 
 const LogoutModal = ({ onClose }) => {
   const dispatch = useDispatch();
+  const { isMobile } = useMedia();
 
   const handleBackDropClick = e => {
     if (e.target === e.currentTarget) {
@@ -29,15 +32,7 @@ const LogoutModal = ({ onClose }) => {
   return (
     <div className={s.wrapper} onClick={handleBackDropClick}>
       <div className={s.modal}>
-        <div className={s.logo}>
-          <img
-            src="/money-guard.svg"
-            alt="Money Guard Logo"
-            width={36}
-            height={36}
-          />
-          <h2>Money Guard</h2>
-        </div>
+        {!isMobile && <Logo />}
         <h3 className={s.text}>Are you sure you want to log out?</h3>
         <div className={s.btns}>
           <FormButton

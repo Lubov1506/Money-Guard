@@ -1,21 +1,22 @@
-import { ErrorMessage, Field, Form, Formik } from "formik";
-import { MdOutlineMailOutline, MdLock } from "react-icons/md";
-import { IoPerson } from "react-icons/io5";
-import s from "./RegistrationForm.module.css";
-import PasswordStrengthBar from "react-password-strength-bar";
-import { useDispatch } from "react-redux";
-import { signUpThunk } from "../../redux/auth/operations";
-import { validation } from "../../helpers/registerValidation";
-import FormButton from "../common/FormButton/FormButton";
-import { Link } from "react-router-dom";
+import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { MdOutlineMailOutline, MdLock } from 'react-icons/md';
+import { IoPerson } from 'react-icons/io5';
+import s from './RegistrationForm.module.css';
+import PasswordStrengthBar from 'react-password-strength-bar';
+import { useDispatch } from 'react-redux';
+import { signUpThunk } from '../../redux/auth/operations';
+import { validation } from '../../helpers/registerValidation';
+import FormButton from '../common/FormButton/FormButton';
+import { Link } from 'react-router-dom';
+import Logo from '../common/Logo/Logo';
 
 export const RegistrationForm = () => {
   const dispatch = useDispatch();
   const initialValues = {
-    name: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
+    name: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
   };
 
   const handleSubmit = (values, actions) => {
@@ -29,15 +30,7 @@ export const RegistrationForm = () => {
   return (
     <div className={s.backdrop}>
       <div className={s.modal}>
-        <div className={s.logo}>
-          <img
-            src="/money-guard.svg"
-            alt="Money Guard Logo"
-            width={28}
-            height={35}
-          />
-          <h2 className={s.textLogo}>Money Guard</h2>
-        </div>
+        <Logo />
         <Formik
           initialValues={initialValues}
           validationSchema={validation}
@@ -106,15 +99,15 @@ export const RegistrationForm = () => {
                 />
               </div>
               <PasswordStrengthBar
-                style={{ top: "-40px" }}
-                barColors={["#ddd", "#ffcc00", "#00cc00", "#00cc00", "#00cc00"]}
+                style={{ top: '-40px' }}
+                barColors={['#ddd', '#ffcc00', '#00cc00', '#00cc00', '#00cc00']}
                 scoreWords={[]}
                 minLength={3}
-                shortScoreWord={""}
+                shortScoreWord={''}
               />
             </div>
             <div className={s.btns}>
-                  <FormButton
+              <FormButton
                 type="submit"
                 text={'Register'}
                 variant={'multiColorButtton'}

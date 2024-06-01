@@ -1,10 +1,10 @@
 import s from './Logo.module.css';
 
-const Logo = ({ width, height }) => {
+const Logo = () => {
   return (
     <div className={s.logo}>
       <img
-        style={{ width, height }}
+        // style={{ width, height }}
         src="/money-guard.svg"
         alt="Money Guard Logo"
       />

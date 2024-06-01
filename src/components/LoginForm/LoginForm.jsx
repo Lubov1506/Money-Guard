@@ -24,7 +24,7 @@ export const LoginForm = () => {
   return (
     <div className={s.backdrop}>
       <div className={s.modal}>
-        <Logo width={36} height={36} />
+        <Logo />
         <Formik
           initialValues={initialValues}
           validationSchema={validation}
