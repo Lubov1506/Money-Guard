@@ -7,6 +7,7 @@ import { selectTransactions } from '../../redux/transactions/selectors';
 import { useEffect } from 'react';
 import { fetchAllTrnThunk } from '../../redux/transactions/operations';
 import { useMedia } from '../../hooks/useMedia';
+import s from './TransactionsList.module.css'
 
 const TransactionsList = () => {
   const transactions = useSelector(selectTransactions);
@@ -22,9 +23,29 @@ const TransactionsList = () => {
   return (
     <>
       {isTablet ? (
-        <TransactionsDescItem transactions={transactions} />
+        <table className={s.table}>
+          <thead className={s.thead}>
+            <tr className={`${s.t_row} ${s.t_row_header}`}>
+              <td className={s.title}>Date</td>
+              <td className={s.title}>Type</td>
+              <td className={s.title}>Category</td>
+              <td className={s.title}>Comment</td>
+              <td className={s.title}>Sum</td>
+              <td className={s.title}></td>
+            </tr>
+          </thead>
+          <tbody>
+            {transactions.map(item => (
+              <TransactionsDescItem key={item.id} item={item} />
+            ))}
+          </tbody>
+        </table>
       ) : (
-        <TransactionsMobileItem transactions={transactions} />
+        <>
+          {transactions.map(item => (
+            <TransactionsMobileItem key={item.id} item={item} />
+          ))}
+        </>
       )}
     </>
   );

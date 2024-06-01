@@ -6,13 +6,17 @@
   overflow: hidden;
 }
 @media only screen and (min-width: 1280px) {
-    .table {
-        max-width: 715px;
-    }
+  .table {
+    max-width: 715px;
+  }
 }
 .tbody {
   width: 100%;
 }
+/* .t_row {
+  display: flex;
+  align-items: center;
+} */
 .t_row_header td:first-child {
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
@@ -94,6 +98,6 @@
   );
 }
 .btn_edit {
-    background-color: transparent;
-    color: var(--white);
+  background-color: transparent;
+  color: var(--white);
 }

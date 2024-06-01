@@ -7,13 +7,13 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  height: calc(100vh - 60px);
+  min-height: calc(100vh - 60px);
 }
 
 @media only screen and (min-width: 768px) {
   .divBackground {
     background-image: url('../../images/Dashboard/background-tab.png');
-    height: calc(100vh - 80px);
+    min-height: calc(100vh - 80px);
     align-items: unset;
     padding: 0px 32px;
   }
@@ -37,5 +37,6 @@
   .noOutletWrapper {
     flex-direction: column;
     border-right: solid 2px var(--white-60);
+    justify-content: unset;
   }
 }

@@ -6,9 +6,10 @@ const FormButton = ({
   handlerFunction,
   variant,
   isDisabled = false,
+  width ='280px'
 }) => {
   return (
-    <button
+    <button style={{width}}
       type={type}
       onClick={handlerFunction}
       className={`${styles.formButton} ${styles[variant]}`}
