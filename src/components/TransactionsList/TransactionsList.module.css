@@ -7,3 +7,31 @@
 @media only screen and (min-width: 768px) {
 
 } */
+.table {
+  max-width: 704px;
+  width: 100%;
+  /* border-collapse:separate; */
+  /* border-spacing: 1px; */
+  overflow: hidden;
+}
+@media only screen and (min-width: 1280px) {
+  .table {
+    max-width: 715px;
+  }
+}
+.tbody {
+  width: 100%;
+}
+.title {
+  padding: 16px 10px 16px 20px;
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--white);
+}
+
+.thead {
+  backdrop-filter: blur(100px);
+  box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
+  background: rgba(82, 59, 126, 0.6);
+}

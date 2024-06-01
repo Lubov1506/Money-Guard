@@ -1,10 +1,10 @@
 import s from './TransactionsMobileItem.module.css';
 import { GoPencil } from 'react-icons/go';
 
-const TransactionsMobileItem = ({ transactions = [] }) => {
+const TransactionsMobileItem = ({ item = [] }) => {
   return (
     <>
-      {transactions.map(item => (
+
         <table className={s.table} key={item.id}>
           <tbody className={s.tbody}>
             <tr className={s.t_row}>
@@ -39,7 +39,7 @@ const TransactionsMobileItem = ({ transactions = [] }) => {
             </tr>
           </tbody>
         </table>
-      ))}
+
     </>
   );
 };
