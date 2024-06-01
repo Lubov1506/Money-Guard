@@ -14,12 +14,9 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import NotFound from './pages/NotFound/NotFound';
 import HomeTab from './components/HomeTab/HomeTab';
 import TransactionsList from './components/TransactionsList/TransactionsList';
-import DoughnutChart from './components/DoughnutChart/DoughnutChart';
-
-
 const CurrencyTab = lazy(() => import('./components/CurrencyTab/CurrencyTab'));
 // const HomeTab = lazy(() => import('enter path here'));
-// const StatisticsTab = lazy(() => import('enter path here'));
+const StatisticsTab = lazy(() => import('./components/StatisticsTab/StatisticsTab'));
 
 function App() {
   const dispatch = useDispatch();
@@ -43,7 +40,7 @@ function App() {
           }
         >
           <Route index element={<HomeTab />} />
-          <Route path="statistics" element={<DoughnutChart />} />
+          <Route path="statistics" element={<StatisticsTab/>} />
           <Route path="currency" element={<CurrencyTab />} />
         </Route>
 
