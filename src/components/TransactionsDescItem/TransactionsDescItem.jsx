@@ -4,9 +4,11 @@ import s from './TransactionsDescItem.module.css';
 import { GoPencil } from 'react-icons/go';
 import { deleteTrnThunk } from '../../redux/transactions/operations';
 import { getTransactionCategory } from '../../constants/TransactionConstants';
+import { useOutletContext } from 'react-router-dom';
 
 const TransactionsDescItem = ({ item }) => {
   const dispatch = useDispatch();
+  const { openEditModal } = useOutletContext();
 
   return (
     <tr className={s.t_row} key={item.id}>
@@ -18,7 +20,9 @@ const TransactionsDescItem = ({ item }) => {
       <td className={s.value}>{item.comment}</td>
       <td className={s.minus}>{item.amount}</td>
       <td className={`${s.value} ${s.value_end}`}>
-        <button className={s.btn_edit}>
+        <button
+          // onClick={openEditModal()}
+          className={s.btn_edit}>
           <GoPencil />
         </button>
 
@@ -26,7 +30,7 @@ const TransactionsDescItem = ({ item }) => {
           type="button"
           text="Delete"
           variant={'multiColorButtton'}
-          width='100px'
+          width="100px"
           onClick={() => dispatch(deleteTrnThunk(item.id))}
         >
           Logout

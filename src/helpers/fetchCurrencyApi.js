@@ -25,10 +25,10 @@ const getCurrency = async () => {
     );
     const currencyData = {
       date: now,
-      usd,
-      eur,
+      usd: { buy: usd.rateBuy.toFixed(2), sell: usd.rateSell.toFixed(2) },
+      eur: { buy: eur.rateBuy.toFixed(2), sell: eur.rateSell.toFixed(2) },
     };
-
+    console.log(currencyData);
     localStorage.setItem('currency', JSON.stringify(currencyData));
     return currencyData;
   } catch (err) {

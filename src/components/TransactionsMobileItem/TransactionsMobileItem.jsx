@@ -1,7 +1,9 @@
+import { useOutletContext } from 'react-router-dom';
 import s from './TransactionsMobileItem.module.css';
 import { GoPencil } from 'react-icons/go';
 
 const TransactionsMobileItem = ({ item = {} }) => {
+  const { openEditModal } = useOutletContext();
   return (
     <li className={s.li}>
       <table className={s.table} key={item.id}>
@@ -31,9 +33,9 @@ const TransactionsMobileItem = ({ item = {} }) => {
               <button className={s.btn_delete}>Delete</button>
             </td>
             <td className={s.value}>
-              <button className={s.btn_edit}>
+              {/* <button onClick={openEditModal()} className={s.btn_edit}>
                 <GoPencil /> Edit
-              </button>
+              </button> */}
             </td>
           </tr>
         </tbody>
