@@ -10,7 +10,7 @@ const StatisticsTab = () => {
       <div>
         <StatisticDatePicker />
         <StatisticsTable />
-      </div>
+      </div> 
     </div>
   );
 };
