@@ -1,0 +1,319 @@
+.wrapper {
+  z-index: 10000;
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(7px);
+  background: rgba(34, 13, 91, 0.23);
+}
+
+.modalContent {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 40px;
+
+  padding: 20px;
+  width: 100%;
+  min-height: 100%;
+  backdrop-filter: blur(100px);
+  box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
+  background: var(--form-color);
+}
+
+.modalContent form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+
+  width: 100%;
+  height: 100%;
+}
+
+form .formTitle {
+  color: rgba(251, 251, 251, 1);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 36px;
+}
+
+form .inputWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.inputWrapper .inputField input,
+.inputWrapper .inputField select {
+  width: 100%;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  background-color: transparent;
+  padding: 0 20px 8px 20px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 27px;
+  color: rgba(255, 255, 255, 0.6);
+  transition: all 0.35s ease-in-out;
+  position: relative;
+  color: #ffffff99;
+}
+
+.inputWrapper .inputField select {
+  cursor: pointer;
+  color: #ffffff99;
+}
+
+.inputWrapper .inputField select option {
+  cursor: pointer;
+  box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
+  background-color: rgba(83, 61, 186, 0.7);
+  /* background-color: rgba(80, 48, 154, 0.7); */
+  /* background-color: rgba(106, 70, 165, 0.52); */
+  /* background-color: rgba(133, 93, 175, 0.13); */
+  color: rgba(251, 251, 251, 1);
+}
+
+.inputField input:focus,
+.inputField select:focus {
+  border-bottom: 1px solid #ffffff;
+  color: #ffffff;
+  transition: all 0.35s ease-in-out;
+}
+
+.inputField input::placeholder {
+  color: #ffffff99;
+  transition: all 0.35s ease-in-out;
+}
+
+.inputField input:focus::placeholder {
+  color: #ffffff;
+  transition: all 0.35s ease-in-out;
+}
+
+.inputField p {
+  color: rgb(255, 134, 141);
+  font-size: 14px;
+  padding-left: 12px;
+  /* padding-left: 20px; */
+}
+
+.inputField.date {
+  position: relative;
+}
+
+.inputField.date input {
+  cursor: pointer;
+  width: 100%;
+  color: #ffffff99;
+  transition: all 0.5s ease 0s;
+}
+
+.inputField.date input:focus {
+  color: #ffffff;
+  transition: all 0.5s ease 0s;
+}
+
+.inputField.date .icon {
+  position: absolute;
+  top: 0;
+  right: 17px;
+  color: #734aef;
+  width: 24px;
+  height: 24px;
+  pointer-events: none;
+}
+
+.inputField input[type='number']::-webkit-inner-spin-button,
+.inputField input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+form .buttonsWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* switcher */
+.switcheWrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.switcheWrapper span {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.switcheWrapper span:first-child {
+  margin-right: -20px;
+}
+
+.switcheWrapper span.income {
+  color: rgba(255, 182, 39, 1);
+  font-weight: bold;
+}
+
+.switcheWrapper span.expense {
+  color: rgba(255, 134, 141, 1);
+  font-weight: bold;
+}
+
+.switcheWrapper label {
+  width: 80px;
+  height: 40px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 1);
+
+  position: relative;
+  display: block;
+  cursor: pointer;
+
+  box-shadow: inset 0px 5px 15px rgba(0, 0, 0, 0.4),
+    inset 0 -5px 15px rgba(255, 255, 255, 0.4);
+
+  transition: all 0.5s ease 0s;
+}
+
+.switcheWrapper label:after {
+  content: '+';
+
+  color: rgba(255, 255, 255, 1);
+  width: 44px;
+  height: 44px;
+  border-radius: 44px;
+
+  position: absolute;
+  top: -2px;
+  left: -4px;
+
+  background-color: rgba(255, 182, 39, 1);
+  box-shadow: 0px 6px 15px 0px rgba(255, 199, 39, 0.5);
+
+  transition: all 0.5s ease 0s;
+
+  color: rgba(255, 255, 255, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 35px;
+}
+
+.switcheWrapper input {
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+
+.switcheWrapper input:checked + label:after {
+  content: '-';
+  font-size: 35px;
+  color: rgba(255, 255, 255, 1);
+
+  left: 84px;
+  transform: translateX(-100%);
+
+  background-color: rgba(255, 134, 141, 1);
+  box-shadow: 0px 6px 15px 0px rgba(255, 134, 141, 0.5);
+}
+
+label:active::after {
+  width: 65px;
+}
+
+@media screen and (min-width: 768px) {
+  .modalContent {
+    background-image: url('../../images/logout/logout-modal-tab@1x.webp');
+
+    background: rgba(82, 59, 126, 1);
+    /* box-shadow: 0px 4px 60px 0px #00000040; */
+    backdrop-filter: blur(100px);
+    box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
+    /* background: var(--form-color); */
+    border-radius: 8px;
+    min-height: fit-content;
+    width: 540px;
+    height: fit-content;
+    padding: 40px 73px;
+    margin: auto 0;
+  }
+
+  .modalContent .closeButton {
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    padding: 0;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    transition: all 0.5s ease 0s;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }
+
+  .modalContent .closeButton:hover {
+    transform: scale(1.1);
+    background-color: rgba(251, 251, 251, 1);
+    transition: all 0.5s ease 0s;
+  }
+
+  .modalContent .closeButton svg {
+    width: 16px;
+    height: 16px;
+    stroke: rgba(251, 251, 251, 1);
+  }
+
+  .closeButton:hover > svg {
+    stroke: red;
+  }
+
+  form .formTitle {
+    font-size: 30px;
+    line-height: 45px;
+  }
+
+  form .inputWrapper {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 32px;
+    row-gap: 40px;
+  }
+
+  .inputField.category {
+    width: 100%;
+  }
+
+  .inputField.amount {
+    flex: 1;
+  }
+
+  .inputField.date {
+    flex: 1;
+  }
+
+  .inputField.comment {
+    width: 100%;
+  }
+}
