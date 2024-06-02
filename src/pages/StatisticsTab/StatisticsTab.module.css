@@ -1,9 +1,9 @@
 .general_wrap {
-  /* width: 100%; */
+  width: 100%;
   overflow-y: scroll;
-  max-height: calc(100vh - 208px);
+  max-height: calc(100vh - 240px);
   @media only screen and (min-width: 768px) {
-    max-height: calc(100vh - 404px);
+    max-height: calc(100vh - 317px);
   }
   @media only screen and (min-width: 1280px) {
     max-height: calc(100vh - 80px);
