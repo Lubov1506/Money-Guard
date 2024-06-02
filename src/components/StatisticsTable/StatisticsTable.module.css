@@ -1,18 +1,26 @@
 .table {
   max-width: 295px;
-  display: grid;
+  /* display: grid; */
   border: 1px solid #ff868d;
+  @media only screen and (min-width: 768px) {
+    width: 336px;
+  }
+  @media only screen and (min-width: 1280px) {
+    width: 395px;
+  }
+}
+@media only screen and (min-width: 768px) {
 }
 .heading {
   max-width: 100%;
   padding: 16px 32px;
   font-size: 16px;
-
   border-radius: 8px;
   background: rgba(82, 59, 126, 0.6);
   box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(50px);
   tr {
+    padding: 16px;
     display: flex;
     justify-content: space-between;
     text-align: left;
@@ -21,6 +29,9 @@
 }
 .tableBody {
   padding: 0 16px;
+  tr {
+    text-align: left;
+  }
 }
 .tableFooter {
   padding: 16px;
