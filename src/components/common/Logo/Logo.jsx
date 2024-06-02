@@ -1,10 +1,11 @@
+import clsx from 'clsx';
 import s from './Logo.module.css';
 
-const Logo = () => {
+const Logo = ({ type }) => {
   return (
-    <div className={s.logo}>
+    <div className={clsx(s.logo, type === 'header' && s.headerLogo)}>
       <img
-        // style={{ width, height }}
+        // style={{ width, height, fontSize }}
         src="/money-guard.svg"
         alt="Money Guard Logo"
       />

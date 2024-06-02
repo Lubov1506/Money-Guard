@@ -18,6 +18,7 @@ export const RegistrationForm = () => {
     password: '',
     confirmPassword: '',
   };
+  // const { password } = this.state.password;
 
   const handleSubmit = (values, actions) => {
     const { name: username, email, password } = values;
@@ -36,92 +37,101 @@ export const RegistrationForm = () => {
           validationSchema={validation}
           onSubmit={handleSubmit}
         >
-          <Form className={s.form}>
-            <div className={s.inputs}>
-              <div className={s.inputGroup}>
-                <IoPerson className={s.inputIcon} />
-                <Field
-                  type="name"
-                  name="name"
-                  placeholder="Name"
-                  className={s.input}
-                  required
-                />
-                <ErrorMessage
-                  className={s.error}
-                  name="name"
-                  component="span"
+          {({ values }) => (
+            <Form className={s.form}>
+              <div className={s.inputs}>
+                <div className={s.inputGroup}>
+                  <IoPerson className={s.inputIcon} />
+                  <Field
+                    type="text"
+                    name="name"
+                    placeholder="Name"
+                    className={s.input}
+                    required
+                  />
+                  <ErrorMessage
+                    className={s.error}
+                    name="name"
+                    component="span"
+                  />
+                </div>
+                <div className={s.inputGroup}>
+                  <MdOutlineMailOutline className={s.inputIcon} />
+                  <Field
+                    type="email"
+                    name="email"
+                    placeholder="E-mail"
+                    className={s.input}
+                    required
+                  />
+                  <ErrorMessage
+                    className={s.error}
+                    name="email"
+                    component="span"
+                  />
+                </div>
+                <div className={s.inputGroup}>
+                  <MdLock className={s.inputIcon} />
+                  <Field
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    className={s.input}
+                    required
+                  />
+                  <ErrorMessage
+                    className={s.error}
+                    name="password"
+                    component="span"
+                  />
+                </div>
+                <div className={s.inputGroup}>
+                  <MdLock className={s.inputIcon} />
+                  <Field
+                    type="password"
+                    name="confirmPassword"
+                    placeholder="Confirm password"
+                    className={s.input}
+                    required
+                  />
+                  <ErrorMessage
+                    className={s.error}
+                    name="confirmPassword"
+                    component="span"
+                  />
+                </div>
+                <PasswordStrengthBar
+                  password={values.password}
+                  className={s.bar}
+                  style={{ top: '-40px' }}
+                  barColors={[
+                    '#ddd',
+                    '#ffcc00',
+                    '#00cc00',
+                    '#00cc00',
+                    '#00cc00',
+                  ]}
+                  scoreWords={[]}
+                  shortScoreWord={''}
                 />
               </div>
-              <div className={s.inputGroup}>
-                <MdOutlineMailOutline className={s.inputIcon} />
-                <Field
-                  type="email"
-                  name="email"
-                  placeholder="E-mail"
-                  className={s.input}
-                  required
-                />
-                <ErrorMessage
-                  className={s.error}
-                  name="email"
-                  component="span"
-                />
-              </div>
-              <div className={s.inputGroup}>
-                <MdLock className={s.inputIcon} />
-                <Field
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  className={s.input}
-                  required
-                />
-                <ErrorMessage
-                  className={s.error}
-                  name="password"
-                  component="span"
-                />
-              </div>
-              <div className={s.inputGroup}>
-                <MdLock className={s.inputIcon} />
-                <Field
-                  type="password"
-                  name="confirmPassword"
-                  placeholder="Confirm password"
-                  className={s.input}
-                  required
-                />
-                <ErrorMessage
-                  className={s.error}
-                  name="confirmPassword"
-                  component="span"
-                />
-              </div>
-              <PasswordStrengthBar
-                style={{ top: '-40px' }}
-                barColors={['#ddd', '#ffcc00', '#00cc00', '#00cc00', '#00cc00']}
-                scoreWords={[]}
-                minLength={3}
-                shortScoreWord={''}
-              />
-            </div>
-            <div className={s.btns}>
-              <FormButton
-                type="submit"
-                text={'Register'}
-                variant={'multiColorButtton'}
-              />
-
-              <Link to="/login">
+              <div className={s.btns}>
                 <FormButton
-                  type="button"
-                  text={'LogIn'}
-                  variant={'whiteButtton'}
+                  type="submit"
+                  text={'Register'}
+                  variant={'multiColorButtton'}
                 />
-              </Link>
-            </div>
-          </Form>
+
+                <Link to="/login">
+                  <FormButton
+                    type="button"
+                    text={'LogIn'}
+                    variant={'whiteButtton'}
+                  />
+                </Link>
+              </div>
+            </Form>
+          )}
         </Formik>
       </div>
     </div>
