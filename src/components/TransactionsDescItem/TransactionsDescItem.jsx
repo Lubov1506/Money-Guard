@@ -28,8 +28,6 @@ const TransactionsDescItem = ({ item }) => {
           <GoPencil />
         </button>
         <FormButton
-
-                width='69px'
                 type="button"
                 text="Delete"
                 variant={'btn_delete'}
