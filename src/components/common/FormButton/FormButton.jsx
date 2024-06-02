@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import styles from './FormButton.module.css';
 
 const FormButton = ({
@@ -6,13 +7,20 @@ const FormButton = ({
   handlerFunction,
   variant,
   isDisabled = false,
-  width ='280px'
 }) => {
   return (
-    <button style={{width}}
+    <button
       type={type}
       onClick={handlerFunction}
-      className={`${styles.formButton} ${styles[variant]}`}
+      className={clsx(
+        styles.formButton,
+        variant === 'multiColorButtton' && styles.multiColorButtton,
+        variant === 'whiteButtton' && styles.whiteButtton,
+        variant === 'btn_delete' && [
+          styles.multiColorButtton,
+          styles.btn_delete,
+        ]
+      )}
       disabled={isDisabled}
     >
       {text}
