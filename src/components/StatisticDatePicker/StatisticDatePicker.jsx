@@ -22,6 +22,7 @@ const StatisticDatePicker = () => {
     (_, i) => 2020 + i
   );
   const yearOptions = years.map(year => ({ value: year, label: year }));
+  console.log(yearOptions);
   const monthsOptions = Array.from({ length: 12 }, (e, i) => {
     const month = new Date(0, i).toLocaleString('en', { month: 'long' });
     return {
