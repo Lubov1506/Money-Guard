@@ -1,9 +1,36 @@
-.div {
+.balance_container {
+  border-radius: 8px;
+  width: 280px;
+  padding-top: 8px;
+  padding-bottom: 12px;
+  background-color: rgba(82, 59, 126, 0.6);
   margin-bottom: 32px;
-  @media only screen and (min-width: 768px) {
-    margin-bottom: 0;
+}
+
+@media only screen and (min-width: 768px) {
+  .balance_container {
+    width: 336px;
   }
-  @media only screen and (min-width: 1280px) {
-    margin-bottom: 32px;
+}
+@media only screen and (min-width: 1280px) {
+  .balance_container {
+    width: 100%;
+    border-radius: 0;
   }
+}
+.balance_label {
+  margin-left: 32px;
+  margin-bottom: 12px;
+  color: #888;
+
+  font-weight: 400;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+.balance_amount {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  color: #fbfbfb;
+  margin-left: 32px;
 }
