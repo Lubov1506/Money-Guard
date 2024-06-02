@@ -1,7 +1,9 @@
 .table {
-  max-width: 295px;
-  /* display: grid; */
-  border: 1px solid #ff868d;
+  width: 295px;
+  td {
+    display: flex;
+    align-items: center;
+  }
   @media only screen and (min-width: 768px) {
     width: 336px;
   }
@@ -9,13 +11,13 @@
     width: 395px;
   }
 }
-@media only screen and (min-width: 768px) {
-}
+
 .heading {
-  max-width: 100%;
+  width: 100%;
   padding: 16px 32px;
   font-size: 16px;
-  border-radius: 8px;
+  border-radius: 18px;
+  font-weight: 600;
   background: rgba(82, 59, 126, 0.6);
   box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(50px);
@@ -29,30 +31,27 @@
 }
 .tableBody {
   padding: 0 16px;
+  font-size: 14px;
   tr {
     text-align: left;
   }
 }
 .tableFooter {
   padding: 16px;
+  tr {
+    padding: 16px;
+    display: flex;
+    text-align: left;
+    justify-content: space-between;
+    .stat_text {
+      color: var(--white);
+      font-weight: 600;
+    }
+  }
 }
 .expences {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 16px;
   color: #ff868d;
-  text-align: left;
-  .exText {
-    color: var(--white);
-  }
 }
 .income {
-  display: flex;
-  justify-content: space-between;
   color: #ffb627;
-  margin-bottom: 16px;
-  text-align: left;
-  .inText {
-    color: var(--white);
-  }
 }

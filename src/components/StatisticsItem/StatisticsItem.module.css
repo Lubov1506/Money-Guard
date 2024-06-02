@@ -4,7 +4,7 @@
   padding: 0 16px;
   display: flex;
   justify-content: space-between;
-  padding: 16px 45px;
+  padding: 16px;
 
   .total {
     text-align: right;
