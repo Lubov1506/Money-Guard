@@ -60,17 +60,19 @@
   align-items: center;
   gap: 8px;
 }
-.minus {
+.value_strong {
   font-family: var(--font-family);
   font-weight: 600;
   font-size: 16px;
   text-align: center;
+}
+.minus {
   color: var(--dashboard-text);
 }
 .plus {
-  columns: plus;
   color: var(--yellow);
 }
+
 .btn_delete {
   font-family: var(--font-family);
   font-weight: 400;
