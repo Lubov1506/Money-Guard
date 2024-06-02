@@ -1,5 +1,7 @@
 .wrapper {
   width: 320px;
+  height: 214px;
+  overflow: hidden;
 }
 .table {
   width: 100%;
@@ -9,8 +11,11 @@
     background: rgba(255, 255, 255, 0.2);
   }
   td {
-    padding: 16px;
+    padding: 8px;
     text-align: center;
+    @media only screen and (min-width: 1280px) {
+      padding: 16px;
+    }
   }
 }
 @media only screen and (min-width: 768px) {
@@ -24,6 +29,7 @@
 @media only screen and (min-width: 1280px) {
   .wrapper {
     width: 480px;
+    height: 380px;
   }
   .wrapper tr > td:first-child {
     padding-left: 60px;
