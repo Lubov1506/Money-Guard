@@ -2,6 +2,7 @@ import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import {
   addTrnThunk,
   deleteTrnThunk,
+  editTrnThunk,
   fetchAllTrnThunk,
   fetchPeriodTrnThunk,
 } from './operations';
@@ -31,12 +32,16 @@ const transactionsSlice = createSlice({
       .addCase(fetchPeriodTrnThunk.fulfilled, (state, { payload }) => {
         state.periodTransactions = payload;
       })
-
+      .addCase(editTrnThunk.fulfilled, (state, { payload }) => {
+        state.items = state.items.map(trn =>
+          trn.id === payload.id ? payload : trn
+        );
+      })
       .addCase(addTrnThunk.fulfilled, (state, { payload }) => {
-        state.items.push(payload);
+        state.items = state.items.push(payload);
       })
       .addCase(deleteTrnThunk.fulfilled, (state, { payload }) => {
-        state.items.map(trn => trn.id !== payload);
+        state.items = state.items.filter(trn => trn.id !== payload);
       })
       //  state.items = state.items.filter(trn => trn.id !== payload);
       .addMatcher(
