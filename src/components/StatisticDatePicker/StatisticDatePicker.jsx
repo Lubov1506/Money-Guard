@@ -12,6 +12,7 @@ const StatisticDatePicker = () => {
   const [selectedYear, setSelectedYear] = useState(currentYear);
   const [selectedMonth, setSelectedMonth] = useState(currentMonth);
   const dispatch = useDispatch();
+
   // useEffect(() => {
   //   dispatch(fetchPeriodTrnThunk({ year: selectedYear, month: selectedMonth }));
   // }, [selectedMonth, selectedYear, dispatch]);
@@ -77,15 +78,58 @@ const StatisticDatePicker = () => {
     <div>
       <div className={s.monthYearPick}>
         <Select
+          styles={{
+            control: (baseStyles, state) => ({
+              ...baseStyles,
+              borderColor: state.isFocused ? 'grey' : 'red',
+              backgroundColor: 'rgba(74, 86, 226, 0.10)',
+              color: 'white',
+            }),
+            dropdownIndicator: baseStyles => ({
+              ...baseStyles,
+              color: 'white',
+            }),
+            menu: baseStyles => ({
+              ...baseStyles,
+              backgroundColor: 'rgba(83, 61, 186, 1)',
+            }),
+            option: (baseStyles, state) => ({
+              ...baseStyles,
+              color: state.isSelected ? '#FF868D' : 'white',
+            }),
+            singleValue: baseStyles => ({
+              ...baseStyles,
+              color: 'white',
+            }),
+
+            cursor: 'pointer',
+          }}
           onChange={handleYearChange}
           placeholder="Select year"
           options={yearOptions}
+
           // value={yearOptions.find(option => option.value === selectedYear)}
         />
         <Select
+          styles={{
+            control: (baseStyles, state) => ({
+              ...baseStyles,
+              borderColor: state.isFocused ? 'grey' : 'red',
+              backgroundColor: 'rgba(74, 86, 226, 0.10)',
+            }),
+            dropdownIndicator: baseStyles => ({
+              ...baseStyles,
+              color: 'white',
+            }),
+            menu: baseStyles => ({
+              ...baseStyles,
+              backgroundColor: 'rgba(74, 86, 226, 1)',
+            }),
+          }}
           onChange={handleMonthChange}
           options={monthsOptions}
           placeholder="Select month"
+
           // value={monthsOptions.find(option => option.value === selectedMonth)}
         />
       </div>

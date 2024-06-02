@@ -1,14 +1,9 @@
 .monthYearPick {
-  font-family: var(--font-family);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 10px;
+  max-width: 295px;
+  color: var(--white);
   font-size: 16px;
-  font-weight: 500;
-  color: #000;
-  cursor: pointer;
-}
-
-select {
+  font-weight: 400;
+  border-radius: 8px;
+  border: 1px solid var(--white-60, rgba(255, 255, 255, 0.6));
+  margin-bottom: 20px;
 }
