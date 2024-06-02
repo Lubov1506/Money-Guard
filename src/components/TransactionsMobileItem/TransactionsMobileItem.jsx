@@ -1,12 +1,17 @@
 import { useOutletContext } from 'react-router-dom';
 import s from './TransactionsMobileItem.module.css';
 import { GoPencil } from 'react-icons/go';
+import FormButton from '../common/FormButton/FormButton';
+import { getTransactionCategory } from '../../constants/TransactionConstants';
+import { deleteTrnThunk } from '../../redux/transactions/operations';
+import { useDispatch } from 'react-redux';
 
 const TransactionsMobileItem = ({ item = {} }) => {
+  const dispatch = useDispatch();
   const { openEditModal } = useOutletContext();
   return (
     <li className={s.li}>
-      <table className={s.table} key={item.id}>
+      <table className={s.table}>
         <tbody className={s.tbody}>
           <tr className={s.t_row}>
             <td className={s.title}>Date</td>
@@ -18,7 +23,9 @@ const TransactionsMobileItem = ({ item = {} }) => {
           </tr>
           <tr className={s.t_row}>
             <td className={s.title}>Category</td>
-            <td className={s.value}>{item.categoryId}</td>
+            <td className={s.value}>
+              {getTransactionCategory(item.categoryId)}
+            </td>
           </tr>
           <tr className={s.t_row}>
             <td className={s.title}>Comment</td>
@@ -30,12 +37,23 @@ const TransactionsMobileItem = ({ item = {} }) => {
           </tr>
           <tr className={s.t_row}>
             <td>
-              <button className={s.btn_delete}>Delete</button>
+              <FormButton
+                width="69px"
+                type="button"
+                text="Delete"
+                variant={'btn_delete'}
+                onClick={() => {
+                  dispatch(deleteTrnThunk(item.id));
+                }}
+              />
             </td>
             <td className={s.value}>
-              {/* <button onClick={openEditModal()} className={s.btn_edit}>
+              <button
+                // onClick={openEditModal()}
+                className={s.btn_edit}
+              >
                 <GoPencil /> Edit
-              </button> */}
+              </button>
             </td>
           </tr>
         </tbody>

@@ -38,6 +38,7 @@ const transactionsSlice = createSlice({
       .addCase(deleteTrnThunk.fulfilled, (state, { payload }) => {
         state.items.map(trn => trn.id !== payload);
       })
+      //  state.items = state.items.filter(trn => trn.id !== payload);
       .addMatcher(
         isAnyOf(
           fetchAllTrnThunk.pending,
