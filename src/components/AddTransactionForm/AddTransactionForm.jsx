@@ -22,7 +22,7 @@ import { FiCalendar } from 'react-icons/fi';
 import Select from 'react-select';
 import { customStyles } from './customStyles';
 import { validationSchema } from 'helpers/addTrnValidSchema';
-import { useMedia } from 'hooks/useMedia';
+import { useMedia } from '../../hooks/useMedia';
 
 const AddTransactionFormNew = ({ closeModal }) => {
   const [isOnIncomeTab, setIsOnIncomeTab] = useState(false);
