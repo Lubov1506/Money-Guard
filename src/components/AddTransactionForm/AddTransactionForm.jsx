@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 import styles from './AddTransactionForm.module.css';
 import FormButton from '../common/FormButton/FormButton';
 import icons from '../../images/icons/sprite.svg';
-import { useMediaQuery } from 'react-responsive';
+// import { useMediaQuery } from 'react-responsive';
 
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import * as Yup from 'yup';
+// import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import ReactDatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -19,34 +19,39 @@ import { addTrnThunk } from '../../redux/transactions/operations';
 import { getBalanceThunk } from '../../redux/auth/operations';
 
 import { FiCalendar } from 'react-icons/fi';
+import Select from 'react-select';
+import { customStyles } from './customStyles';
+import { validationSchema } from 'helpers/addTrnValidSchema';
+import { useMedia } from '../../hooks/useMedia';
 
 const AddTransactionFormNew = ({ closeModal }) => {
   const [isOnIncomeTab, setIsOnIncomeTab] = useState(false);
+  // const [category, setCategory] = useState(null)
   useEffect(() => {}, [isOnIncomeTab]);
-
-  const screenCondition = useMediaQuery({ query: '(min-width: 768px)' });
-
+  const { isTablet } = useMedia();
+  // const screenCondition = useMediaQuery({ query: '(min-width: 768px)' });
   const dispatch = useDispatch();
-
   const [startDate, setStartDate] = useState(new Date());
 
   const initialValues = {
     amount: '',
     comment: '',
+    category: null,
   };
 
-  const validationSchema = isOnIncomeTab
-    ? Yup.object({
-        amount: Yup.string().required('Required* '),
-        comment: Yup.string().required('Required*'),
-      })
-    : Yup.object({
-        amount: Yup.string().required('Required*'),
-        comment: Yup.string().required('Required*'),
-        category: Yup.string().required('Required*'),
-      });
+  // const validationSchema = isOnIncomeTab
+  //   ? Yup.object({
+  //       amount: Yup.string().required('Required* '),
+  //       comment: Yup.string().required('Required*'),
+  //     })
+  //   : Yup.object({
+  //       amount: Yup.string().required('Required*'),
+  //       comment: Yup.string().required('Required*'),
+  //       category: Yup.string().required('Required*'),
+  //     });
 
   const handleSubmit = (values, { setSubmitting, setStatus }) => {
+    console.log(values.category);
     setSubmitting(true);
 
     dispatch(
@@ -61,17 +66,18 @@ const AddTransactionFormNew = ({ closeModal }) => {
       .unwrap()
       .then(() => {
         closeModal();
-        dispatch(getBalanceThunk());
       })
       .catch(error => {
         setStatus({ success: false, error: error });
         setSubmitting(false);
       });
   };
-
+  const catOptions = transactionCategories
+    .slice(0, -1)
+    .map(item => ({ value: item.name, label: item.name }));
   return (
     <div className={styles.modalContent}>
-      {screenCondition && (
+      {isTablet && (
         <button className={styles.closeButton} onClick={() => closeModal()}>
           <svg>
             <use href={`${icons}#icon-close`}></use>
@@ -80,18 +86,16 @@ const AddTransactionFormNew = ({ closeModal }) => {
       )}
       <Formik
         initialValues={initialValues}
-        validationSchema={validationSchema}
+        validationSchema={validationSchema(isOnIncomeTab)}
         onSubmit={handleSubmit}
       >
-        {({ isSubmitting }) => (
+        {({ isSubmitting, setFieldValue }) => (
           <Form>
             <h2 className={styles.formTitle}>Add transaction</h2>
-
             <div className={styles.switcheWrapper}>
               <span className={`${isOnIncomeTab && styles.income}`}>
                 Income
               </span>
-
               <input
                 type="checkbox"
                 id="switcherButton"
@@ -99,23 +103,36 @@ const AddTransactionFormNew = ({ closeModal }) => {
                 checked={!isOnIncomeTab}
               />
               <label htmlFor="switcherButton"></label>
-
               <span className={`${!isOnIncomeTab ? styles.expense : null}`}>
                 Expense
               </span>
             </div>
-
             <div className={styles.inputWrapper}>
               {!isOnIncomeTab && (
+                // <div className={`${styles.inputField} ${styles.category}`}>
+                //   <Field as="select" name="category" autoFocus required>
+                //     <option value="" hidden>
+                //       Select your category
+                //     </option>
+                //     {transactionCategories.slice(0, -1).map(item => (
+                //       <option key={item.id}>{item.name}</option>
+                //     ))}
+                //   </Field>
+                //   <ErrorMessage name="category" component="p" />
+                // </div>
                 <div className={`${styles.inputField} ${styles.category}`}>
-                  <Field as="select" name="category" autoFocus required>
-                    <option value="" hidden>
-                      Select your category
-                    </option>
-                    {transactionCategories.slice(0, -1).map(item => (
-                      <option key={item.id}>{item.name}</option>
-                    ))}
-                  </Field>
+                  <Select
+                    onChange={selectedOption =>
+                      setFieldValue(
+                        'category',
+                        selectedOption ? selectedOption.value : null
+                      )
+                    }
+                    name="category"
+                    autoFocus
+                    options={catOptions}
+                    styles={customStyles}
+                  />
                   <ErrorMessage name="category" component="p" />
                 </div>
               )}

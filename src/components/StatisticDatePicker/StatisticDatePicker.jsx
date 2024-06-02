@@ -22,6 +22,7 @@ const StatisticDatePicker = () => {
     (_, i) => 2020 + i
   );
   const yearOptions = years.map(year => ({ value: year, label: year }));
+  console.log(yearOptions);
   const monthsOptions = Array.from({ length: 12 }, (e, i) => {
     const month = new Date(0, i).toLocaleString('en', { month: 'long' });
     return {
@@ -31,26 +32,22 @@ const StatisticDatePicker = () => {
     };
   });
   return (
-    <div>
-      <div className={s.monthYearPick}>
-        <Select
-          onChange={selectedOption => setSelectedYear(selectedOption.value)}
-          placeholder="Select year"
-          options={yearOptions}
-        />
-        <Select
-          onChange={selectedOption => setSelectedMonth(selectedOption.value)}
-          options={monthsOptions}
-          placeholder="Select month"
-        />
-      </div>
-      <div></div>
+    <div className={s.monthYearPick}>
+      <Select
+        onChange={selectedOption => setSelectedYear(selectedOption.value)}
+        placeholder="Select year"
+        options={yearOptions}
+      />
+      <Select
+        onChange={selectedOption => setSelectedMonth(selectedOption.value)}
+        options={monthsOptions}
+        placeholder="Select month"
+      />
     </div>
   );
 };
 
 export default StatisticDatePicker;
-
 
 // import 'react-datepicker/dist/react-datepicker.css';
 // import { useEffect, useState } from 'react';
@@ -116,7 +113,7 @@ export default StatisticDatePicker;
 //           onChange={handleYearChange}
 //           placeholder="Select year"
 //           options={yearOptions}
-          // value={yearOptions.find(option => option.value === selectedYear)}
+// value={yearOptions.find(option => option.value === selectedYear)}
 //         />
 //         <Select
 //           onChange={handleMonthChange}

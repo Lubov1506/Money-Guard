@@ -51,8 +51,10 @@ const Dashboard = () => {
           </>
         ) : (
           <>
-            <Navigation />
-            <Balance />
+            <div className={s.noOutletWrapper}>
+              <Navigation />
+              <Balance />
+            </div>
           </>
         )}
         <Suspense fallback={<MoneyLoader />}>

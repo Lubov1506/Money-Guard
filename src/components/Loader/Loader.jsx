@@ -11,7 +11,7 @@ const Loader = () => {
           height="80"
           width="80"
           radius="48"
-          color="#734aef"
+          color="#ffd8d0"
           ariaLabel="watch-loading"
           wrapperStyle={{}}
           wrapperClass=""

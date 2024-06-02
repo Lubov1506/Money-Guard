@@ -3,12 +3,20 @@
   justify-content: center;
   width: 100%;
   padding: 0 20px;
-  overflow-y: auto;
-  max-height: calc(100vh - 208px);
+  overflow-y: scroll;
+  scrollbar-width: 0px;
+  max-height: calc(100vh - 240px);
   @media only screen and (min-width: 768px) {
-    max-height: calc(100vh - 404px);
+    max-height: calc(100vh - 317px);
   }
   @media only screen and (min-width: 1280px) {
     max-height: calc(100vh - 80px);
   }
+}
+.div::-webkit-scrollbar {
+  display: none;
+}
+.div {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
