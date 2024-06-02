@@ -5,6 +5,7 @@ import { GoPencil } from 'react-icons/go';
 import { deleteTrnThunk } from '../../redux/transactions/operations';
 import { getTransactionCategory } from '../../constants/TransactionConstants';
 import { useOutletContext } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const TransactionsDescItem = ({ item }) => {
   const dispatch = useDispatch();
@@ -22,11 +23,12 @@ const TransactionsDescItem = ({ item }) => {
       <td className={`${s.value} ${s.value_end}`}>
         <button
           // onClick={openEditModal()}
-          className={s.btn_edit}>
+          className={s.btn_edit}
+        >
           <GoPencil />
         </button>
-
         <FormButton
+
                 width='69px'
                 type="button"
                 text="Delete"
