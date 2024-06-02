@@ -6,14 +6,15 @@ import LogoutModal from '../LogoutModal/LogoutModal';
 import { selectUser } from '../../redux/auth/selectors';
 import s from './Header.module.css';
 import Loader from '../Loader/Loader';
-import { useMediaQuery } from 'react-responsive';
+// import { useMediaQuery } from 'react-responsive';
+import Logo from '../common/Logo/Logo';
 
 const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const user = useSelector(selectUser);
   const userName = user ? user.email.split('@')[0] : '';
   const navigate = useNavigate();
-  const isTablet = useMediaQuery({ query: '(min-width: 768px)' });
+  // const isTablet = useMediaQuery({ query: '(min-width: 768px)' });
   const open = () => {
     setIsModalOpen(true);
     console.log('modal is open');
@@ -28,7 +29,7 @@ const Header = () => {
   return (
     <>
       <header className={s.header}>
-        <a className={s.logo} href="#">
+        {/* <a className={s.logo} href="#">
           <img
             src="/money-guard.svg"
             width={isTablet ? '22.5' : '17.1'}
@@ -36,7 +37,8 @@ const Header = () => {
           />
 
           <p>Money Guard</p>
-        </a>
+        </a> */}
+        <Logo type="header" />
         <div className={s.user}>
           <span className={s.userName}>{userName}</span>
           <button onClick={open} className={s.exitBtn}>

@@ -25,4 +25,20 @@
   }
 }
 
-/* в хедері 18 на 18 іконка, а текст 26 */
+.headerLogo {
+  font-size: 12px;
+  img {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .headerLogo {
+    font-size: 17px;
+    img {
+      width: 25px;
+      height: 23px;
+    }
+  }
+}
