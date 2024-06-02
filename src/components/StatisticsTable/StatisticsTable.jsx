@@ -24,8 +24,8 @@ const StatisticsTable = () => {
   const incomeData =
     incomeSummary && incomeSummary >= 0
       ? prettyMoneyFormat(incomeSummary)
-      : null;
-  const expenseData = expenseSummary ? prettyMoneyFormat(expenseSummary) : null;
+      : 0;
+  const expenseData = expenseSummary ? prettyMoneyFormat(expenseSummary) : 0;
 
   console.log(data, incomeData, expenseData);
 
