@@ -18,4 +18,5 @@
 body {
   font-family: var(--font-family);
   color: var(--white);
+  background-color: #623f8b;
 }
