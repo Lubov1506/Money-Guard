@@ -9,6 +9,9 @@
   background-position: center;
   min-height: calc(100vh - 60px);
 }
+.noOutletWrapper {
+  min-height: 180px;
+}
 
 @media only screen and (min-width: 768px) {
   .divBackground {
@@ -18,9 +21,9 @@
     padding: 0px 32px;
   }
   .noOutletWrapper {
+    min-height: 237px;
     display: flex;
     justify-content: space-between;
-    padding-bottom: 20px;
   }
   .navBalWrapper {
     display: flex;

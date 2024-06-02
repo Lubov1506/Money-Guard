@@ -38,7 +38,11 @@ const transactionsSlice = createSlice({
         );
       })
       .addCase(addTrnThunk.fulfilled, (state, { payload }) => {
-        state.items = state.items.push(payload);
+        payload.transactionDate = payload.transactionDate
+          .toString()
+          .slice(0, 10);
+        const { items } = state;
+        state.items = [...items, payload];
       })
       .addCase(deleteTrnThunk.fulfilled, (state, { payload }) => {
         state.items = state.items.filter(trn => trn.id !== payload);

@@ -1,6 +1,8 @@
 .backdrop {
   position: fixed;
-  background-color: var(--white-40);
+  background-color: #38254e;
+  opacity: 0.4;
+
   width: 100%;
   height: 100%;
   overflow: hidden;
