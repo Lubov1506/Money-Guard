@@ -38,11 +38,16 @@
 
 .div {
   width: 100%;
-
+  height: 300px;
   background-color: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
   align-self: center;
   justify-self: center;
+  @media only screen and (min-width: 768px) {
+    height: 600px;
+  }
+  @media only screen and (min-width: 1280px) {
+  }
 }
