@@ -47,6 +47,7 @@ export const editTrnThunk = createAsyncThunk(
   async (transaction, thunkAPI) => {
     try {
       const { id, transactionDate, type, comment, amount } = transaction;
+      console.log(id);
       const { data } = await walletAPI.patch(`/transactions/${id}`, {
         transactionDate,
         type,
