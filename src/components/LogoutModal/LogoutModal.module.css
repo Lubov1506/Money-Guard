@@ -19,9 +19,12 @@
   width: 100%;
   height: 100%;
   padding: 238px 20px;
-  background-image: url('../../images/logout/logout-mob@1x.webp');
+  /* background-image: url('../../images/logout/logout-mob@1x.webp');
   background-color: var(--form-color);
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
+  backdrop-filter: blur(100px);
+  box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
+  background: var(--form-color);
 }
 @media only screen and (min-resolution: 192dpi) {
   .modal {

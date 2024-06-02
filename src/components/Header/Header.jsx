@@ -20,9 +20,9 @@ const Header = () => {
   };
 
   const close = () => {
-    console.log('close');
+    // console.log('close');
     setIsModalOpen(false);
-    navigate('/login');
+    // navigate('/login');
   };
 
   return (
