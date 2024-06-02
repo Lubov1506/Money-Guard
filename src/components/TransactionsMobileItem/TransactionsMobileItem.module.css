@@ -6,12 +6,13 @@
 }
 .tbody {
 }
-.t_row {
+.t_row:not(:last-child) {
   display: flex;
   justify-content: space-between;
   padding: 12px 20px;
   border-bottom: 2px solid rgba(255, 255, 255, 0.2);
 }
+
 .title {
   align-items: center;
   font-family: var(--font-family);
@@ -34,7 +35,7 @@
   font-family: var(--font-family);
   font-weight: 600;
   font-size: 16px;
-  text-align: right;
+  text-align: center;
   color: var(--dashboard-text);
 }
 .plus {
@@ -54,8 +55,8 @@
   text-align: center;
   color: var(--white);
   opacity: 0.6;
-}
-.btn_delete {
+ }
+ .btn_delete {
   font-family: var(--font-family);
   font-weight: 400;
   font-size: 14px;
@@ -72,4 +73,4 @@
     #9e40ba 61.46%,
     #7000ff 90.54%
   );
-}
+} 
