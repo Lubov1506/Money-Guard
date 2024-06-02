@@ -18,7 +18,7 @@
   transition: all 0.5s ease 0s;
 }
 
-/* Variant styles: 1) Multi color button, 2) White button */
+/* Variant styles: 1) Multi color button, 2) White button, 3) btn_delete */
 
 /* 1) Multi color button */
 .multiColorButtton {
@@ -72,9 +72,15 @@
   transform: scale(1.08);
   font-size: 19px;
 }
-
 @media screen and (min-width: 768px) {
   .formButton {
     width: 300px;
   }
+}
+.btn_delete {
+  padding: 4px 12px;
+  height: 29px;
+  width: 69px;
+  font-size: 14px;
+  text-transform: capitalize;
 }

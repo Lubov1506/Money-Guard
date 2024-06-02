@@ -25,7 +25,7 @@
   .wrapper {
     width: 480px;
   }
-  tr > td:first-child {
+  .wrapper tr > td:first-child {
     padding-left: 60px;
   }
   td:nth-child(3n) {

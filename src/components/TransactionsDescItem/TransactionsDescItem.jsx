@@ -5,6 +5,7 @@ import { GoPencil } from 'react-icons/go';
 import { deleteTrnThunk } from '../../redux/transactions/operations';
 import { getTransactionCategory } from '../../constants/TransactionConstants';
 import { useOutletContext } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const TransactionsDescItem = ({ item }) => {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ const TransactionsDescItem = ({ item }) => {
     <tr className={s.t_row} key={item.id}>
       <td className={s.value}>{item.transactionDate}</td>
       <td className={s.value}>
-        <span className={s.type}>{item.type}</span>
+        {item.type}
       </td>
       <td className={s.value}>{getTransactionCategory(item.categoryId)}</td>
       <td className={s.value}>{item.comment}</td>
@@ -22,19 +23,16 @@ const TransactionsDescItem = ({ item }) => {
       <td className={`${s.value} ${s.value_end}`}>
         <button
           // onClick={openEditModal()}
-          className={s.btn_edit}>
+          className={s.btn_edit}
+        >
           <GoPencil />
         </button>
-
         <FormButton
-          type="button"
-          text="Delete"
-          variant={'multiColorButtton'}
-          width="100px"
-          onClick={() => dispatch(deleteTrnThunk(item.id))}
-        >
-          Logout
-        </FormButton>
+                type="button"
+                text="Delete"
+                variant={'btn_delete'}
+                handlerFunction={() => dispatch(deleteTrnThunk(item.id))}
+              />
       </td>
     </tr>
   );

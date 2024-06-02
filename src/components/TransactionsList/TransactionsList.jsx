@@ -9,7 +9,6 @@ import s from './TransactionsList.module.css';
 
 const TransactionsList = () => {
   const transactions = useSelector(selectTransactions);
-  console.log(transactions);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -17,13 +16,15 @@ const TransactionsList = () => {
   }, [dispatch]);
 
   const { isTablet } = useMedia();
-
+if(!transactions.length){
+  return <p>There are no data yet</p>
+}
   return (
     <>
       {isTablet ? (
         <table className={s.table}>
           <thead className={s.thead}>
-            <tr className={`${s.t_row} ${s.t_row_header}`}>
+            <tr className={s.t_row}>
               <td className={s.title}>Date</td>
               <td className={s.title}>Type</td>
               <td className={s.title}>Category</td>
