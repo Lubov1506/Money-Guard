@@ -78,8 +78,8 @@
   }
 }
 .btn_delete {
-  padding: 4px;
-  height: 23px;
+  padding: 4px 12px;
+  height: 29px;
   width: 69px;
   font-size: 14px;
   text-transform: capitalize;
