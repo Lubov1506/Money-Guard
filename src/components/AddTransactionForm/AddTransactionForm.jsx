@@ -61,7 +61,6 @@ const AddTransactionFormNew = ({ closeModal }) => {
       .unwrap()
       .then(() => {
         closeModal();
-        dispatch(getBalanceThunk());
       })
       .catch(error => {
         setStatus({ success: false, error: error });
