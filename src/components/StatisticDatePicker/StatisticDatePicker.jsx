@@ -32,26 +32,22 @@ const StatisticDatePicker = () => {
     };
   });
   return (
-    <div>
-      <div className={s.monthYearPick}>
-        <Select
-          onChange={selectedOption => setSelectedYear(selectedOption.value)}
-          placeholder="Select year"
-          options={yearOptions}
-        />
-        <Select
-          onChange={selectedOption => setSelectedMonth(selectedOption.value)}
-          options={monthsOptions}
-          placeholder="Select month"
-        />
-      </div>
-      <div></div>
+    <div className={s.monthYearPick}>
+      <Select
+        onChange={selectedOption => setSelectedYear(selectedOption.value)}
+        placeholder="Select year"
+        options={yearOptions}
+      />
+      <Select
+        onChange={selectedOption => setSelectedMonth(selectedOption.value)}
+        options={monthsOptions}
+        placeholder="Select month"
+      />
     </div>
   );
 };
 
 export default StatisticDatePicker;
-
 
 // import 'react-datepicker/dist/react-datepicker.css';
 // import { useEffect, useState } from 'react';
@@ -117,7 +113,7 @@ export default StatisticDatePicker;
 //           onChange={handleYearChange}
 //           placeholder="Select year"
 //           options={yearOptions}
-          // value={yearOptions.find(option => option.value === selectedYear)}
+// value={yearOptions.find(option => option.value === selectedYear)}
 //         />
 //         <Select
 //           onChange={handleMonthChange}
