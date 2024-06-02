@@ -36,7 +36,7 @@ const StatisticsTable = () => {
           <thead className={s.heading}>
             <tr>
               <th className={s.category}>Category</th>
-              <th className={s.sum}>Total</th>
+              <th className={s.sum}>Sum</th>
             </tr>
           </thead>
           <tbody className={s.tableBody}>
@@ -46,12 +46,12 @@ const StatisticsTable = () => {
           </tbody>
           <tfoot className={s.tableFooter}>
             <tr className={s.expences}>
-              <th className={s.exText}>Expences:</th>
+              <th className={s.stat_text}>Expences:</th>
               <th>{expenseData}</th>
             </tr>
 
             <tr className={s.income}>
-              <th className={s.inText}>Income:</th>
+              <th className={s.stat_text}>Income:</th>
               <th>{incomeData}</th>
             </tr>
           </tfoot>
