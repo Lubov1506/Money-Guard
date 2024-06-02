@@ -12,7 +12,7 @@ const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const user = useSelector(selectUser);
   const userName = user ? user.email.split('@')[0] : '';
-  const navigate = useNavigate(); // useNavigate is the correct hook to navigate programmatically
+  const navigate = useNavigate();
   const isTablet = useMediaQuery({ query: '(min-width: 768px)' });
   const open = () => {
     setIsModalOpen(true);
@@ -20,8 +20,9 @@ const Header = () => {
   };
 
   const close = () => {
-    console.log('close');
+    // console.log('close');
     setIsModalOpen(false);
+    // navigate('/login');
   };
 
   return (

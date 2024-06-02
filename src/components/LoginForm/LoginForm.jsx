@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import { validation } from '../../helpers/loginValidation';
 import FormButton from '../common/FormButton/FormButton';
 import { Link } from 'react-router-dom';
+import Logo from '../common/Logo/Logo';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
@@ -23,15 +24,7 @@ export const LoginForm = () => {
   return (
     <div className={s.backdrop}>
       <div className={s.modal}>
-        <div className={s.logo}>
-          <img
-            src="/money-guard.svg"
-            alt="Money Guard Logo"
-            width={28}
-            height={35}
-          />
-          <h2 className={s.textLogo}>Money Guard</h2>
-        </div>
+        <Logo />
         <Formik
           initialValues={initialValues}
           validationSchema={validation}

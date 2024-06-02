@@ -1,6 +1,9 @@
 import { useMediaQuery } from 'react-responsive';
 
 export const useMedia = () => {
+  const isMobile = useMediaQuery({
+    query: '(max-width: 767px)',
+  });
   const isTablet = useMediaQuery({
     query: '(min-width: 768px)',
   });
@@ -10,5 +13,6 @@ export const useMedia = () => {
   return {
     isDesktop,
     isTablet,
+    isMobile,
   };
 };
