@@ -66,7 +66,7 @@ const StatisticDatePicker = () => {
     }),
     valueContainer: baseStyles => ({
       ...baseStyles,
-      padding: '12px 0px 12px 20px',
+      padding: '16px 0px 16px 20px',
     }),
 
     cursor: 'pointer',
@@ -83,6 +83,7 @@ const StatisticDatePicker = () => {
         options={yearOptions}
       />
       <Select
+        isClearable={true}
         styles={customStyles}
         onChange={selectedOption => setSelectedMonth(selectedOption.value)}
         options={monthsOptions}

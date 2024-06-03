@@ -1,10 +1,22 @@
 .monthYearPick {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
   max-width: 295px;
   color: var(--white);
   font-size: 16px;
   font-weight: 400;
-  border-radius: 8px;
-  border: 1px solid var(--white-60, rgba(255, 255, 255, 0.6));
-  margin-bottom: 20px;
-  color: #ffffff1a;
+}
+
+@media only screen and (min-width: 768px) {
+  .monthYearPick {
+    width: 336px;
+    flex-direction: row;
+    gap: 16px;
+  }
+}
+@media only screen and (min-width: 1280px) {
+  .monthYearPick {
+    width: 395px;
+  }
 }
