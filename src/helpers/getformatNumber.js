@@ -6,3 +6,11 @@ export const getformatNumber = number =>
     })
     .replace(/\s/g, ' ')
     .replace(',', '.');
+
+export const getformattedBalance = balance =>
+  balance
+    .toLocaleString('uk-UA', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    })
+    .replace(/,/, '.');

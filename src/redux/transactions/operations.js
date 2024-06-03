@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { walletAPI } from '../../helpers/api';
+import { getBalanceThunk } from '../auth/operations';
 
 export const fetchAllTrnThunk = createAsyncThunk(
   'transactions/fetchAllTransactions',
@@ -36,6 +37,7 @@ export const addTrnThunk = createAsyncThunk(
   async (transaction, thunkAPI) => {
     try {
       const { data } = await walletAPI.post('/transactions', transaction);
+      await thunkAPI.dispatch(getBalanceThunk());
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -55,6 +57,7 @@ export const editTrnThunk = createAsyncThunk(
         comment,
         amount,
       });
+      await thunkAPI.dispatch(getBalanceThunk());
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -67,6 +70,7 @@ export const deleteTrnThunk = createAsyncThunk(
   async (transactionId, thunkAPI) => {
     try {
       await walletAPI.delete(`/transactions/${transactionId}`);
+      await thunkAPI.dispatch(getBalanceThunk());
       return transactionId;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
