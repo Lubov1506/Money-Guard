@@ -5,7 +5,7 @@ import s from './RegistrationForm.module.css';
 import PasswordStrengthBar from 'react-password-strength-bar';
 import { useDispatch } from 'react-redux';
 import { signUpThunk } from '../../redux/auth/operations';
-import { validation } from '../../helpers/registerValidation';
+import { registerValidatSchema } from 'helpers';
 import FormButton from '../common/FormButton/FormButton';
 import { Link } from 'react-router-dom';
 import Logo from '../common/Logo/Logo';
@@ -34,7 +34,7 @@ export const RegistrationForm = () => {
         <Logo />
         <Formik
           initialValues={initialValues}
-          validationSchema={validation}
+          validationSchema={registerValidatSchema}
           onSubmit={handleSubmit}
         >
           {({ values }) => (

@@ -21,7 +21,7 @@ import { getBalanceThunk } from '../../redux/auth/operations';
 import { FiCalendar } from 'react-icons/fi';
 import Select from 'react-select';
 import { customStyles } from './customStyles';
-import { validationSchema } from 'helpers/addTrnValidSchema';
+import { addTrnValidSchema } from 'helpers';
 import { useMedia } from '../../hooks/useMedia';
 
 const AddTransactionFormNew = ({ closeModal }) => {
@@ -86,7 +86,7 @@ const AddTransactionFormNew = ({ closeModal }) => {
       )}
       <Formik
         initialValues={initialValues}
-        validationSchema={validationSchema(isOnIncomeTab)}
+        validationSchema={addTrnValidSchema(isOnIncomeTab)}
         onSubmit={handleSubmit}
       >
         {({ isSubmitting, setFieldValue }) => (

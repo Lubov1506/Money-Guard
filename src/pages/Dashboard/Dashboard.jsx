@@ -8,7 +8,7 @@ import {
   Header,
   MoneyLoader,
   Navigation,
-} from '../../components';
+} from 'components';
 import ModalAddTransactionNew from '../../components/ModalAddTransaction/ModalAddTransaction';
 import ModalEditTransaction from '../../components/ModalEditTransaction/ModalEditTransaction';
 import EditModal from '../../components/EditModal/EditModal';
