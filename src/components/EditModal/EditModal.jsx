@@ -15,9 +15,10 @@ import {
 import { addTrnThunk, editTrnThunk } from '../../redux/transactions/operations';
 import { getBalanceThunk } from '../../redux/auth/operations';
 import { FiCalendar } from 'react-icons/fi';
-import { useMedia } from '../../hooks/useMedia';
+
 import Slash from './Slash';
 import clsx from 'clsx';
+import { useMedia } from 'hooks';
 
 const EditModal = ({ closeModal, item }) => {
   const [isOnIncomeTab, setIsOnIncomeTab] = useState(
@@ -62,8 +63,8 @@ const EditModal = ({ closeModal, item }) => {
     setSubmitting(true);
 
     console.log(initialValues.category);
-      console.log(getTransactionId(initialValues.category));
-      dispatch(
+    console.log(getTransactionId(initialValues.category));
+    dispatch(
       editTrnThunk({
         id: item.id,
         transactionDate: startDate,
@@ -95,7 +96,7 @@ const EditModal = ({ closeModal, item }) => {
           </button>
         )}
         <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-          {({ isSubmitting  }) => (
+          {({ isSubmitting }) => (
             <Form>
               <h2 className={s.formTitle}>Edit transaction</h2>
 
@@ -127,7 +128,7 @@ const EditModal = ({ closeModal, item }) => {
                   </div>
                 )} */}
 
-                <div className={clsx(s.inputField,s.amount)}>
+                <div className={clsx(s.inputField, s.amount)}>
                   <Field
                     type="number"
                     name="amount"
@@ -137,7 +138,7 @@ const EditModal = ({ closeModal, item }) => {
                   <ErrorMessage name="amount" component="p" />
                 </div>
 
-                <div className={clsx(s.inputField,s.date)}>
+                <div className={clsx(s.inputField, s.date)}>
                   <ReactDatePicker
                     dateFormat="dd.MM.yyyy"
                     selected={startDate}
@@ -147,7 +148,7 @@ const EditModal = ({ closeModal, item }) => {
                   <FiCalendar className={s.icon} />
                 </div>
 
-                <div className={clsx(s.inputField,s.comment)}>
+                <div className={clsx(s.inputField, s.comment)}>
                   <Field type="text" name="comment" placeholder="Comment" />
                   <ErrorMessage name="comment" component="p" />
                 </div>

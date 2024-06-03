@@ -7,7 +7,6 @@ import { getTrasactionCategoryColor } from '../../constants/TransactionConstants
 
 const StatisticsTable = () => {
   const transactions = useSelector(selectPeriodTransactions);
-  console.log(transactions);
   const { expenseSummary, incomeSummary, categoriesSummary } = transactions;
   const data =
     categoriesSummary && categoriesSummary.length > 0
@@ -22,12 +21,8 @@ const StatisticsTable = () => {
           .filter(item => item.type === 'EXPENSE')
       : null;
   const incomeData =
-    incomeSummary && incomeSummary >= 0
-      ? prettyMoneyFormat(incomeSummary)
-      : 0;
+    incomeSummary && incomeSummary >= 0 ? prettyMoneyFormat(incomeSummary) : 0;
   const expenseData = expenseSummary ? prettyMoneyFormat(expenseSummary) : 0;
-
-  console.log(data, incomeData, expenseData);
 
   if (data) {
     return (

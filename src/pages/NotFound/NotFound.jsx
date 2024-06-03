@@ -1,4 +1,4 @@
-import FormButton from '../../components/common/FormButton/FormButton';
+import FormButton from 'components/common/FormButton/FormButton';
 import s from './NotFound.module.css';
 
 import { Link } from 'react-router-dom';

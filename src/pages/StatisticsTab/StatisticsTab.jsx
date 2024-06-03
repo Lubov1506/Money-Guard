@@ -1,7 +1,9 @@
-import DoughnutChart from '../../components/DoughnutChart/DoughnutChart';
-import StatisticDatePicker from '../../components/StatisticDatePicker/StatisticDatePicker';
-import StatisticsTable from '../../components/StatisticsTable/StatisticsTable';
-import { useMedia } from '../../hooks/useMedia';
+import {
+  DoughnutChart,
+  StatisticDatePicker,
+  StatisticsTable,
+} from 'components';
+import { useMedia } from 'hooks';
 
 import s from './StatisticsTab.module.css';
 

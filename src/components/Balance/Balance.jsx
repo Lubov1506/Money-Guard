@@ -1,24 +1,25 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { getBalanceThunk } from '../../redux/auth/operations';
-import { useEffect } from 'react';
+// import { getBalanceThunk } from '../../redux/auth/operations';
+// import { useEffect } from 'react';
 import s from './Balance.module.css';
-import { useLocation } from 'react-router-dom';
-import { prettyBalanceFormat } from 'helpers';
+// import { useLocation } from 'react-router-dom';
+import { getformatNumber } from 'helpers';
+import { selectBalance } from '../../redux/auth/selectors';
 
 const Balance = () => {
-  const dispatch = useDispatch();
-  const balance = useSelector(state => state.auth.user.balance);
-  const location = useLocation();
+  // const dispatch = useDispatch();
+  const balance = useSelector(selectBalance);
+  // const location = useLocation();
 
-  useEffect(() => {
-    if (location.pathname === '/') {
-      dispatch(getBalanceThunk());
-    }
-  }, [dispatch, location.pathname]);
+  // useEffect(() => {
+  //   if (location.pathname === '/') {
+  //     dispatch(getBalanceThunk());
+  //   }
+  // }, [dispatch, location.pathname]);
 
-  if (location.pathname !== '/') {
-    return null;
-  }
+  // if (location.pathname !== '/') {
+  //   return null;
+  // }
 
 const formattedNumber = prettyBalanceFormat(balance);
 

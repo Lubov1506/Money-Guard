@@ -1,17 +1,13 @@
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
-import { useSelector, useDispatch } from 'react-redux';
-import { selectUser } from '../../redux/auth/selectors';
-import {
-  selectPeriodTransactions,
-  selectIsLoading,
-} from '../../redux/transactions/selectors';
-import { fetchPeriodTrnThunk } from '../../redux/transactions/operations';
+import { useSelector } from 'react-redux';
+
+import { selectPeriodTransactions } from '../../redux/transactions/selectors';
+// import { fetchPeriodTrnThunk } from '../../redux/transactions/operations';
 import css from './DoughnutChart.module.css';
 import { getTrasactionCategoryColor } from '../../constants/TransactionConstants';
-import Loader from '../Loader/Loader';
-import { prettyBalanceFormat,prettyMoneyFormat } from 'helpers';
+import { getformattedBalance } from '../../helpers/getformatNumber';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -20,7 +16,9 @@ const options = {
   responsive: true,
   maintainAspectRatio: false,
   plugins: {
-    legend: null,
+    legend: {
+      display: false,
+    },
   },
 
   animation: {
@@ -29,10 +27,28 @@ const options = {
     duration: 2000,
   },
 };
+const optionsDefault = {
+  cutout: '75%',
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: {
+    legend: {
+      display: false,
+    },
+    tooltip: {
+      enabled: false,
+    },
+    datalabels: {
+      display: false,
+    },
+  },
+  animation: {
+    animateRotate: true,
+    animateScale: true,
+  },
+};
 
 const DoughnutChart = () => {
-  const user = useSelector(selectUser);
-  const balance = user ? user.balance : 0;
   // const getCurrentMonthYear = () => {
   //   const currentDate = new Date();
   //   const month = currentDate.getMonth() + 1;
@@ -46,15 +62,7 @@ const DoughnutChart = () => {
   // }, [dispatch]);
 
   const transactions = useSelector(selectPeriodTransactions);
-  // console.log(transactions);
-  // const isLoading = useSelector(selectIsLoading);
-  // if (isLoading) {
-  //   return (
-  //     <>
-  //       <Loader />
-  //     </>
-  //   );
-  // }
+  console.log(transactions);
 
   const expense = transactions.categoriesSummary
     ? transactions.categoriesSummary.filter(
@@ -64,56 +72,78 @@ const DoughnutChart = () => {
 
   const expenseTotal = transactions.expenseSummary || 0;
   const incomeTotal = transactions.incomeSummary || 0;
+  const total = incomeTotal + expenseTotal;
+  const balance = total ? total : 0;
 
-  console.log(expenseTotal, incomeTotal);
+  console.log('Expense ', expenseTotal, 'Income ', incomeTotal);
 
   const data = expense.map(item => ({
     ...item,
     color: getTrasactionCategoryColor(item.name),
   }));
   console.log(data);
-  const doughnutData = {
-    labels: data.map(expense => expense.name),
-    datasets: [
-      {
-        label: ' Expenses',
-        data: !data.length ? [0] : data.map(expense => expense.total),
-        backgroundColor: data.map(expense => expense.color),
-        borderColor: data.map(expense => expense.color),
-        borderWidth: 1,
-        borderJoinStyle: 'round',
-        borderAlign: 'inner',
-      },
-    ],
-  };
-  
+  const doughnutData = data.length
+    ? {
+        labels: data.map(expense => expense.name),
+        datasets: [
+          {
+            label: ' Expenses',
+            data: !data.length ? [0] : data.map(expense => expense.total),
+            backgroundColor: data.map(expense => expense.color),
+            borderColor: data.map(expense => expense.color),
+            borderWidth: 1,
+            borderJoinStyle: 'round',
+            borderAlign: 'inner',
+          },
+        ],
+      }
+    : {
+        labels: ['Add expenses'],
+        datasets: [
+          {
+            label: ' No expenses',
+            data: [1],
+            backgroundColor: ['#ffffff'],
+            borderColor: ['#ffffff'],
+            borderWidth: 1,
+          },
+        ],
+      };
+
+  const formattedBalance = getformattedBalance(balance);
+
   return (
     <div className={css.doughnutContainer}>
       {(() => {
-        if (!expenseTotal && !incomeTotal) {
+        if (!expenseTotal) {
           return (
-            <div>
-              <p className={css.text}>
-                Add expenses and incomes to see the chart
-              </p>
-              <p className={css.text}>
-                Your balance is ₴ {prettyMoneyFormat(balance)}
-              </p>
-            </div>
-          );
-        } else if (!expenseTotal && incomeTotal) {
-          return (
-            <div>
-              <p className={css.text}>Add expenses</p>
-              <p className={css.text}>
-                Your income is {prettyMoneyFormat(incomeTotal)}₴
-              </p>
-            </div>
+            <>
+              <div
+                className={`${css.balance} ${
+                  balance < 0 ? css.negativeBalance : css.positiveBalance
+                }`}
+              >
+                <p className={css.textMobile}>Add expenses</p>
+                <p className={css.text}>Add expenses, your balance is:</p>
+                <p> ₴ {formattedBalance}</p>
+              </div>
+              <Doughnut
+                className={css.doughnut}
+                data={doughnutData}
+                options={optionsDefault}
+              />
+            </>
           );
         } else {
           return (
             <>
-              <div className={css.balance}>₴ {prettyBalanceFormat(balance)}</div>
+              <div
+                className={`${css.balance} ${
+                  balance < 0 ? css.negativeBalance : css.positiveBalance
+                }`}
+              >
+                ₴ {formattedBalance}
+              </div>
               <Doughnut
                 className={css.doughnut}
                 data={doughnutData}

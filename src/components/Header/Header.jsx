@@ -1,20 +1,20 @@
 import { Suspense, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { ImExit } from 'react-icons/im';
-import LogoutModal from '../LogoutModal/LogoutModal';
+import { useMedia } from 'hooks';
 import { selectUser } from '../../redux/auth/selectors';
+
 import s from './Header.module.css';
-import Loader from '../Loader/Loader';
-import Logo from '../common/Logo/Logo';
-import { useMedia } from '../../hooks/useMedia';
-import { useNavigate } from 'react-router-dom';
+import Logo from 'components/common/Logo/Logo';
+import Loader from 'components/Loader/Loader';
+import LogoutModal from 'components/LogoutModal/LogoutModal';
 
 const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const user = useSelector(selectUser);
   const userName = user ? user.email.split('@')[0] : '';
   const { isMobile } = useMedia();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const open = () => {
     setIsModalOpen(true);
@@ -52,7 +52,8 @@ const Header = () => {
 
       {isModalOpen && (
         <Suspense fallback={<Loader />}>
-          <LogoutModal onClose={close}
+          <LogoutModal
+            onClose={close}
             // onLogout={handleLogout}
           />
         </Suspense>
