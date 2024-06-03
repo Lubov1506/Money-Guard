@@ -35,4 +35,8 @@
   font-size: 30px;
   color: #fbfbfb;
   margin-left: 32px;
+  text-overflow: hidden;
+}
+.negative {
+  color: red;
 }

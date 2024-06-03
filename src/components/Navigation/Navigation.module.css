@@ -30,18 +30,19 @@
   padding: 10px;
   width: 38px;
   height: 38px;
+
   fill: rgba(47, 21, 176, 0.73);
 }
 .active .icon {
   background-color: #734aef;
-
+  box-shadow: 0 3px 10px 0 rgba(74, 86, 226, 0.5);
   fill: white;
 }
 
 @media screen and (min-width: 768px) {
   .icon {
-    /* width: 18px;
-    height: 18px; */
+    width: 18px;
+    height: 18px;
   }
 }
 
