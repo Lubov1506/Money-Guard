@@ -1,6 +1,7 @@
 .header {
   min-height: 60px;
   padding: 12px 20px;
+
   .logo {
     text-decoration: none;
     display: flex;
@@ -23,6 +24,7 @@
   .header {
     min-height: 80px;
     padding: 16px 32px;
+    z-index: index unset;
     .logo {
       font-size: 17px;
       line-height: 1.5;
