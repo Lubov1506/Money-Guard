@@ -10,8 +10,6 @@
 .table_plus{
   border-left: 5px solid var(--yellow);
 }
-.tbody {
-}
 .t_row {
   display: flex;
   justify-content: space-between;

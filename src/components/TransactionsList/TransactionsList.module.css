@@ -1,10 +1,8 @@
 .table {
   width: 100%;
   margin-top: 46px;
-  margin-left: 49px;
   border-collapse: collapse;
 }
-
 
 .title {
   padding: 16px 10px 16px 20px;
@@ -19,13 +17,6 @@
   box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
   background: rgba(82, 59, 126, 0.6);
 }
-
-/* .thead,
-.tbody tr { */
-  /* display: table; */
-  /* width: 100%;
-  table-layout: fixed;
-} */
 
 .list {
   display: flex;
