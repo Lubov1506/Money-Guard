@@ -18,7 +18,6 @@ const StatisticDatePicker = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchPeriodTrnThunk({ year: selectedYear, month: selectedMonth }));
-    toast.success('Data is loaded', toastStyles, { autoClose: 2000 });
   }, [selectedMonth, selectedYear, dispatch]);
   const years = Array.from(
     { length: getYear(new Date()) - 2020 + 1 },
