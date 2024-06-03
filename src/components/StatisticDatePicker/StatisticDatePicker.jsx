@@ -24,11 +24,17 @@ const StatisticDatePicker = () => {
   const yearOptions = years.map(year => ({ value: year, label: year }));
   const monthsOptions = Array.from({ length: 13 }, (e, i) => {
     const month = new Date(0, i).toLocaleString('en', { month: 'long' });
-    return i === 0
-      ? { value: null, label: 'All time' }
-      : { value: i, label: month };
+    return {
+      value: i + 1,
+      label: month,
+      isDisabled: i + 1 > currentMonth && selectedYear === currentYear,
+    };
   });
-  console.log(monthsOptions);
+  monthsOptions.unshift({ value: null, label: 'All months' });
+
+  const onChange = inputValue => {
+    setSelectedMonth(inputValue);
+  };
 
   return (
     <div className={s.monthYearPick_wrapper}>
@@ -42,6 +48,7 @@ const StatisticDatePicker = () => {
         options={yearOptions}
       />
       <Select
+        defaultValue={{ value: null, label: 'All months' }}
         styles={datePickerStyles}
         className={s.monthYearPick}
         onChange={option => setSelectedMonth(option.value)}

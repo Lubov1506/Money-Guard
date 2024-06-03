@@ -4,10 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectIsRefreshing } from './redux/auth/selectors';
 import { refreshUserThunk } from './redux/auth/operations';
 import { lazy } from 'react';
-import Loader from './components/Loader/Loader';
-import { Dashboard, LoginPage, NotFound, RegistrationPage } from './pages';
 import { PrivateRoute, PublicRoute } from './routes';
+import Loader from 'components/Loader/Loader';
+import { Dashboard, LoginPage, NotFound, RegistrationPage } from './pages';
 import { useMedia } from './hooks';
+
 
 const CurrencyTab = lazy(() => import('./pages/CurrencyTab/CurrencyTab'));
 const HomeTab = lazy(() => import('./pages/HomeTab/HomeTab'));
