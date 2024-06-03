@@ -7,6 +7,7 @@ import { selectPeriodTransactions } from '../../redux/transactions/selectors';
 // import { fetchPeriodTrnThunk } from '../../redux/transactions/operations';
 import css from './DoughnutChart.module.css';
 import { getTrasactionCategoryColor } from '../../constants/TransactionConstants';
+import { getformattedBalance } from '../../helpers/getformatNumber';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -109,12 +110,7 @@ const DoughnutChart = () => {
         ],
       };
 
-  const formattedBalance = balance
-    .toLocaleString('uk-UA', {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    })
-    .replace(/,/, '.');
+  const formattedBalance = getformattedBalance(balance);
 
   return (
     <div className={css.doughnutContainer}>
