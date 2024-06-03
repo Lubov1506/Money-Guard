@@ -32,7 +32,7 @@ const EditModal = ({ closeModal, item }) => {
   const [startDate, setStartDate] = useState(item.transactionDate);
 
   const initialValues = {
-    amount: item.amount,
+    amount: Math.abs(item.amount) ,
     comment: item.comment,
     category: getTransactionCategory(item.categoryId),
   };

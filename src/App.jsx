@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsRefreshing } from './redux/auth/selectors';
@@ -7,6 +7,7 @@ import { lazy } from 'react';
 import Loader from './components/Loader/Loader';
 import { Dashboard, LoginPage, NotFound, RegistrationPage } from './pages';
 import { PrivateRoute, PublicRoute } from './routes';
+import { useMedia } from './hooks';
 
 const CurrencyTab = lazy(() => import('./pages/CurrencyTab/CurrencyTab'));
 const HomeTab = lazy(() => import('./pages/HomeTab/HomeTab'));
@@ -18,6 +19,7 @@ function App() {
   useEffect(() => {
     dispatch(refreshUserThunk());
   }, [dispatch]);
+  const { isMobile } = useMedia();
   return (
     <>
       {isRefreshing ? (
@@ -34,7 +36,11 @@ function App() {
           >
             <Route index element={<HomeTab />} />
             <Route path="statistics" element={<StatisticsTab />} />
-            <Route path="currency" element={<CurrencyTab />} />
+            {isMobile ? (
+              <Route path="currency" element={<CurrencyTab />} />
+            ) : (
+              <Route path="currency" element={<Navigate to='/' />} />
+            )}
           </Route>
 
           <Route
