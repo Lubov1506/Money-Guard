@@ -7,7 +7,7 @@ const fetchCurrency = async () => {
   return data;
 };
 
-const getCurrency = async () => {
+export const getCurrency = async () => {
   const cachedCurrency = JSON.parse(localStorage.getItem('currency'));
   const now = Date.now();
 
@@ -35,5 +35,3 @@ const getCurrency = async () => {
     console.error('Failed to fetch currency data:', err.message);
   }
 };
-
-export default getCurrency;

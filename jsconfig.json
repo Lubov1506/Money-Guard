@@ -4,7 +4,8 @@
     "paths": {
       "components/*": ["components/*"],
       "helpers/*": ["helpers/*"],
-      "pages/*": ["pages/*"]
+      "pages/*": ["pages/*"],
+      "hooks/*": ["hooks/*"]
     }
   },
   "include": ["src"]

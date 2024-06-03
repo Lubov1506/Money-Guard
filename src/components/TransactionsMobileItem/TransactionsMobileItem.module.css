@@ -1,24 +1,40 @@
 .table {
+  max-width: 280px;
   width: 100%;
   border-radius: 10px;
-  border-left: 5px solid #ff868d;
   border-collapse: inherit;
+}
+.table_minus{
+  border-left: 5px solid  #ff868d;
+}
+.table_plus{
+  border-left: 5px solid var(--yellow);
 }
 .tbody {
 }
-.t_row:not(:last-child) {
+.t_row {
   display: flex;
   justify-content: space-between;
   padding: 12px 20px;
+}
+.t_row:not(:last-child) {
+  width: 280px;
   border-bottom: 2px solid rgba(255, 255, 255, 0.2);
 }
-
-.title {
+.actionsRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 20px;
+}
+.actionCell {
+  display: flex;
+  justify-content: center;
   align-items: center;
+}
+.title {
   font-family: var(--font-family);
   font-weight: 600;
   font-size: 16px;
-  text-wrap: wrap;
   color: var(--white);
 }
 .value {
@@ -28,18 +44,19 @@
   font-weight: 400;
   font-size: 16px;
   text-align: right;
-  text-wrap: wrap;
   color: var(--white);
 }
-.minus {
+
+.value_strong{
   font-family: var(--font-family);
   font-weight: 600;
   font-size: 16px;
   text-align: center;
+}
+.minus {
   color: var(--dashboard-text);
 }
 .plus {
-  columns: plus;
   color: var(--yellow);
 }
 .btn_edit {
@@ -47,7 +64,6 @@
   gap: 4px;
   align-items: center;
   background-color: transparent;
-
   font-family: var(--font-family);
   font-weight: 400;
   font-size: 16px;
@@ -55,8 +71,8 @@
   text-align: center;
   color: var(--white);
   opacity: 0.6;
- }
- .btn_delete {
+}
+.btn_delete {
   font-family: var(--font-family);
   font-weight: 400;
   font-size: 14px;

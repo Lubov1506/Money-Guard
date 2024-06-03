@@ -1,6 +1,5 @@
 import { Suspense, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
 import { ImExit } from 'react-icons/im';
 import LogoutModal from '../LogoutModal/LogoutModal';
 import { selectUser } from '../../redux/auth/selectors';
@@ -27,13 +26,13 @@ const Header = () => {
   return (
     <>
       <header className={s.header}>
-        <NavLink to="">
+
           <Logo
             type="header"
             width={isMobile ? 18 : 25}
             height={isMobile ? 18 : 23}
           />
-        </NavLink>
+
 
         <div className={s.user}>
           <span className={s.userName}>{userName}</span>
