@@ -1,4 +1,4 @@
-.wrapper {
+/* .wrapper {
   z-index: 10000;
   position: fixed;
   inset: 0;
@@ -7,28 +7,28 @@
   align-items: center;
   backdrop-filter: blur(7px);
   background: rgba(34, 13, 91, 0.23);
-}
+} */
 
 .modal {
-  z-index: 100001;
+  position: absolute;
+  z-index: 100;
   display: flex;
   flex-direction: column;
   align-self: center;
   align-items: center;
   margin: 0 auto;
-  width: 100%;
-  height: 100%;
   padding: 238px 20px;
-  background-image: url('../../images/login/login-modal-mob@1x.webp');
+  background-image: url('../../images/addTrn/add-edit-mob1x.webp');
   background-color: var(--form-color);
   background-repeat: no-repeat;
   backdrop-filter: blur(100px);
   box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
   background: var(--form-color);
+  background-size: cover;
 }
 @media only screen and (min-resolution: 192dpi) {
   .modal {
-    background-image: url('../../images/login/login-modal-mob@2x.webp');
+    background-image: url('../../images/addTrn/add-edit-mob2x.webp');
   }
 }
 

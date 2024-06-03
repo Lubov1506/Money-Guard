@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import s from './Modal.module.css';
-const Modal = ({ children,  onClose }) => {
+const Modal = ({ children, onClose }) => {
   const handleBackDropClick = e => {
     if (e.target === e.currentTarget) {
       onClose();
@@ -21,12 +21,12 @@ const Modal = ({ children,  onClose }) => {
   }, [onClose]);
   return (
     <div className={s.wrapper} onClick={handleBackDropClick}>
-      <div className={s.content}>
-        {/* <button className={s.closeBtn} onClick={onClose}>
+      {/* <div className={s.content}> */}
+      {/* <button className={s.closeBtn} onClick={onClose}>
           ×
         </button> */}
-        {children}
-      </div>
+      {children}
+      {/* </div> */}
     </div>
   );
 };
