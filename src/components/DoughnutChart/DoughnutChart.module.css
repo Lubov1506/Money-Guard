@@ -63,5 +63,5 @@
 }
 
 .negativeBalance {
-  color: red;
+  color: var(--dashboard-text);
 }
