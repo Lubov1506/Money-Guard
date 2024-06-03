@@ -13,13 +13,15 @@ const StatisticsTab = () => {
     <>
       {!isDesktop && !isTablet && (
         <>
-          <p className={s.text}>Statistics</p>
-          <div className={s.donut_wrap}>
-            <DoughnutChart />
-          </div>
-          <div className={s.stat_wrap}>
-            <StatisticDatePicker />
-            <StatisticsTable />
+          <div className={s.general_wrap}>
+            <p className={s.text}>Statistics</p>
+            <div className={s.donut_wrap}>
+              <DoughnutChart />
+            </div>
+            <div className={s.stat_wrap}>
+              <StatisticDatePicker />
+              <StatisticsTable />
+            </div>
           </div>
         </>
       )}
