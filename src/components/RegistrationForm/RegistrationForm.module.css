@@ -121,6 +121,16 @@
   padding-left: 50px;
   color: var(--white-60);
 }
+
+.input:-webkit-autofill,
+.input:-webkit-autofill:hover,
+.input:-webkit-autofill:focus,
+.input:-webkit-autofill:active {
+  color: var(--white) !important;
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: var(--white) !important;
+}
+
 @media only screen and (min-width: 768px) {
   .input {
     width: 409px;

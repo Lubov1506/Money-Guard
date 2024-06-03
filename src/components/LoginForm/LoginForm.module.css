@@ -109,7 +109,14 @@
     width: 409px;
   }
 }
-
+.input:-webkit-autofill,
+.input:-webkit-autofill:hover,
+.input:-webkit-autofill:focus,
+.input:-webkit-autofill:active {
+  color: var(--white) !important;
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: var(--white) !important;
+}
 .inputIcon {
   position: absolute;
   top: 50%;

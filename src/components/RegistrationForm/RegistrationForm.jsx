@@ -48,6 +48,7 @@ export const RegistrationForm = () => {
                     placeholder="Name"
                     className={s.input}
                     required
+                    // autoComplete="off"
                   />
                   <ErrorMessage
                     className={s.error}
@@ -63,6 +64,7 @@ export const RegistrationForm = () => {
                     placeholder="E-mail"
                     className={s.input}
                     required
+                    // autoComplete="off"
                   />
                   <ErrorMessage
                     className={s.error}
@@ -78,6 +80,7 @@ export const RegistrationForm = () => {
                     placeholder="Password"
                     className={s.input}
                     required
+                    // autoComplete="off"
                   />
                   <ErrorMessage
                     className={s.error}
@@ -93,6 +96,7 @@ export const RegistrationForm = () => {
                     placeholder="Confirm password"
                     className={s.input}
                     required
+                    // autoComplete="off"
                   />
                   <ErrorMessage
                     className={s.error}
