@@ -3,6 +3,7 @@ import { getBalanceThunk } from '../../redux/auth/operations';
 import { useEffect } from 'react';
 import s from './Balance.module.css';
 import { useLocation } from 'react-router-dom';
+import { getformatNumber } from 'helpers';
 
 const Balance = () => {
   const dispatch = useDispatch();
@@ -19,10 +20,12 @@ const Balance = () => {
     return null;
   }
 
+const formattedNumber = getformatNumber(balance);
+
   return (
     <div className={s.balance_container}>
       <p className={s.balance_label}>Your balance</p>
-      <p className={s.balance_amount}>₴ {balance?.toFixed(2)}</p>
+      <p className={s.balance_amount}>₴ {formattedNumber}</p>
     </div>
   );
 };
