@@ -40,5 +40,28 @@
   font-size: 14px;
   text-align: center;
   line-height: 1.5;
+  display: none;
   color: var(--white);
+  @media (min-width: 767px) {
+    display: block;
+  }
+}
+.textMobile {
+  font-family: 'Poppins Regular';
+  font-weight: 400;
+  font-size: 12px;
+  text-align: center;
+  line-height: 1.5;
+  color: var(--white);
+
+  @media (min-width: 767px) {
+    display: none;
+  }
+}
+.positiveBalance {
+  color: var(--white);
+}
+
+.negativeBalance {
+  color: red;
 }
