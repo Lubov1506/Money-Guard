@@ -1,5 +1,6 @@
 .general_wrap {
   width: 100%;
+
   overflow-y: scroll;
   max-height: calc(100vh - 240px);
   @media only screen and (min-width: 768px) {
@@ -36,6 +37,8 @@
   height: fit-content;
   padding: 0 20px;
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
   gap: 32px;
   @media only screen and (min-width: 768px) {
