@@ -29,7 +29,7 @@ const StatisticDatePicker = () => {
       isDisabled: i + 1 > currentMonth && selectedYear === currentYear,
     };
   });
-  monthsOptions.push({ value: null, label: 'All time' });
+  monthsOptions.unshift({ value: null, label: 'All months' });
 
   const onChange = inputValue => {
     setSelectedMonth(inputValue);
@@ -47,6 +47,7 @@ const StatisticDatePicker = () => {
         options={yearOptions}
       />
       <Select
+        defaultValue={{ value: null, label: 'All months' }}
         styles={datePickerStyles}
         className={s.monthYearPick}
         onChange={option => onChange(option.value, option.action)}
