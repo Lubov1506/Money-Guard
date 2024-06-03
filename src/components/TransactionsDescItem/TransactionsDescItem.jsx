@@ -14,7 +14,7 @@ const TransactionsDescItem = ({ item }) => {
     <>
       <tr className={s.t_row} key={item.id}>
         <td className={s.value}>{item.transactionDate}</td>
-        <td className={s.value}>{item.type}</td>
+        <td className={s.value}>{ item.type === 'EXPENSE' ? '-' : '+'}</td>
         <td className={s.value}>{getTransactionCategory(item.categoryId)}</td>
         <td className={s.value}>{item.comment}</td>
         <td
@@ -23,7 +23,7 @@ const TransactionsDescItem = ({ item }) => {
             item.type === 'EXPENSE' ? s.minus : s.plus
           )}
         >
-          {item.amount}
+          {Math.abs(item.amount)}
         </td>
         <td className={`${s.value} ${s.value_end}`}>
           <button
