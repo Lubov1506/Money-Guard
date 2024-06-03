@@ -19,7 +19,7 @@
 
 .balance {
   position: absolute;
-  font-family: 'Poppins SemiBold';
+  font-family: 'Poppins';
   font-weight: 600;
   font-size: 18px;
   text-align: center;
@@ -30,12 +30,12 @@
   transform: translate(-50%, -50%);
 }
 .doughnut {
-  font-family: 'Poppins Regular';
+  font-family: 'Poppins';
   z-index: 1000;
 }
 
 .text {
-  font-family: 'Poppins Regular';
+  font-family: 'Poppins';
   font-weight: 400;
   font-size: 14px;
   text-align: center;
@@ -47,7 +47,7 @@
   }
 }
 .textMobile {
-  font-family: 'Poppins Regular';
+  font-family: 'Poppins';
   font-weight: 400;
   font-size: 12px;
   text-align: center;
