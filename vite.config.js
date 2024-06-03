@@ -12,6 +12,7 @@ export default defineConfig({
       components: '/src/components',
       helpers: '/src/helpers',
       pages: '/src/pages',
+      hooks: '/src/hooks',
     },
   },
 });

@@ -5,6 +5,7 @@ import { getYear } from 'date-fns';
 import Select from 'react-select';
 import { useDispatch } from 'react-redux';
 import { fetchPeriodTrnThunk } from '../../redux/transactions/operations';
+import { datePickerStyles } from './datePickerStyles';
 
 const StatisticDatePicker = () => {
   const currentMonth = new Date().getMonth() + 1;
@@ -73,10 +74,11 @@ const StatisticDatePicker = () => {
   };
 
   return (
-    <div className={s.monthYearPick}>
+    <div className={s.monthYearPick_wrapper}>
       <Select
-        defaultValue={currentYear}
-        styles={customStyles}
+        defaultValue={{ value: currentYear, label: currentYear }}
+        styles={datePickerStyles}
+        className={s.monthYearPick}
         onChange={selectedOption => setSelectedYear(selectedOption.value)}
         openMenuOnClick={true}
         placeholder="Select year"
@@ -84,7 +86,8 @@ const StatisticDatePicker = () => {
       />
       <Select
         isClearable={true}
-        styles={customStyles}
+        styles={datePickerStyles}
+        className={s.monthYearPick}
         onChange={selectedOption => setSelectedMonth(selectedOption.value)}
         options={monthsOptions}
         placeholder="Select month"

@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import s from './Currency.module.css';
 import CurrencyChart from '../CurrencyChart/CurrencyChart';
-import getCurrency from '../../helpers/fetchCurrencyApi';
+
 import { useMedia } from '../../hooks/useMedia';
+import { getCurrency } from 'helpers';
 
 const Currency = () => {
   const [currency, setCurrency] = useState(
