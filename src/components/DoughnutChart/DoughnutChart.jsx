@@ -1,16 +1,12 @@
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectUser } from '../../redux/auth/selectors';
-import {
-  selectPeriodTransactions,
-  selectIsLoading,
-} from '../../redux/transactions/selectors';
-import { fetchPeriodTrnThunk } from '../../redux/transactions/operations';
+import { selectPeriodTransactions } from '../../redux/transactions/selectors';
+// import { fetchPeriodTrnThunk } from '../../redux/transactions/operations';
 import css from './DoughnutChart.module.css';
 import { getTrasactionCategoryColor } from '../../constants/TransactionConstants';
-import Loader from '../Loader/Loader';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -46,14 +42,6 @@ const DoughnutChart = () => {
 
   const transactions = useSelector(selectPeriodTransactions);
   console.log(transactions);
-  // const isLoading = useSelector(selectIsLoading);
-  // if (isLoading) {
-  //   return (
-  //     <>
-  //       <Loader />
-  //     </>
-  //   );
-  // }
 
   const expense = transactions.categoriesSummary
     ? transactions.categoriesSummary.filter(
@@ -92,12 +80,8 @@ const DoughnutChart = () => {
         if (!expenseTotal && !incomeTotal) {
           return (
             <div>
-              <p className={css.text}>
-                Add expenses and incomes to see the chart
-              </p>
-              <p className={css.text}>
-                Your balance is ₴ {Math.abs(balance).toFixed(2)}
-              </p>
+              <p className={css.text}>Add expenses to see the chart</p>
+              <p className={css.text}>Your balance is ₴ {balance.toFixed(2)}</p>
             </div>
           );
         } else if (!expenseTotal && incomeTotal) {
