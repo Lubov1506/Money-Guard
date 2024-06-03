@@ -9,18 +9,18 @@ import clsx from 'clsx';
 import { toast } from 'react-toastify';
 import { toastStyles } from 'components/Toast/toastStyles';
 
-const TransactionsDescItem = ({ item }) => {
+const TransactionsDescItem = ({ item , handleDelete}) => {
   const dispatch = useDispatch();
   const { openEditModal } = useOutletContext();
 
-  const handleDelete = () => {
-    dispatch(deleteTrnThunk(item.id))
-      .unwrap()
-      .then(item => {
-        console.log(item);
-        toast.success(`Transaction deleted`, toastStyles);
-      });
-  };
+  // const handleDelete = () => {
+  //   dispatch(deleteTrnThunk(item.id))
+  //     .unwrap()
+  //     .then(item => {
+  //       console.log(item);
+  //       toast.success(`Transaction deleted`, toastStyles);
+  //     });
+  // };
 
   return (
     <>
@@ -50,7 +50,7 @@ const TransactionsDescItem = ({ item }) => {
             type="button"
             text="Delete"
             variant={'btn_delete'}
-            handlerFunction={handleDelete}
+            handlerFunction={()=>handleDelete(item.id)}
           />
         </td>
       </tr>

@@ -7,8 +7,8 @@ import { deleteTrnThunk } from '../../redux/transactions/operations';
 import { useDispatch } from 'react-redux';
 import clsx from 'clsx';
 
-const TransactionsMobileItem = ({ item = {} }) => {
-  const dispatch = useDispatch();
+const TransactionsMobileItem = ({ item = {}, handleDelete }) => {
+  // const dispatch = useDispatch();
   const { openEditModal } = useOutletContext();
   return (
     <li className={s.li}>
@@ -54,7 +54,7 @@ const TransactionsMobileItem = ({ item = {} }) => {
                 type="button"
                 text="Delete"
                 variant={'btn_delete'}
-                handlerFunction={() => dispatch(deleteTrnThunk(item.id))}
+                handlerFunction={() => handleDelete(item.id)}
               />
             </td>
             <td className={s.value}>

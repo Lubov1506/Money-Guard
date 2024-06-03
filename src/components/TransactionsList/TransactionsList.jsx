@@ -3,11 +3,12 @@ import TransactionsMobileItem from '../TransactionsMobileItem/TransactionsMobile
 import { useDispatch, useSelector } from 'react-redux';
 import { selectTransactions } from '../../redux/transactions/selectors';
 import { useEffect } from 'react';
-import { fetchAllTrnThunk } from '../../redux/transactions/operations';
+import { deleteTrnThunk, fetchAllTrnThunk } from '../../redux/transactions/operations';
 
 import s from './TransactionsList.module.css';
 import EmptyHistory from 'components/EmptyHistory/EmptyHistory';
 import { useMedia } from 'hooks';
+import { toast } from 'react-toastify';
 
 const TransactionsList = () => {
   const transactions = useSelector(selectTransactions);
@@ -18,6 +19,39 @@ const TransactionsList = () => {
   }, [dispatch]);
 
   const { isTablet } = useMedia();
+
+  const handleDelete = (transactionId) => {
+    let undo = false;
+    const toastId = toast(
+      <div className={s.undelete_toast}>
+       <button className={s.delete_btn}
+          onClick={() => {
+            toast.dismiss(toastId);
+          }}
+        >
+          Delete
+        </button>
+        <button className={s.undelete_btn}
+          onClick={() => {
+            undo = true;
+            toast.dismiss(toastId);
+          }}
+        >
+          Undelete
+        </button>
+      </div>,
+      {
+        onClose: () => {
+          if (!undo) {
+            dispatch(deleteTrnThunk(transactionId));
+          }
+        },
+        autoClose: 3000,
+        closeOnClick: false,
+      }
+    );
+  };
+
   if (!transactions.length) {
     return <EmptyHistory />;
   }
@@ -37,14 +71,14 @@ const TransactionsList = () => {
           </thead>
           <tbody>
             {transactions.map(item => (
-              <TransactionsDescItem key={item.id} item={item} />
+              <TransactionsDescItem key={item.id} item={item} handleDelete={handleDelete} />
             ))}
           </tbody>
         </table>
       ) : (
         <ul className={s.list}>
           {transactions.map(item => (
-            <TransactionsMobileItem key={item.id} item={item} />
+            <TransactionsMobileItem key={item.id} item={item} handleDelete={handleDelete} />
           ))}
         </ul>
       )}
