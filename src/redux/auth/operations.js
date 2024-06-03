@@ -1,5 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { walletAPI } from '../../helpers/api';
+import { toastStyles } from 'components/Toast/toastStyles';
+import { toast } from 'react-toastify';
 
 const setAuthHeader = token => {
   walletAPI.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -14,6 +16,7 @@ export const signUpThunk = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const { data } = await walletAPI.post('/auth/sign-up', credentials);
+      toast.success('You are registered', toastStyles);
       setAuthHeader(data.token);
       return data;
     } catch (error) {
@@ -28,6 +31,8 @@ export const signInThunk = createAsyncThunk(
     try {
       const { data } = await walletAPI.post('/auth/sign-in', credentials);
       setAuthHeader(data.token);
+      toast.success('You are logged in', toastStyles);
+
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -40,6 +45,8 @@ export const signOutThunk = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       await walletAPI.delete('/auth/sign-out');
+      toast.success('You are logged out!', toastStyles);
+
       clearAuthHeader();
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -59,6 +66,7 @@ export const refreshUserThunk = createAsyncThunk(
 
     try {
       setAuthHeader(persistedToken);
+
       const { data } = await walletAPI.get('/users/current');
 
       return data;
