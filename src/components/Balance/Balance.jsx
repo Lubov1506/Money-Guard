@@ -3,7 +3,7 @@ import { getBalanceThunk } from '../../redux/auth/operations';
 import { useEffect } from 'react';
 import s from './Balance.module.css';
 import { useLocation } from 'react-router-dom';
-import { getformatNumber } from 'helpers';
+import { prettyBalanceFormat } from 'helpers';
 
 const Balance = () => {
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const Balance = () => {
     return null;
   }
 
-const formattedNumber = getformatNumber(balance);
+const formattedNumber = prettyBalanceFormat(balance);
 
   return (
     <div className={s.balance_container}>

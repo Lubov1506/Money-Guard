@@ -11,6 +11,7 @@ import { fetchPeriodTrnThunk } from '../../redux/transactions/operations';
 import css from './DoughnutChart.module.css';
 import { getTrasactionCategoryColor } from '../../constants/TransactionConstants';
 import Loader from '../Loader/Loader';
+import { prettyBalanceFormat,prettyMoneyFormat } from 'helpers';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -45,7 +46,7 @@ const DoughnutChart = () => {
   // }, [dispatch]);
 
   const transactions = useSelector(selectPeriodTransactions);
-  console.log(transactions);
+  // console.log(transactions);
   // const isLoading = useSelector(selectIsLoading);
   // if (isLoading) {
   //   return (
@@ -85,7 +86,7 @@ const DoughnutChart = () => {
       },
     ],
   };
-
+  
   return (
     <div className={css.doughnutContainer}>
       {(() => {
@@ -96,7 +97,7 @@ const DoughnutChart = () => {
                 Add expenses and incomes to see the chart
               </p>
               <p className={css.text}>
-                Your balance is ₴ {Math.abs(balance).toFixed(2)}
+                Your balance is ₴ {prettyMoneyFormat(balance)}
               </p>
             </div>
           );
@@ -105,14 +106,14 @@ const DoughnutChart = () => {
             <div>
               <p className={css.text}>Add expenses</p>
               <p className={css.text}>
-                Your income is {Math.abs(incomeTotal).toFixed(2)}₴
+                Your income is {prettyMoneyFormat(incomeTotal)}₴
               </p>
             </div>
           );
         } else {
           return (
             <>
-              <div className={css.balance}>₴ {balance.toFixed(2)}</div>
+              <div className={css.balance}>₴ {prettyBalanceFormat(balance)}</div>
               <Doughnut
                 className={css.doughnut}
                 data={doughnutData}

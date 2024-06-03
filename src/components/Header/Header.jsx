@@ -24,14 +24,14 @@ const Header = () => {
     setIsModalOpen(false);
   };
 
-  const handleLogout = async () => {
-    try {
-      localStorage.clear();
-      navigate('/login');
-    } catch (error) {
-      alert('Failed to exit. Try again');
-    }
-  };
+  // const handleLogout = async () => {
+  //   try {
+  //     localStorage.clear();
+  //     navigate('/login');
+  //   } catch (error) {
+  //     alert('Failed to exit. Try again');
+  //   }
+  // };
   return (
     <>
       <header className={s.header}>
@@ -52,7 +52,9 @@ const Header = () => {
 
       {isModalOpen && (
         <Suspense fallback={<Loader />}>
-          <LogoutModal onClose={close} onLogout={handleLogout} />
+          <LogoutModal onClose={close}
+            // onLogout={handleLogout}
+          />
         </Suspense>
       )}
     </>
