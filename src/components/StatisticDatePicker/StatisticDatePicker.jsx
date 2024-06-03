@@ -6,8 +6,6 @@ import Select from 'react-select';
 import { useDispatch } from 'react-redux';
 import { fetchPeriodTrnThunk } from '../../redux/transactions/operations';
 import { datePickerStyles } from './datePickerStyles';
-import { toast } from 'react-toastify';
-import { toastStyles } from 'components/Toast/toastStyles';
 
 const StatisticDatePicker = () => {
   const currentMonth = new Date().getMonth() + 1;
