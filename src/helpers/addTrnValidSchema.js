@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 
-export const validationSchema = isOnIncomeTab => {
+export const addTrnValidSchema = isOnIncomeTab => {
   return isOnIncomeTab
     ? Yup.object({
         amount: Yup.string().required('Required* '),

@@ -1,36 +1,17 @@
 import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
 import s from './LogoutModal.module.css';
 import { signOutThunk } from '../../redux/auth/operations';
 import FormButton from '../common/FormButton/FormButton';
-import { useMedia } from '../../hooks/useMedia';
+import { useMedia } from 'hooks';
 import Logo from '../common/Logo/Logo';
+import Modal from 'components/Modal/Modal';
 
 const LogoutModal = ({ onClose }) => {
   const dispatch = useDispatch();
   const { isMobile } = useMedia();
 
-  const handleBackDropClick = e => {
-    if (e.target === e.currentTarget) {
-      onClose();
-    }
-  };
-
-  useEffect(() => {
-    const handleKeyDown = e => {
-      if (e.key === 'Escape') {
-        onClose();
-      }
-    };
-    document.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [onClose]);
-
   return (
-    <div className={s.wrapper} onClick={handleBackDropClick}>
+    <Modal onClose={onClose}>
       <div className={s.modal}>
         {!isMobile && <Logo />}
         <h3 className={s.text}>Are you sure you want to log out?</h3>
@@ -50,7 +31,7 @@ const LogoutModal = ({ onClose }) => {
           />
         </div>
       </div>
-    </div>
+    </Modal>
   );
 };
 

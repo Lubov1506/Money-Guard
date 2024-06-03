@@ -4,7 +4,7 @@ import { MdLock } from 'react-icons/md';
 import s from './LoginForm.module.css';
 import { signInThunk } from '../../redux/auth/operations';
 import { useDispatch } from 'react-redux';
-import { validation } from '../../helpers/loginValidation';
+import { loginValidatiSchema } from 'helpers';
 import FormButton from '../common/FormButton/FormButton';
 import { Link } from 'react-router-dom';
 import Logo from '../common/Logo/Logo';
@@ -27,7 +27,7 @@ export const LoginForm = () => {
         <Logo />
         <Formik
           initialValues={initialValues}
-          validationSchema={validation}
+          validationSchema={loginValidatiSchema}
           onSubmit={handleSubmit}
         >
           <Form className={s.form}>
