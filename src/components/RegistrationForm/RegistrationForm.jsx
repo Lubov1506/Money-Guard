@@ -9,6 +9,7 @@ import { registerValidatSchema } from 'helpers';
 import FormButton from '../common/FormButton/FormButton';
 import { Link } from 'react-router-dom';
 import Logo from '../common/Logo/Logo';
+import ProgressBar from '../ProgressBar/ProgressBar';
 
 export const RegistrationForm = () => {
   const dispatch = useDispatch();
@@ -98,13 +99,18 @@ export const RegistrationForm = () => {
                     required
                     // autoComplete="off"
                   />
+                  <ProgressBar
+                    className={s.progressBarComponent}
+                    password={values.password}
+                    confirmPassword={values.confirmPassword}
+                  />
                   <ErrorMessage
                     className={s.error}
                     name="confirmPassword"
                     component="span"
                   />
                 </div>
-                <PasswordStrengthBar
+                {/* <PasswordStrengthBar
                   password={values.password}
                   className={s.bar}
                   style={{ top: '-40px' }}
@@ -117,7 +123,7 @@ export const RegistrationForm = () => {
                   ]}
                   scoreWords={[]}
                   shortScoreWord={''}
-                />
+                /> */}
               </div>
               <div className={s.btns}>
                 <FormButton
