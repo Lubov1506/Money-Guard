@@ -1,8 +1,8 @@
 // import { useEffect } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
-import { useSelector, useDispatch } from 'react-redux';
-import { selectUser } from '../../redux/auth/selectors';
+import { useSelector } from 'react-redux';
+
 import { selectPeriodTransactions } from '../../redux/transactions/selectors';
 // import { fetchPeriodTrnThunk } from '../../redux/transactions/operations';
 import css from './DoughnutChart.module.css';
@@ -49,8 +49,6 @@ const optionsDefault = {
 };
 
 const DoughnutChart = () => {
-  const user = useSelector(selectUser);
-  const balance = user ? user.balance : 0;
   // const getCurrentMonthYear = () => {
   //   const currentDate = new Date();
   //   const month = currentDate.getMonth() + 1;
@@ -74,8 +72,10 @@ const DoughnutChart = () => {
 
   const expenseTotal = transactions.expenseSummary || 0;
   const incomeTotal = transactions.incomeSummary || 0;
+  const total = incomeTotal + expenseTotal;
+  const balance = total ? total : 0;
 
-  console.log(expenseTotal, incomeTotal);
+  console.log('Expense ', expenseTotal, 'Income ', incomeTotal);
 
   const data = expense.map(item => ({
     ...item,
