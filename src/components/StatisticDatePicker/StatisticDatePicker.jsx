@@ -11,6 +11,7 @@ const StatisticDatePicker = () => {
   const currentMonth = new Date().getMonth() + 1;
   const currentYear = getYear(new Date());
   const [selectedYear, setSelectedYear] = useState(currentYear);
+  console.log(currentMonth);
   const [selectedMonth, setSelectedMonth] = useState(null);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -21,19 +22,13 @@ const StatisticDatePicker = () => {
     (_, i) => 2020 + i
   );
   const yearOptions = years.map(year => ({ value: year, label: year }));
-  const monthsOptions = Array.from({ length: 12 }, (e, i) => {
+  const monthsOptions = Array.from({ length: 13 }, (e, i) => {
     const month = new Date(0, i).toLocaleString('en', { month: 'long' });
-    return {
-      value: i + 1,
-      label: month,
-      isDisabled: i + 1 > currentMonth && selectedYear === currentYear,
-    };
+    return i === 0
+      ? { value: null, label: 'All time' }
+      : { value: i, label: month };
   });
-  monthsOptions.push({ value: null, label: 'All time' });
-
-  const onChange = inputValue => {
-    setSelectedMonth(inputValue);
-  };
+  console.log(monthsOptions);
 
   return (
     <div className={s.monthYearPick_wrapper}>
@@ -49,7 +44,7 @@ const StatisticDatePicker = () => {
       <Select
         styles={datePickerStyles}
         className={s.monthYearPick}
-        onChange={option => onChange(option.value, option.action)}
+        onChange={option => setSelectedMonth(option.value)}
         options={monthsOptions}
         placeholder="Select month"
       />
