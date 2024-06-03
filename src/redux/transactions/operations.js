@@ -23,6 +23,7 @@ export const fetchPeriodTrnThunk = createAsyncThunk(
         const { data } = await walletAPI.get('/transactions-summary', {
           params: { month, year },
         });
+        console.log(data);
         return data;
       }
     } catch (error) {
