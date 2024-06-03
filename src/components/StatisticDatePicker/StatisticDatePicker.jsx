@@ -37,7 +37,14 @@ const StatisticDatePicker = () => {
 
   return (
     <div className={s.monthYearPick_wrapper}>
-      {/* <Toast /> */}
+      <Select
+        defaultValue={{ value: null, label: 'All months' }}
+        styles={datePickerStyles}
+        className={s.monthYearPick}
+        onChange={option => setSelectedMonth(option.value)}
+        options={monthsOptions}
+        placeholder="Select month"
+      />
       <Select
         defaultValue={{ value: currentYear, label: currentYear }}
         styles={datePickerStyles}
@@ -46,14 +53,6 @@ const StatisticDatePicker = () => {
         openMenuOnClick={true}
         placeholder="Select year"
         options={yearOptions}
-      />
-      <Select
-        defaultValue={{ value: null, label: 'All months' }}
-        styles={datePickerStyles}
-        className={s.monthYearPick}
-        onChange={option => setSelectedMonth(option.value)}
-        options={monthsOptions}
-        placeholder="Select month"
       />
     </div>
   );

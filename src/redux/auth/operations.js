@@ -20,6 +20,7 @@ export const signUpThunk = createAsyncThunk(
       setAuthHeader(data.token);
       return data;
     } catch (error) {
+      toast.error('Something went wrong!', toastStyles);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -35,6 +36,8 @@ export const signInThunk = createAsyncThunk(
 
       return data;
     } catch (error) {
+      toast.error('You are not logged in!', toastStyles);
+
       return thunkAPI.rejectWithValue(error.message);
     }
   }
