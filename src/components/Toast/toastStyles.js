@@ -4,7 +4,7 @@ export const toastStyles = {
   closeOnClick: true,
   pauseOnHover: true,
   draggable: true,
-  progress: undefined,
+
   style: {
     backgroundColor: '#c754ebb4 ',
     color: 'white',
