@@ -19,7 +19,7 @@
 
 .balance {
   position: absolute;
-  font-family: var(--font-family);
+  font-family: 'Poppins SemiBold';
   font-weight: 600;
   font-size: 18px;
   text-align: center;
@@ -30,9 +30,38 @@
   transform: translate(-50%, -50%);
 }
 .doughnut {
+  font-family: 'Poppins Regular';
   z-index: 1000;
 }
 
 .text {
+  font-family: 'Poppins Regular';
+  font-weight: 400;
+  font-size: 14px;
   text-align: center;
+  line-height: 1.5;
+  display: none;
+  color: var(--white);
+  @media (min-width: 767px) {
+    display: block;
+  }
+}
+.textMobile {
+  font-family: 'Poppins Regular';
+  font-weight: 400;
+  font-size: 12px;
+  text-align: center;
+  line-height: 1.5;
+  color: var(--white);
+
+  @media (min-width: 767px) {
+    display: none;
+  }
+}
+.positiveBalance {
+  color: var(--white);
+}
+
+.negativeBalance {
+  color: red;
 }
