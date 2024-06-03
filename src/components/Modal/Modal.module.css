@@ -8,18 +8,18 @@
   backdrop-filter: blur(7px);
   background: rgba(34, 13, 91, 0.23);
 }
-.content {
+/* .content {
   position: relative;
   background-color: white;
-  /* padding: 20px; */
+  padding: 20px;
   overflow: hidden;
   max-width: 1000px;
   border-radius: 5px;
   h1 {
     font-size: 2rem;
   }
-}
-.closeBtn {
+} */
+/* .closeBtn {
   position: absolute;
   top: 5px;
   right: 5px;
@@ -27,4 +27,4 @@
   border: none;
   font-size: 20px;
   cursor: pointer;
-}
+} */

@@ -13,8 +13,6 @@ export const toastStyles = {
     fontFamily: 'Poppins, sans-serif',
     borderRadius: '8px',
   },
-  bodyClassName: 'grow-font-size',
-  progressClassName: 'fancy-progress-bar',
   theme: 'colored',
 };
 

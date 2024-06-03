@@ -6,8 +6,6 @@ import Select from 'react-select';
 import { useDispatch } from 'react-redux';
 import { fetchPeriodTrnThunk } from '../../redux/transactions/operations';
 import { datePickerStyles } from './datePickerStyles';
-import { toast } from 'react-toastify';
-import { toastStyles } from 'components/Toast/toastStyles';
 
 const StatisticDatePicker = () => {
   const currentMonth = new Date().getMonth() + 1;
@@ -18,7 +16,6 @@ const StatisticDatePicker = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchPeriodTrnThunk({ year: selectedYear, month: selectedMonth }));
-    toast.success('Data is loaded', toastStyles, { autoClose: 2000 });
   }, [selectedMonth, selectedYear, dispatch]);
   const years = Array.from(
     { length: getYear(new Date()) - 2020 + 1 },
