@@ -90,7 +90,7 @@ export const RegistrationForm = () => {
                   />
                 </div>
                 <div className={s.inputGroup}>
-                  <MdLock className={s.inputIcon} />
+                  <MdLock className={s.inputIconLast} />
                   <Field
                     type="password"
                     name="confirmPassword"

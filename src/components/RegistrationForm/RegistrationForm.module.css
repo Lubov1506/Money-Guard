@@ -147,6 +147,16 @@
   font-size: 20px;
   color: var(--white-40);
 }
+.inputIconLast {
+  position: absolute;
+  top: 35%;
+  left: 10px;
+  transform: translateY(-50%);
+  width: 25px;
+  height: 24px;
+  font-size: 20px;
+  color: var(--white-40);
+}
 
 .error {
   color: var(--yellow);
