@@ -1,10 +1,34 @@
-.monthYearPick {
-  max-width: 295px;
-  color: var(--white);
-  font-size: 16px;
-  font-weight: 400;
-  border-radius: 8px;
-  border: 1px solid var(--white-60, rgba(255, 255, 255, 0.6));
-  margin-bottom: 20px;
-  color: #ffffff1a;
+.monthYearPick_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  /* border: 1px solid var(--white-60, rgba(255, 255, 255, 0.6)); */
+
+  @media only screen and (min-width: 768px) {
+    width: 336px;
+  }
+  @media only screen and (min-width: 1280px) {
+    width: 395px;
+    flex-direction: row;
+  }
+
+  .monthYearPick {
+    width: 280px;
+    color: var(--white);
+    font-size: 16px;
+    font-weight: 400;
+    border-radius: 8px;
+    border: 1px solid var(--white-60, rgba(255, 255, 255, 0.6));
+    color: #ffffff1a;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    @media only screen and (min-width: 768px) {
+      width: 336px;
+    }
+    @media only screen and (min-width: 1280px) {
+      width: 395px;
+      flex-direction: row;
+    }
+  }
 }
