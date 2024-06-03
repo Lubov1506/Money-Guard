@@ -23,7 +23,7 @@ const TransactionsDescItem = ({ item }) => {
             item.type === 'EXPENSE' ? s.minus : s.plus
           )}
         >
-          {Math.abs(item.amount)}
+          {Math.abs(item.amount).toFixed(2)}
         </td>
         <td className={`${s.value} ${s.value_end}`}>
           <button
