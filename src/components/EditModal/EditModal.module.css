@@ -61,6 +61,7 @@ form .inputWrapper {
   display: flex;
   flex-direction: column;
   gap: 40px;
+  position: relative;
 }
 
 .inputWrapper .inputField input,
@@ -94,6 +95,9 @@ form .inputWrapper {
   /* background-color: rgba(133, 93, 175, 0.13); */
   color: rgba(251, 251, 251, 1);
 }
+.inputField {
+  position: relative;
+}
 
 .inputField input:focus,
 .inputField select:focus {
@@ -115,6 +119,8 @@ form .inputWrapper {
 .inputField p {
   color: rgb(255, 134, 141);
   font-size: 14px;
+  position: absolute;
+  top: 3em;
   padding-left: 12px;
   /* padding-left: 20px; */
 }
