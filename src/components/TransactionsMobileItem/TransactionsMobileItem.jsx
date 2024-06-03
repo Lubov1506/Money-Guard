@@ -45,8 +45,7 @@ const TransactionsMobileItem = ({ item = {} }) => {
                 item.type === 'EXPENSE' ? s.minus : s.plus
               )}
             >
-              {' '}
-              {Math.abs(item.amount)}
+              {Math.abs(item.amount).toFixed(2)}
             </td>
           </tr>
           <tr className={s.t_row}>
