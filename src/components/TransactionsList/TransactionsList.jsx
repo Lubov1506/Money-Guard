@@ -4,8 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectTransactions } from '../../redux/transactions/selectors';
 import { useEffect } from 'react';
 import { fetchAllTrnThunk } from '../../redux/transactions/operations';
-import { useMedia } from '../../hooks/useMedia';
+
 import s from './TransactionsList.module.css';
+import EmptyHistory from 'components/EmptyHistory/EmptyHistory';
+import { useMedia } from 'hooks';
 
 const TransactionsList = () => {
   const transactions = useSelector(selectTransactions);
@@ -16,9 +18,9 @@ const TransactionsList = () => {
   }, [dispatch]);
 
   const { isTablet } = useMedia();
-if(!transactions.length){
-  return <p>There are no data yet</p>
-}
+  if (!transactions.length) {
+    return <EmptyHistory />;
+  }
   return (
     <>
       {isTablet ? (
