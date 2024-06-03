@@ -1,21 +1,29 @@
 .backdrop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: var(--background);
+  width: 100%;
+  height: 100%;
   background-repeat: no-repeat;
-  background-size: 100% 100%;
-  object-fit: cover;
+  background-size: cover;
+  background-position: center;
+  background-image: url('../../images/login/login-modal-mob@1x.webp'),
+    url('../../images/login/login-modal-circle-mob@1x.webp');
+}
+@media only screen and (min-resolution: 192dpi) {
+  .backdrop {
+    background-image: url('../../images/login/login-modal-mob@2x.webp'),
+      url('../../images/login/login-modal-circle-mob@2x.webp');
+  }
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 768px) and (max-width: 1280px) {
   .backdrop {
     background-image: url('../../images/register/bg-register-tab@1x.webp');
   }
 }
-@media only screen and (min-width: 768px) and (min-resolution: 192dpi) {
+@media only screen and (min-width: 768px) and (min-resolution: 192dpi) and (max-width: 1280px) {
   .backdrop {
     background-image: url('../../images/register/bg-register-tab@2x.webp');
   }
@@ -37,20 +45,7 @@
   flex-direction: column;
   align-self: center;
   align-items: center;
-  margin: 0 auto;
-  width: 100%;
-  height: 100%;
   padding: 98px 20px;
-  background-image: url('../../images/login/login-modal-mob@1x.webp'),
-    url('../../images/login/login-modal-circle-mob@1x.webp');
-  background-color: var(--form-color);
-  background-repeat: no-repeat;
-}
-@media only screen and (min-resolution: 192dpi) {
-  .modal {
-    background-image: url('../../images/login/login-modal-mob@2x.webp'),
-      url('../../images/login/login-modal-circle-mob@2x.webp');
-  }
 }
 
 @media only screen and (min-width: 768px) {
@@ -58,11 +53,6 @@
     border-radius: 8px;
     backdrop-filter: blur(100px);
     box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
     width: 533px;
     height: 624px;
     padding: 40px 62px;
