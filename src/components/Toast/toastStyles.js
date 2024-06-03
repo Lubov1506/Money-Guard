@@ -1,5 +1,5 @@
 export const toastStyles = {
-  autoClose: 3000,
+  autoClose: 2000,
   hideProgressBar: false,
   closeOnClick: true,
   pauseOnHover: true,
@@ -9,6 +9,9 @@ export const toastStyles = {
     backgroundColor: '#c754ebb4 ',
     color: 'white',
     fontSize: '16px',
+    padding: '10px',
+    fontFamily: 'Poppins, sans-serif',
+    borderRadius: '8px',
   },
   bodyClassName: 'grow-font-size',
   progressClassName: 'fancy-progress-bar',
