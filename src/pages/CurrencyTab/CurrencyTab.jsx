@@ -1,9 +1,7 @@
-import Currency from "../../components/Currency/Currency"
+import { Currency } from 'components';
 
 const CurrencyTab = () => {
-  return (
-    <Currency/>
-  )
-}
+  return <Currency />;
+};
 
-export default CurrencyTab
+export default CurrencyTab;

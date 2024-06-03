@@ -1,12 +1,13 @@
 import { Suspense, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { ImExit } from 'react-icons/im';
-import LogoutModal from '../LogoutModal/LogoutModal';
+import { useMedia } from 'hooks';
 import { selectUser } from '../../redux/auth/selectors';
+
 import s from './Header.module.css';
-import Loader from '../Loader/Loader';
-import Logo from '../common/Logo/Logo';
-import { useMedia } from '../../hooks/useMedia';
+import Logo from 'components/common/Logo/Logo';
+import Loader from 'components/Loader/Loader';
+import LogoutModal from 'components/LogoutModal/LogoutModal';
 
 const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -26,13 +27,11 @@ const Header = () => {
   return (
     <>
       <header className={s.header}>
-
-          <Logo
-            type="header"
-            width={isMobile ? 18 : 25}
-            height={isMobile ? 18 : 23}
-          />
-
+        <Logo
+          type="header"
+          width={isMobile ? 18 : 25}
+          height={isMobile ? 18 : 23}
+        />
 
         <div className={s.user}>
           <span className={s.userName}>{userName}</span>
