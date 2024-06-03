@@ -10,12 +10,14 @@
 @media only screen and (min-width: 768px) {
   .balance_container {
     width: 336px;
+    margin-bottom: 20px;
   }
 }
 @media only screen and (min-width: 1280px) {
   .balance_container {
     width: 100%;
     border-radius: 0;
+    margin-bottom: 32px;
   }
 }
 .balance_label {
