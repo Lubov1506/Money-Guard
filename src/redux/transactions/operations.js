@@ -56,6 +56,7 @@ export const editTrnThunk = createAsyncThunk(
         comment,
         amount,
       });
+      await thunkAPI.dispatch(getBalanceThunk());
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -68,6 +69,7 @@ export const deleteTrnThunk = createAsyncThunk(
   async (transactionId, thunkAPI) => {
     try {
       await walletAPI.delete(`/transactions/${transactionId}`);
+      await thunkAPI.dispatch(getBalanceThunk());
       return transactionId;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
