@@ -51,7 +51,7 @@ const TransactionsDescItem = ({ deletedIds, item, handleDelete }) => {
             text="Delete"
             variant={'btn_delete'}
             isDisabled={deletedIds.some(idFromArray => idFromArray === item.id)}
-            handlerFunction={() => handleDelete(item.id)}
+            handlerFunction={() => handleDelete(item.id, item.amount, item.comment)}
           />
         </td>
       </tr>
