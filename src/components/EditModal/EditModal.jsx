@@ -107,6 +107,7 @@ const EditModal = ({ closeModal, item }) => {
                     selected={startDate}
                     onChange={date => setStartDate(date)}
                     calendarStartDay={1}
+                    maxDate={new Date()}
                   />
                   <FiCalendar className={s.icon} />
                 </div>
