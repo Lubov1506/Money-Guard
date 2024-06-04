@@ -47,7 +47,6 @@
   scrollbar-width: thin;
   scrollbar-color: rgba(70, 20, 59, 0.589) rgba(180, 128, 172, 0.411);
   scroll-behavior: smooth;
-  scrollbar-gutter: stable both-edges;
 }
 
 .list {
@@ -71,7 +70,7 @@
 
 .t_row {
   display: grid;
-  grid-template-columns: 13.9% 5.6% 25.4% 15.3% 20.64% auto;
+  grid-template-columns: 14.5% 5% 25.4% 14.4% 20.34% auto;
 }
 .t_row:first-child {
   text-align: left;
