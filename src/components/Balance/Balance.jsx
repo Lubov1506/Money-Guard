@@ -1,13 +1,13 @@
 import { useSelector } from 'react-redux';
 import s from './Balance.module.css';
-import { getformatNumber } from 'helpers';
 import { selectBalance } from '../../redux/auth/selectors';
 import clsx from 'clsx';
+import prettyMoneyFormat from '../../constants/PrettyMoneyFormat';
 
 const Balance = () => {
   const balance = useSelector(selectBalance);
 
-  const formattedNumber = getformatNumber(balance);
+  const formattedNumber = prettyMoneyFormat(balance);
 
   return (
     <div className={s.balance_container}>

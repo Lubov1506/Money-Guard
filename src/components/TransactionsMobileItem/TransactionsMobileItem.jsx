@@ -6,11 +6,12 @@ import { getTransactionCategory } from '../../constants/TransactionConstants';
 import { deleteTrnThunk } from '../../redux/transactions/operations';
 import { useDispatch } from 'react-redux';
 import clsx from 'clsx';
-import dateFormat from 'helpers/dateFormat';
+import prettyMoneyFormat from '../../constants/PrettyMoneyFormat';
 
 const TransactionsMobileItem = ({ item = {} }) => {
   const dispatch = useDispatch();
   const { openEditModal } = useOutletContext();
+  const formattedNumber = prettyMoneyFormat(item.amount);
   return (
     <li className={s.li}>
       <table
@@ -22,7 +23,7 @@ const TransactionsMobileItem = ({ item = {} }) => {
         <tbody className={s.tbody}>
           <tr className={s.t_row}>
             <td className={s.title}>Date</td>
-            <td className={s.value}>{dateFormat(item.transactionDate)}</td>
+            <td className={s.value}>{item.transactionDate}</td>
           </tr>
           <tr className={s.t_row}>
             <td className={s.title}>Type</td>
@@ -46,7 +47,7 @@ const TransactionsMobileItem = ({ item = {} }) => {
                 item.type === 'EXPENSE' ? s.minus : s.plus
               )}
             >
-              {Math.abs(item.amount).toFixed(2)}
+              {formattedNumber}
             </td>
           </tr>
           <tr className={s.t_row}>
