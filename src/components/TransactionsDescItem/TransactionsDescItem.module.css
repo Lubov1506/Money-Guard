@@ -34,20 +34,21 @@
 }
 .value_type {
   display: block;
-  margin-left: 18px;
+  margin-left: 16px;
 }
 
 .value_strong {
   font-family: var(--font-family);
   font-weight: 600;
   font-size: 16px;
-  text-align: center;
 }
 .minus {
   color: var(--dashboard-text);
+  padding-left: 20px;
 }
 .plus {
   color: var(--yellow);
+  padding-left: 20px;
 }
 
 .btn_delete {
