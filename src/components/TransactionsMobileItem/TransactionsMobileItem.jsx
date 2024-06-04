@@ -55,7 +55,7 @@ const TransactionsMobileItem = ({ item = {}, handleDelete }) => {
                 type="button"
                 text="Delete"
                 variant={'btn_delete'}
-                handlerFunction={() => handleDelete(item.id)}
+               handlerFunction={() => handleDelete(item.id, item.amount, item.comment)}
               />
             </td>
             <td className={s.value}>

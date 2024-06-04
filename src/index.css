@@ -44,3 +44,8 @@ input {
 input:focus {
   border-bottom: 1px solid rgba(186, 14, 14, 0.814);
 }
+
+.undelete_toast {
+}
+.delete_btn {
+}

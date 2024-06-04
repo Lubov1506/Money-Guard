@@ -32,7 +32,9 @@ const TransactionsList = () => {
     setDeletetIds(prev => [...prev, transactionId]);
     const toastId = toast(
       <div className={s.undelete_toast}>
-        <p>Delete transaction on sum {comment} {Math.abs(sum)}</p>
+        <h3>Delete ?</h3>
+        <p>{comment} </p>
+        <p>{Math.abs(sum)}</p>
         <button
           className={s.delete_btn}
           onClick={() => {
