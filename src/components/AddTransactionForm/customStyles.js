@@ -33,6 +33,9 @@ export const customStyles = {
     background:
       'linear-gradient(360deg, rgba(83, 61, 186, 0.7) 0%, rgba(80, 48, 154, 0.7) 35.94%, rgba(106, 70, 165, 0.7) 61.04%, rgba(133, 93, 175, 0.7) 100%)',
     backdropFilter: 'blur(100px)',
+    scrollBehavior: 'smooth',
+    scrollbarWidth: 'thin',
+    scrollbarColor: '#6A46A5 #855daf99',
   }),
   option: (provided, state) => ({
     ...provided,
