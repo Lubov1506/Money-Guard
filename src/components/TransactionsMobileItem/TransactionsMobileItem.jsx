@@ -7,6 +7,7 @@ import {useSelector } from 'react-redux';
 import clsx from 'clsx';
 import { selectCategories } from '../../redux/transactions/selectors';
 import dateFormat from 'helpers/dateFormat';
+import { prettyMoneyFormat } from 'helpers/prettyMoneyFormat';
 
 const TransactionsMobileItem = ({ item = {}, handleDelete }) => {
 const categories = useSelector(selectCategories);
@@ -47,7 +48,7 @@ const categories = useSelector(selectCategories);
                 item.type === 'EXPENSE' ? s.minus : s.plus
               )}
             >
-              {Math.abs(item.amount).toFixed(2)}
+              {prettyMoneyFormat(item.amount)}
             </td>
           </tr>
           <tr className={s.t_row}>
