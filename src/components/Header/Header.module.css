@@ -35,7 +35,6 @@
   display: flex;
   align-items: center;
   color: var(--white-60);
-  padding: 0 5px;
   span {
     padding: 0 10px;
   }
@@ -44,7 +43,7 @@
     border-left: 1px solid var(--white-60);
     background-color: transparent;
     color: var(--white-60);
-    padding: 0 10px;
+    padding-left: 12px;
     display: flex;
     align-items: center;
     gap: 7px;
