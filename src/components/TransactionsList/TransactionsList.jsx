@@ -15,7 +15,9 @@ import { toast } from 'react-toastify';
 import { toastStyles } from 'components/Toast/toastStyles';
 
 const TransactionsList = () => {
-  const transactions = useSelector(selectTransactions);
+  const transactions = useSelector(selectTransactions).toSorted(
+    (a, b) => new Date(b.transactionDate) - new Date(a.transactionDate)
+  );
   const dispatch = useDispatch();
   const [pending, setPending] = useState(false);
   const [deletedId, setDeletetId] = useState(null);

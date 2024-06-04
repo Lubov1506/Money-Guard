@@ -12,7 +12,7 @@ import LogoutModal from 'components/LogoutModal/LogoutModal';
 const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const user = useSelector(selectUser);
-  const userName = user ? user.email.split('@')[0] : '';
+  const userName = user ? user.username : null;
 
   const { isMobile } = useMedia();
   const open = () => {

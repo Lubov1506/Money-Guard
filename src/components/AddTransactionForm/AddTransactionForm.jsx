@@ -38,7 +38,9 @@ const AddTransactionFormNew = ({ closeModal }) => {
       addTrnThunk({
         transactionDate: startDate,
         type: isOnIncomeTab ? 'INCOME' : 'EXPENSE',
-        categoryId: getTransactionId(values.category || 'Income'),
+        categoryId: isOnIncomeTab
+          ? '063f1132-ba5d-42b4-951d-44011ca46262'
+          : getTransactionId(values.category),
         comment: values.comment,
         amount: isOnIncomeTab ? values.amount : 0 - values.amount,
       })
