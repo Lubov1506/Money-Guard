@@ -18,6 +18,7 @@ import Slash from './Slash';
 import clsx from 'clsx';
 import { useMedia } from 'hooks';
 import Modal from 'components/Modal/Modal';
+import { editValidationSchema } from 'helpers/editValidationSchema';
 
 const EditModal = ({ closeModal, item }) => {
   const [isOnIncomeTab, setIsOnIncomeTab] = useState(
@@ -71,7 +72,7 @@ const EditModal = ({ closeModal, item }) => {
             </svg>
           </button>
         )}
-        <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+        <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={editValidationSchema}>
           {({ isSubmitting }) => (
             <Form className={s.form}> 
               <h2 className={s.formTitle}>Edit transaction</h2>
