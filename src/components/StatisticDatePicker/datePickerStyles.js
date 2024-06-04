@@ -19,6 +19,9 @@ export const datePickerStyles = {
     borderRadius: '8px',
     boxShadow: '0px 4px 60px 0px rgba(0, 0, 0, 0.25)',
     backdropFilter: 'blur(50px)',
+    scrollBehavior: 'smooth',
+    scrollbarWidth: 'thin',
+    scrollbarColor: '#6A46A5 #855daf99',
   }),
   option: (baseStyles, state) => ({
     ...baseStyles,
