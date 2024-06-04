@@ -9,7 +9,6 @@ import Loader from 'components/Loader/Loader';
 import { Dashboard, LoginPage, NotFound, RegistrationPage } from './pages';
 import { useMedia } from './hooks';
 
-
 const CurrencyTab = lazy(() => import('./pages/CurrencyTab/CurrencyTab'));
 const HomeTab = lazy(() => import('./pages/HomeTab/HomeTab'));
 const StatisticsTab = lazy(() => import('./pages/StatisticsTab/StatisticsTab'));
@@ -40,7 +39,7 @@ function App() {
             {isMobile ? (
               <Route path="currency" element={<CurrencyTab />} />
             ) : (
-              <Route path="currency" element={<Navigate to='/' />} />
+              <Route path="currency" element={<Navigate to="/" />} />
             )}
           </Route>
 

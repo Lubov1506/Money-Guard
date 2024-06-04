@@ -1,4 +1,5 @@
 .link_icon_wrapper {
+  font-family: var(--font-family);
   margin-top: 12px;
   margin-bottom: 15px;
   justify-content: center;
@@ -11,11 +12,13 @@
     flex-direction: column;
     margin-top: 40px;
     gap: 12px;
-    margin-left: 16px;
+    margin-left: 0px;
   }
 }
-
-.link_icon_wrapper li {
+@media screen and (min-width: 1128px) {
+  .link_icon_wrapper {
+    margin-left: 16px;
+  }
 }
 
 .link {
@@ -25,23 +28,24 @@
   color: inherit;
 }
 .icon {
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: var(--white-60);
   border-radius: 5px;
-  padding: 10px;
+  padding: 6px;
   width: 38px;
   height: 38px;
   fill: rgba(47, 21, 176, 0.73);
 }
 .active .icon {
-  background-color: #734aef;
-
-  fill: white;
+  background-color: var(--icon-violet);
+  box-shadow: 0 3px 10px 0 rgba(74, 86, 226, 0.5);
+  fill: var(--white);
 }
 
 @media screen and (min-width: 768px) {
   .icon {
-    /* width: 18px;
-    height: 18px; */
+    padding: 3px;
+    width: 18px;
+    height: 18px;
   }
 }
 
@@ -52,5 +56,5 @@
   margin-left: 23px;
   font-weight: 400;
   font-size: 18px;
-  color: #fbfbfb;
+  color: var(--white);
 }

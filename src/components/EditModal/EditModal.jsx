@@ -2,23 +2,23 @@ import { useEffect, useState } from 'react';
 import s from './EditModal.module.css';
 import FormButton from '../common/FormButton/FormButton';
 import icons from '../../images/icons/sprite.svg';
-import { useMediaQuery } from 'react-responsive';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 import ReactDatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import {
-  transactionCategories,
   getTransactionId,
   getTransactionCategory,
 } from '../../constants/TransactionConstants';
-import { addTrnThunk, editTrnThunk } from '../../redux/transactions/operations';
+import {  editTrnThunk } from '../../redux/transactions/operations';
 import { getBalanceThunk } from '../../redux/auth/operations';
 import { FiCalendar } from 'react-icons/fi';
 
 import Slash from './Slash';
 import clsx from 'clsx';
 import { useMedia } from 'hooks';
+import Modal from 'components/Modal/Modal';
+import { editValidationSchema } from 'helpers/editValidationSchema';
 
 const EditModal = ({ closeModal, item }) => {
   const [isOnIncomeTab, setIsOnIncomeTab] = useState(
@@ -27,37 +27,15 @@ const EditModal = ({ closeModal, item }) => {
   useEffect(() => {}, [isOnIncomeTab]);
 
   const { isTablet } = useMedia();
-  console.log(item);
   const dispatch = useDispatch();
 
   const [startDate, setStartDate] = useState(item.transactionDate);
 
   const initialValues = {
-    amount: Math.abs(item.amount) ,
+    amount: Math.abs(item.amount),
     comment: item.comment,
     category: getTransactionCategory(item.categoryId),
   };
-
-  //   const { isMobile } = useMedia();
-
-  const handleBackDropClick = e => {
-    if (e.target === e.currentTarget) {
-      closeModal();
-    }
-  };
-
-  useEffect(() => {
-    const handleKeyDown = e => {
-      if (e.key === 'Escape') {
-        closeModal();
-      }
-    };
-    document.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [closeModal]);
 
   const handleSubmit = (values, { setSubmitting, setStatus }) => {
     setSubmitting(true);
@@ -69,7 +47,6 @@ const EditModal = ({ closeModal, item }) => {
         id: item.id,
         transactionDate: startDate,
         type: isOnIncomeTab ? 'INCOME' : 'EXPENSE',
-        // categoryId: getTransactionId(values.category || 'Income'),
         comment: values.comment,
         amount: isOnIncomeTab ? values.amount : 0 - values.amount,
       })
@@ -86,7 +63,7 @@ const EditModal = ({ closeModal, item }) => {
   };
 
   return (
-    <div className={s.wrapper} onClick={handleBackDropClick}>
+    <Modal onClose={closeModal}>
       <div className={s.modalContent}>
         {isTablet && (
           <button className={s.closeButton} onClick={() => closeModal()}>
@@ -95,9 +72,9 @@ const EditModal = ({ closeModal, item }) => {
             </svg>
           </button>
         )}
-        <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+        <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={editValidationSchema}>
           {({ isSubmitting }) => (
-            <Form>
+            <Form className={s.form}> 
               <h2 className={s.formTitle}>Edit transaction</h2>
 
               <div className={s.switcheWrapper}>
@@ -109,25 +86,7 @@ const EditModal = ({ closeModal, item }) => {
               </div>
 
               <div className={s.inputWrapper}>
-                {/* {!isOnIncomeTab && (
-                  <div className={`${s.inputField} ${s.category}`}>
-                                      <Field as="select" name="category" autoFocus required onChange={e => {
-                                          console.log(e.target.value);
-                                          setFieldValue('category', e.target.value)
-                                      }}>
-                      <option value="" hidden>
-                        Select your category
-                      </option>
-                      {transactionCategories.slice(0, -1).map(category => (
-                        <option key={category.id} value={category.name}>
-                          {category.name}
-                        </option>
-                      ))}
-                    </Field>
-                    <ErrorMessage name="category" component="p" />
-                  </div>
-                )} */}
-
+              
                 <div className={clsx(s.inputField, s.amount)}>
                   <Field
                     type="number"
@@ -172,7 +131,7 @@ const EditModal = ({ closeModal, item }) => {
           )}
         </Formik>
       </div>
-    </div>
+    </Modal>
   );
 };
 

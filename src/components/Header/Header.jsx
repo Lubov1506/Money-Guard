@@ -8,13 +8,14 @@ import s from './Header.module.css';
 import Logo from 'components/common/Logo/Logo';
 import Loader from 'components/Loader/Loader';
 import LogoutModal from 'components/LogoutModal/LogoutModal';
+import { NavLink } from 'react-router-dom';
 
 const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const user = useSelector(selectUser);
-  const userName = user ? user.email.split('@')[0] : '';
+  const userName = user ? user.username : null;
+
   const { isMobile } = useMedia();
-  // const navigate = useNavigate();
 
   const open = () => {
     setIsModalOpen(true);
@@ -24,23 +25,16 @@ const Header = () => {
     setIsModalOpen(false);
   };
 
-  // const handleLogout = async () => {
-  //   try {
-  //     localStorage.clear();
-  //     navigate('/login');
-  //   } catch (error) {
-  //     alert('Failed to exit. Try again');
-  //   }
-  // };
   return (
     <>
       <header className={s.header}>
-        <Logo
-          type="header"
-          width={isMobile ? 18 : 25}
-          height={isMobile ? 18 : 23}
-        />
-
+        <NavLink to="">
+          <Logo
+            type="header"
+            width={isMobile ? 18 : 25}
+            height={isMobile ? 18 : 23}
+          />
+        </NavLink>
         <div className={s.user}>
           <span className={s.userName}>{userName}</span>
           <button onClick={open} className={s.exitBtn}>
@@ -52,10 +46,7 @@ const Header = () => {
 
       {isModalOpen && (
         <Suspense fallback={<Loader />}>
-          <LogoutModal
-            onClose={close}
-            // onLogout={handleLogout}
-          />
+          <LogoutModal onClose={close} />
         </Suspense>
       )}
     </>

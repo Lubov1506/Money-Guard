@@ -1,18 +1,10 @@
 .table {
   width: 100%;
   margin-top: 46px;
-  margin-left: 69px;
-  max-height: 308px;
   border-collapse: collapse;
 }
 
-.tbody {
-  display: block;
-  width: 100%;
-  max-height: 100%;
-  overflow-y: auto;
-}
-.t_row .title {
+.title {
   padding: 16px 10px 16px 20px;
   font-family: var(--font-family);
   font-weight: 600;
@@ -24,13 +16,6 @@
   backdrop-filter: blur(100px);
   box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
   background: rgba(82, 59, 126, 0.6);
-}
-
-.thead,
-.tbody tr {
-  /* display: table; */
-  width: 100%;
-  table-layout: fixed;
 }
 
 .list {

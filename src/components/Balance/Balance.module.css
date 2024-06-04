@@ -30,9 +30,13 @@
   text-transform: uppercase;
 }
 .balance_amount {
-  font-family: 'Poppins', sans-serif;
+  /* font-family: 'Poppins', sans-serif; */
   font-weight: 700;
   font-size: 30px;
   color: #fbfbfb;
   margin-left: 32px;
+  text-overflow: hidden;
+}
+.negative {
+  color: var(--dashboard-text);
 }

@@ -1,7 +1,7 @@
 import * as yup from 'yup';
 
 export const registerValidatSchema = yup.object().shape({
-  name: yup
+  username: yup
     .string()
     .required('Name is required')
     .min(3, 'Must be at least 3 characters long')

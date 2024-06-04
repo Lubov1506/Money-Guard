@@ -12,8 +12,12 @@ const TransactionsMobileItem = ({ item = {} }) => {
   const { openEditModal } = useOutletContext();
   return (
     <li className={s.li}>
-      <table   className={clsx(s.table, item.type === 'EXPENSE' ? s.table_minus : s.table_plus)}>
-    
+      <table
+        className={clsx(
+          s.table,
+          item.type === 'EXPENSE' ? s.table_minus : s.table_plus
+        )}
+      >
         <tbody className={s.tbody}>
           <tr className={s.t_row}>
             <td className={s.title}>Date</td>
@@ -21,7 +25,7 @@ const TransactionsMobileItem = ({ item = {} }) => {
           </tr>
           <tr className={s.t_row}>
             <td className={s.title}>Type</td>
-            <td className={s.value}>{item.type}</td>
+            <td className={s.value}>{item.type === 'EXPENSE' ? '-' : '+'}</td>
           </tr>
           <tr className={s.t_row}>
             <td className={s.title}>Category</td>
@@ -35,7 +39,14 @@ const TransactionsMobileItem = ({ item = {} }) => {
           </tr>
           <tr className={s.t_row}>
             <td className={s.title}>Sum</td>
-            <td className={clsx(s.value_strong, item.type === 'EXPENSE' ? s.minus : s.plus)}>{item.amount}</td>
+            <td
+              className={clsx(
+                s.value_strong,
+                item.type === 'EXPENSE' ? s.minus : s.plus
+              )}
+            >
+              {Math.abs(item.amount).toFixed(2)}
+            </td>
           </tr>
           <tr className={s.t_row}>
             <td className={s.title}>

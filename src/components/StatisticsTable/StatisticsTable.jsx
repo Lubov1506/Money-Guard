@@ -20,6 +20,7 @@ const StatisticsTable = () => {
           })
           .filter(item => item.type === 'EXPENSE')
       : null;
+
   const incomeData =
     incomeSummary && incomeSummary >= 0 ? prettyMoneyFormat(incomeSummary) : 0;
   const expenseData = expenseSummary ? prettyMoneyFormat(expenseSummary) : 0;

@@ -1,0 +1,22 @@
+.progressBarBackground {
+  margin-top: 6px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 5px;
+  height: 4px;
+
+  @media (min-width: 768px) {
+    width: 409px;
+  }
+}
+
+.progressBar {
+  border-radius: 5px;
+  height: 4px;
+  transition: width 0.2s ease-in-out, background-color 0.2s ease-in-out,
+    filter 0.2s ease-in-out;
+
+  @media (min-width: 768px) {
+    width: 409px;
+  }
+}
