@@ -241,9 +241,8 @@ label:active::after {
   .modalContent {
     box-shadow: 0px 4px 60px 0px #00000040;
     border-radius: 8px;
-    /* min-height: fit-content; */
+    min-height: fit-content;
     width: 540px;
-    height: fit-content;
     padding: 40px 73px;
     margin: auto 0;
     background-image: url('../../images/addTrn/add-desk@1x.webp'),
