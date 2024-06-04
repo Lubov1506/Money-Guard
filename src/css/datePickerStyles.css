@@ -28,3 +28,6 @@
 .react-datepicker__day--disabled {
   color: var(--white-40);
 }
+.react-datepicker__triangle {
+  display: none;
+}
