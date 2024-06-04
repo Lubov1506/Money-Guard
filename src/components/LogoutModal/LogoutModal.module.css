@@ -6,17 +6,19 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  align-self: center;
   align-items: center;
-  text-align: center;
+  justify-content: center;
   margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+
   background-image: url('../../images/addTrn/add-edit-mob1x.webp');
   background-color: var(--form-color);
   background-repeat: no-repeat;
   backdrop-filter: blur(100px);
   box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
   background: var(--form-color);
-  background-size: cover;
+  background-size: 100% 100%;
 }
 @media only screen and (min-resolution: 192dpi) {
   .modal {
@@ -26,6 +28,7 @@
 
 @media only screen and (min-width: 768px) {
   .modal {
+    align-self: center;
     border-radius: 8px;
     backdrop-filter: blur(100px);
     box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
@@ -41,22 +44,6 @@
   .modal {
     background-image: url('../../images/logout/logout-modal-tab@2x.webp'),
       url('../../images/logout/logout-modal-circle-tab@2x.webp');
-  }
-}
-
-.logo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  font-family: var(--font-family);
-  font-weight: 400;
-  font-size: 26px;
-  color: var(--white);
-  margin: 0;
-  img {
-    width: 34px;
   }
 }
 
