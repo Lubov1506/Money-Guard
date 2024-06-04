@@ -12,6 +12,19 @@
   font-size: 14px;
   color: var(--white);
 }
+@media only screen and (min-width: 768px) {
+  .value_strong:nth-child(5) {
+    padding: 13px 0 13px 20px;
+    text-align: right;
+  }
+}
+@media only screen and (min-width: 1280px) {
+  .value_strong:nth-child(5) {
+    padding: 16px 0 16px 20px;
+    text-align: right;
+  }
+}
+
 @media only screen and (min-width: 1280px) {
   .value {
     padding: 16px 10px 16px 20px;
@@ -34,7 +47,7 @@
 }
 .value_type {
   display: block;
-  margin-left: 15px;
+  text-align: center;
 }
 
 .value_strong {

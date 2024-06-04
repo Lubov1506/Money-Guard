@@ -1,6 +1,7 @@
 .doughnutContainer {
   margin: 0 auto;
   width: 280px;
+  height: 280px;
   position: relative;
   display: flex;
   align-items: center;
@@ -46,14 +47,6 @@
     display: none;
   }
 }
-.positiveBalance {
-  color: var(--white);
-}
-
-.negativeBalance {
-  color: var(--dashboard-text);
-}
-
 .balance {
   position: absolute;
   /* font-family: 'Poppins'; */
@@ -65,4 +58,12 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.positiveBalance {
+  color: var(--white);
+}
+
+.negativeBalance {
+  color: var(--dashboard-text);
 }
