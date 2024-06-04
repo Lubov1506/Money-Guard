@@ -19,16 +19,7 @@
   width: 280px;
   border-bottom: 2px solid rgba(255, 255, 255, 0.2);
 }
-.actionsRow {
-  display: flex;
-  justify-content: space-between;
-  padding: 12px 20px;
-}
-.actionCell {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 .title {
   font-family: var(--font-family);
   font-weight: 600;

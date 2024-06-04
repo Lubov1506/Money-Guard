@@ -7,7 +7,7 @@ import { fetchAllTrnThunk } from '../../redux/transactions/operations';
 import s from './TransactionsList.module.css';
 import EmptyHistory from 'components/EmptyHistory/EmptyHistory';
 import { useMedia } from 'hooks';
-import DeleteToast from '../DeleteToast/DeleteToast';
+import useDeleteToast from '../DeleteToast/DeleteToast';
 
 const TransactionsList = () => {
   const transactions = useSelector(selectTransactions).toSorted(
@@ -20,7 +20,7 @@ const TransactionsList = () => {
   }, [dispatch]);
 
   const { isTablet } = useMedia();
-  const { showDeleteToast, deletedIds } = DeleteToast();
+  const { showDeleteToast, deletedIds } = useDeleteToast();
 
   const handleDelete = (transactionId, sum, comment) => {
     showDeleteToast(transactionId, sum, comment);
@@ -33,34 +33,28 @@ const TransactionsList = () => {
   return (
     <>
       {isTablet ? (
-        <div className={s.general}>
-          <table className={s.thead}>
-            <thead>
-              <tr className={s.t_row}>
-                <th className={s.title}>Date</th>
-                <th className={s.title}>Type</th>
-                <th className={s.title}>Category</th>
-                <th className={s.title}>Comment</th>
-                <th className={s.title}>Sum</th>
-                <th className={s.title}></th>
-              </tr>
-            </thead>
-          </table>
-          <div className={s.tbody_scroll}>
-            <table className={s.tbody}>
-              <tbody>
-                {transactions.map(item => (
-                  <TransactionsDescItem
-                    key={item.id}
-                    item={item}
-                    deletedIds={deletedIds}
-                    handleDelete={handleDelete}
-                  />
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
+        <table className={s.table}>
+          <thead className={s.thead}>
+            <tr className={s.t_row}>
+              <th className={s.title}>Date</th>
+              <th className={s.title}>Type</th>
+              <th className={s.title}>Category</th>
+              <th className={s.title}>Comment</th>
+              <th className={s.title}>Sum</th>
+              <th className={s.title}></th>
+            </tr>
+          </thead>
+          <tbody className={s.tbody}>
+            {transactions.map(item => (
+              <TransactionsDescItem
+                key={item.id}
+                item={item}
+                deletedIds={deletedIds}
+                handleDelete={handleDelete}
+              />
+            ))}
+          </tbody>
+        </table>
       ) : (
         <ul className={s.list}>
           {transactions.map(item => (
