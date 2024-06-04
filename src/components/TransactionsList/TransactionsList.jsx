@@ -9,6 +9,7 @@ import s from './TransactionsList.module.css';
 import EmptyHistory from 'components/EmptyHistory/EmptyHistory';
 import { useMedia } from 'hooks';
 import { toast } from 'react-toastify';
+import { toastStyles } from 'components/Toast/toastStyles';
 
 const TransactionsList = () => {
   const transactions = useSelector(selectTransactions);
@@ -34,7 +35,7 @@ const TransactionsList = () => {
         <button className={s.undelete_btn}
           onClick={() => {
             undo = true;
-            toast.dismiss(toastId);
+            toast.dismiss(toastId, toastStyles);
           }}
         >
           Undelete
