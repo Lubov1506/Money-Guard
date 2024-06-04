@@ -1,7 +1,15 @@
 import s from './StatisticsItem.module.css';
-const StatisticsItem = ({ item }) => {
+import { motion } from 'framer-motion';
+const StatisticsItem = ({ item, index }) => {
   return (
-    <tr className={s.row}>
+    <motion.tr
+      className={s.row}
+      transition={{ delay: 0.2 * index }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 20 }}
+      key={Date.now()}
+    >
       <td className={s.name}>
         <span
           className={s.color}
@@ -12,7 +20,7 @@ const StatisticsItem = ({ item }) => {
         {item.name}
       </td>
       <td className={s.total}>{item.total}</td>
-    </tr>
+    </motion.tr>
   );
 };
 export default StatisticsItem;

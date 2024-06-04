@@ -40,7 +40,11 @@ const StatisticsTable = () => {
           <table className={s.table}>
             <tbody className={s.tableBody}>
               {data.map((item, idx) => (
-                <StatisticsItem key={idx} item={item} />
+                <StatisticsItem
+                  key={idx}
+                  item={item}
+                  index={data.indexOf(item) + 1}
+                />
               ))}
             </tbody>
             <tfoot className={s.tableFooter}>
