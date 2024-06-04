@@ -9,7 +9,7 @@ import clsx from 'clsx';
 import { toast } from 'react-toastify';
 import { toastStyles } from 'components/Toast/toastStyles';
 
-const TransactionsDescItem = ({ item , handleDelete}) => {
+const TransactionsDescItem = ({ deletedId, pending, item, handleDelete }) => {
   const dispatch = useDispatch();
   const { openEditModal } = useOutletContext();
 
@@ -50,7 +50,8 @@ const TransactionsDescItem = ({ item , handleDelete}) => {
             type="button"
             text="Delete"
             variant={'btn_delete'}
-            handlerFunction={()=>handleDelete(item.id)}
+            isDisabled={pending && deletedId === item.id}
+            handlerFunction={() => handleDelete(item.id)}
           />
         </td>
       </tr>

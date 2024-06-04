@@ -2,8 +2,11 @@ import TransactionsDescItem from '../TransactionsDescItem/TransactionsDescItem';
 import TransactionsMobileItem from '../TransactionsMobileItem/TransactionsMobileItem';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectTransactions } from '../../redux/transactions/selectors';
-import { useEffect } from 'react';
-import { deleteTrnThunk, fetchAllTrnThunk } from '../../redux/transactions/operations';
+import { useEffect, useState } from 'react';
+import {
+  deleteTrnThunk,
+  fetchAllTrnThunk,
+} from '../../redux/transactions/operations';
 
 import s from './TransactionsList.module.css';
 import EmptyHistory from 'components/EmptyHistory/EmptyHistory';
@@ -14,27 +17,33 @@ import { toastStyles } from 'components/Toast/toastStyles';
 const TransactionsList = () => {
   const transactions = useSelector(selectTransactions);
   const dispatch = useDispatch();
-
+  const [pending, setPending] = useState(false);
+  const [deletedId, setDeletetId] = useState(null);
   useEffect(() => {
     dispatch(fetchAllTrnThunk());
   }, [dispatch]);
 
   const { isTablet } = useMedia();
 
-  const handleDelete = (transactionId) => {
+  const handleDelete = transactionId => {
     let undo = false;
+    setPending(true);
+    setDeletetId(transactionId);
     const toastId = toast(
       <div className={s.undelete_toast}>
-       <button className={s.delete_btn}
+        <button
+          className={s.delete_btn}
           onClick={() => {
             toast.dismiss(toastId);
           }}
         >
           Delete
         </button>
-        <button className={s.undelete_btn}
+        <button
+          className={s.undelete_btn}
           onClick={() => {
             undo = true;
+            setPending(false);
             toast.dismiss(toastId, toastStyles);
           }}
         >
@@ -44,6 +53,7 @@ const TransactionsList = () => {
       {
         onClose: () => {
           if (!undo) {
+            setPending(false);
             dispatch(deleteTrnThunk(transactionId));
           }
         },
@@ -72,14 +82,24 @@ const TransactionsList = () => {
           </thead>
           <tbody>
             {transactions.map(item => (
-              <TransactionsDescItem key={item.id} item={item} handleDelete={handleDelete} />
+              <TransactionsDescItem
+                key={item.id}
+                item={item}
+                pending={pending}
+                deletedId={deletedId}
+                handleDelete={handleDelete}
+              />
             ))}
           </tbody>
         </table>
       ) : (
         <ul className={s.list}>
           {transactions.map(item => (
-            <TransactionsMobileItem key={item.id} item={item} handleDelete={handleDelete} />
+            <TransactionsMobileItem
+              key={item.id}
+              item={item}
+              handleDelete={handleDelete}
+            />
           ))}
         </ul>
       )}
