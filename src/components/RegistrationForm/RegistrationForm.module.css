@@ -22,6 +22,8 @@
 
 @media only screen and (min-width: 768px) {
   .backdrop {
+    background-color: var(--background);
+    background-size: 100% 100%;
     background-image: url('../../images/register/bg-register-tab@1x.webp');
   }
 }
