@@ -63,6 +63,7 @@ export const RegistrationForm = () => {
                   name="confirmPassword"
                   placeholder="Confirm password"
                   confirmValue={values.confirmPassword}
+                  passwordValue={values.password}
                 />
               </div>
               <div className={s.btns}>
