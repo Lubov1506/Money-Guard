@@ -11,7 +11,6 @@ const StatisticDatePicker = () => {
   const currentMonth = new Date().getMonth() + 1;
   const currentYear = getYear(new Date());
   const [selectedYear, setSelectedYear] = useState(currentYear);
-  console.log(currentMonth);
   const [selectedMonth, setSelectedMonth] = useState(null);
   const dispatch = useDispatch();
   useEffect(() => {

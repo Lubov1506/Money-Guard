@@ -30,7 +30,6 @@ const AddTransactionFormNew = ({ closeModal }) => {
   const transactionCategories = useSelector(selectCategories);
 
   const handleSubmit = (values, { setSubmitting, setStatus }) => {
-    console.log(values.category);
     setSubmitting(true);
 
     dispatch(
@@ -46,7 +45,6 @@ const AddTransactionFormNew = ({ closeModal }) => {
     )
       .unwrap()
       .then(() => {
-        console.log(values);
         closeModal();
       })
       .catch(error => {

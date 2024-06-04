@@ -1,10 +1,7 @@
-// import { useEffect } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import { useSelector } from 'react-redux';
-
 import { selectPeriodTransactions } from '../../redux/transactions/selectors';
-// import { fetchPeriodTrnThunk } from '../../redux/transactions/operations';
 import css from './DoughnutChart.module.css';
 import { getTrasactionCategoryColor } from '../../constants/TransactionConstants';
 import { getformattedBalance } from '../../helpers/getformatNumber';
@@ -49,20 +46,7 @@ const optionsDefault = {
 };
 
 const DoughnutChart = () => {
-  // const getCurrentMonthYear = () => {
-  //   const currentDate = new Date();
-  //   const month = currentDate.getMonth() + 1;
-  //   const year = currentDate.getFullYear();
-  //   return { month, year };
-  // };
-
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(fetchPeriodTrnThunk(getCurrentMonthYear()));
-  // }, [dispatch]);
-
   const transactions = useSelector(selectPeriodTransactions);
-  console.log(transactions);
 
   const expense = transactions.categoriesSummary
     ? transactions.categoriesSummary.filter(
@@ -74,14 +58,10 @@ const DoughnutChart = () => {
   const incomeTotal = transactions.incomeSummary || 0;
   const total = incomeTotal + expenseTotal;
   const balance = total ? total : 0;
-
-  // console.log('Expense ', expenseTotal, 'Income ', incomeTotal);
-
   const data = expense.map(item => ({
     ...item,
     color: getTrasactionCategoryColor(item.name),
   }));
-  console.log(data);
   const doughnutData = data.length
     ? {
         labels: data.map(expense => expense.name),
@@ -138,7 +118,6 @@ const DoughnutChart = () => {
             </>
           );
         } else {
-          console.log(balance);
           return (
             <>
               <div

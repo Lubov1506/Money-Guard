@@ -37,12 +37,8 @@ const EditModal = ({ closeModal, item }) => {
     comment: item.comment,
     category: getTransactionCategory(item.categoryId, categories),
   };
-
   const handleSubmit = (values, { setSubmitting, setStatus }) => {
     setSubmitting(true);
-
-    console.log(initialValues.category);
-    console.log(getTransactionId(initialValues.category, categories));
     dispatch(
       editTrnThunk({
         id: item.id,

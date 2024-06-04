@@ -23,7 +23,6 @@ export const fetchPeriodTrnThunk = createAsyncThunk(
         const { data } = await walletAPI.get('/transactions-summary', {
           params: { month, year },
         });
-        console.log(data);
         return data;
       }
     } catch (error) {
@@ -50,7 +49,6 @@ export const editTrnThunk = createAsyncThunk(
   async (transaction, thunkAPI) => {
     try {
       const { id, transactionDate, type, comment, amount } = transaction;
-      console.log(id);
       const { data } = await walletAPI.patch(`/transactions/${id}`, {
         transactionDate,
         type,
@@ -83,7 +81,6 @@ export const getCategoriesThunk = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await walletAPI.get('/transaction-categories');
-      console.log(data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

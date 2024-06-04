@@ -18,8 +18,6 @@ export const LoginForm = () => {
   };
   const handleSubmit = (values, actions) => {
     dispatch(signInThunk(values));
-
-    console.log(values);
     actions.resetForm();
   };
 
