@@ -8,6 +8,7 @@ import { useOutletContext } from 'react-router-dom';
 import clsx from 'clsx';
 import { toast } from 'react-toastify';
 import { toastStyles } from 'components/Toast/toastStyles';
+import dateFormat from 'helpers/dateFormat';
 
 const TransactionsDescItem = ({ item }) => {
   const dispatch = useDispatch();
@@ -25,7 +26,7 @@ const TransactionsDescItem = ({ item }) => {
   return (
     <>
       <tr className={s.t_row} key={item.id}>
-        <td className={s.value}>{item.transactionDate}</td>
+        <td className={s.value}>{dateFormat(item.transactionDate)}</td>
         <td className={s.value}>{item.type === 'EXPENSE' ? '-' : '+'}</td>
         <td className={s.value}>{getTransactionCategory(item.categoryId)}</td>
         <td className={s.value}>{item.comment}</td>
