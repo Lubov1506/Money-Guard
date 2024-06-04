@@ -5,6 +5,7 @@ import {
   editTrnThunk,
   fetchAllTrnThunk,
   fetchPeriodTrnThunk,
+  getCategoriesThunk,
 } from './operations';
 
 const initialState = {
@@ -13,6 +14,7 @@ const initialState = {
   loading: false,
   error: null,
   currentTransaction: null,
+  categories: [],
 };
 
 const transactionsSlice = createSlice({
@@ -32,7 +34,13 @@ const transactionsSlice = createSlice({
       .addCase(fetchPeriodTrnThunk.fulfilled, (state, { payload }) => {
         state.periodTransactions = payload;
       })
+      .addCase(getCategoriesThunk.fulfilled, (state, { payload }) => {
+        state.categories = payload;
+      })
       .addCase(editTrnThunk.fulfilled, (state, { payload }) => {
+        payload.transactionDate = payload.transactionDate
+          .toString()
+          .slice(0, 10);
         state.items = state.items.map(trn =>
           trn.id === payload.id ? payload : trn
         );
@@ -74,6 +82,7 @@ const transactionsSlice = createSlice({
       )
       .addMatcher(
         isAnyOf(
+          getCategoriesThunk.rejected,
           fetchAllTrnThunk.rejected,
           fetchPeriodTrnThunk.rejected,
           addTrnThunk.rejected,

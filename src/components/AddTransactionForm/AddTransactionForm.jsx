@@ -3,19 +3,17 @@ import styles from './AddTransactionForm.module.css';
 import FormButton from '../common/FormButton/FormButton';
 import icons from '../../images/icons/sprite.svg';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import ReactDatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import {
-  transactionCategories,
-  getTransactionId,
-} from '../../constants/TransactionConstants';
+import { getTransactionId } from '../../constants/TransactionConstants';
 import { addTrnThunk } from '../../redux/transactions/operations';
 import { FiCalendar } from 'react-icons/fi';
 import Select from 'react-select';
 import { customStyles } from './customStyles';
 import { addTrnValidSchema } from 'helpers';
 import { useMedia } from 'hooks';
+import { selectCategories } from '../../redux/transactions/selectors';
 
 const AddTransactionFormNew = ({ closeModal }) => {
   const [isOnIncomeTab, setIsOnIncomeTab] = useState(false);
@@ -23,12 +21,13 @@ const AddTransactionFormNew = ({ closeModal }) => {
   const { isTablet } = useMedia();
   const dispatch = useDispatch();
   const [startDate, setStartDate] = useState(new Date());
-
+  const categories = useSelector(selectCategories);
   const initialValues = {
     amount: '',
     comment: '',
     category: null,
   };
+  const transactionCategories = useSelector(selectCategories);
 
   const handleSubmit = (values, { setSubmitting, setStatus }) => {
     console.log(values.category);
@@ -38,7 +37,9 @@ const AddTransactionFormNew = ({ closeModal }) => {
       addTrnThunk({
         transactionDate: startDate,
         type: isOnIncomeTab ? 'INCOME' : 'EXPENSE',
-        categoryId: getTransactionId(values.category || 'Income'),
+        categoryId: isOnIncomeTab
+          ? '063f1132-ba5d-42b4-951d-44011ca46262'
+          : getTransactionId(values.category, categories),
         comment: values.comment,
         amount: isOnIncomeTab ? values.amount : 0 - values.amount,
       })

@@ -2,9 +2,10 @@
   width: 100%;
 
   overflow-y: scroll;
-  max-height: calc(100vh - 240px);
+  height: calc(100vh - 240px);
   @media only screen and (min-width: 768px) {
     display: flex;
+    height: unset;
     justify-content: space-evenly;
     max-height: calc(100vh - 317px);
   }

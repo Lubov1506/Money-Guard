@@ -1,9 +1,16 @@
+.general {
+  @media only screen and (min-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
 .table {
   width: 100%;
   margin-top: 46px;
   border-collapse: collapse;
 }
-
 .title {
   padding: 16px 10px 16px 20px;
   font-family: var(--font-family);
@@ -16,6 +23,29 @@
   backdrop-filter: blur(100px);
   box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
   background: rgba(82, 59, 126, 0.6);
+  width: 100%;
+  border-collapse: collapse;
+}
+.tbody {
+  width: 100%;
+
+  border-collapse: collapse;
+}
+.tbody_scroll {
+  overflow-y: scroll;
+  @media only screen and (min-width: 768px) {
+    max-height: calc(100vh - 465px);
+  }
+  @media only screen and (min-width: 1280px) {
+    max-height: calc(100vh - 240px);
+  }
+}
+
+.tbody_scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(70, 20, 59, 0.589) rgba(180, 128, 172, 0.411);
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable both-edges;
 }
 
 .list {

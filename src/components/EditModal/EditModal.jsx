@@ -3,14 +3,15 @@ import s from './EditModal.module.css';
 import FormButton from '../common/FormButton/FormButton';
 import icons from '../../images/icons/sprite.svg';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import ReactDatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { selectCategories } from '../../redux/transactions/selectors';
 import {
   getTransactionId,
   getTransactionCategory,
 } from '../../constants/TransactionConstants';
-import {  editTrnThunk } from '../../redux/transactions/operations';
+import { editTrnThunk } from '../../redux/transactions/operations';
 import { getBalanceThunk } from '../../redux/auth/operations';
 import { FiCalendar } from 'react-icons/fi';
 
@@ -18,13 +19,14 @@ import Slash from './Slash';
 import clsx from 'clsx';
 import { useMedia } from 'hooks';
 import Modal from 'components/Modal/Modal';
+import { editValidationSchema } from 'helpers/editValidationSchema';
 
 const EditModal = ({ closeModal, item }) => {
   const [isOnIncomeTab, setIsOnIncomeTab] = useState(
     item.type === 'EXPENSE' ? false : true
   );
   useEffect(() => {}, [isOnIncomeTab]);
-
+  const categories = useSelector(selectCategories);
   const { isTablet } = useMedia();
   const dispatch = useDispatch();
 
@@ -33,14 +35,14 @@ const EditModal = ({ closeModal, item }) => {
   const initialValues = {
     amount: Math.abs(item.amount),
     comment: item.comment,
-    category: getTransactionCategory(item.categoryId),
+    category: getTransactionCategory(item.categoryId, categories),
   };
 
   const handleSubmit = (values, { setSubmitting, setStatus }) => {
     setSubmitting(true);
 
     console.log(initialValues.category);
-    console.log(getTransactionId(initialValues.category));
+    console.log(getTransactionId(initialValues.category, categories));
     dispatch(
       editTrnThunk({
         id: item.id,
@@ -71,9 +73,13 @@ const EditModal = ({ closeModal, item }) => {
             </svg>
           </button>
         )}
-        <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+        <Formik
+          initialValues={initialValues}
+          onSubmit={handleSubmit}
+          validationSchema={editValidationSchema}
+        >
           {({ isSubmitting }) => (
-            <Form>
+            <Form className={s.form}>
               <h2 className={s.formTitle}>Edit transaction</h2>
 
               <div className={s.switcheWrapper}>
@@ -85,7 +91,6 @@ const EditModal = ({ closeModal, item }) => {
               </div>
 
               <div className={s.inputWrapper}>
-              
                 <div className={clsx(s.inputField, s.amount)}>
                   <Field
                     type="number"
