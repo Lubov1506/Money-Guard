@@ -26,7 +26,7 @@ const TransactionsList = () => {
   return (
     <>
       {isTablet ? (
-        <>
+        <div className={s.general}>
           <table className={s.thead}>
             <thead>
               <tr className={s.t_row}>
@@ -48,7 +48,7 @@ const TransactionsList = () => {
               </tbody>
             </table>
           </div>
-        </>
+        </div>
       ) : (
         <ul className={s.list}>
           {transactions.map(item => (

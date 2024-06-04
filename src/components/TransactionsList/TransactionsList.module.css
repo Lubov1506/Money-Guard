@@ -1,3 +1,11 @@
+.general {
+  @media only screen and (min-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
 .table {
   width: 100%;
   margin-top: 46px;
@@ -24,8 +32,13 @@
   border-collapse: collapse;
 }
 .tbody_scroll {
-  max-height: calc(100vh - 240px);
   overflow-y: scroll;
+  @media only screen and (min-width: 768px) {
+    max-height: calc(100vh - 465px);
+  }
+  @media only screen and (min-width: 1280px) {
+    max-height: calc(100vh - 240px);
+  }
 }
 
 .tbody_scroll {
