@@ -79,81 +79,12 @@
   }
 }
 
-.logo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  font-family: var(--font-family);
-  font-weight: 400;
-  font-size: 26px;
-  color: var(--white);
-  margin: 0;
-  img {
-    width: 34px;
-  }
-}
-
 .inputs {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   gap: 40px;
   margin-top: 40px;
-}
-
-.inputGroup {
-  position: relative;
-  font-family: var(--font-family);
-  font-weight: 400;
-  font-size: 18px;
-  color: var(--white-60);
-}
-
-.input {
-  display: flex;
-  border: none;
-  background: transparent;
-  border-bottom: 1px solid var(--white-40);
-  width: 280px;
-  height: 35px;
-  padding-left: 50px;
-  color: var(--white-60);
-}
-
-.input:-webkit-autofill,
-.input:-webkit-autofill:hover,
-.input:-webkit-autofill:focus,
-.input:-webkit-autofill:active {
-  color: var(--white) !important;
-  transition: background-color 5000s ease-in-out 0s;
-  -webkit-text-fill-color: var(--white) !important;
-}
-
-@media only screen and (min-width: 768px) {
-  .input {
-    width: 409px;
-  }
-}
-
-.inputIcon {
-  position: absolute;
-  top: 50%;
-  left: 10px;
-  transform: translateY(-50%);
-  width: 25px;
-  height: 24px;
-  font-size: 20px;
-  color: var(--white-40);
-}
-
-.error {
-  color: var(--yellow);
-  position: absolute;
-  top: 4em;
-  font-size: 0.7em;
-  padding-left: 50px;
 }
 
 .btns {
@@ -166,13 +97,4 @@
   @media (min-width: 768px) {
     margin-top: 40px;
   }
-}
-
-/* .bar {
-  div {
-    background-color: red;
-  }
-} */
-.progressBarComponent {
-  width: auto;
 }

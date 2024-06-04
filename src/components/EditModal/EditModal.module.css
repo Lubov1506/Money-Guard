@@ -1,12 +1,19 @@
 .wrapper {
-  z-index: 10000;
+  /* z-index: 10000;
   position: fixed;
-  inset: 0;
-  display: flex;
+  inset: 0; */
+  top: 60px;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   backdrop-filter: blur(7px);
   background: rgba(34, 13, 91, 0.23);
+}
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    top: 0;
+  }
 }
 
 .modalContent {
@@ -19,7 +26,7 @@
 
   gap: 40px;
 
-  padding: 20px;
+  /* padding: 20px; */
   width: 100%;
   min-height: 100%;
 
@@ -38,9 +45,10 @@
   flex-direction: column;
   align-items: center;
   gap: 40px;
+  padding: 20px;
 
   width: 100%;
-  height: 100%;
+  max-height: calc(100vh - 60px);
 }
 
 form .formTitle {
@@ -55,6 +63,7 @@ form .inputWrapper {
   display: flex;
   flex-direction: column;
   gap: 40px;
+  position: relative;
 }
 
 .inputWrapper .inputField input,
@@ -88,6 +97,9 @@ form .inputWrapper {
   /* background-color: rgba(133, 93, 175, 0.13); */
   color: rgba(251, 251, 251, 1);
 }
+.inputField {
+  position: relative;
+}
 
 .inputField input:focus,
 .inputField select:focus {
@@ -109,6 +121,8 @@ form .inputWrapper {
 .inputField p {
   color: rgb(255, 134, 141);
   font-size: 14px;
+  position: absolute;
+  top: 3em;
   padding-left: 12px;
   /* padding-left: 20px; */
 }
