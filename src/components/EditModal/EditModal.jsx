@@ -79,8 +79,10 @@ const EditModal = ({ closeModal, item }) => {
               <h2 className={s.formTitle}>Edit transaction</h2>
 
               <div className={s.switcheWrapper}>
-                <span className={clsx(isOnIncomeTab && s.income)}>Income </span>
-                <Slash />
+                <span className={clsx(isOnIncomeTab && s.income)}>Income</span>
+                <span className={s.slash}>
+                  <Slash />
+                </span>
                 <span className={clsx(!isOnIncomeTab && s.expense)}>
                   Expense
                 </span>
