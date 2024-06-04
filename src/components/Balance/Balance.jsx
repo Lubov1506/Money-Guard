@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
 import s from './Balance.module.css';
-import { getformatNumber } from 'helpers';
 import { selectBalance } from '../../redux/auth/selectors';
 import clsx from 'clsx';
+import { getformatNumber } from 'helpers/getformatNumber';
 
 const Balance = () => {
   const balance = useSelector(selectBalance);
