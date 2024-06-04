@@ -6,7 +6,7 @@
   height: calc(100vh - 60px);
   width: 100%;
 
-  z-index: 100;
+  z-index: 10000;
 
   background: linear-gradient(
     0deg,

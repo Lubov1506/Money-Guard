@@ -15,7 +15,7 @@
   max-height: calc(100vh - 60px);
   position: absolute;
   /* top: 60px; */
-  z-index: 100;
+  z-index: 1001;
   display: flex;
   flex-direction: column;
   align-self: center;
