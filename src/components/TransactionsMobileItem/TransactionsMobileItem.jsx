@@ -6,7 +6,10 @@ import { getTransactionCategory } from '../../constants/TransactionConstants';
 import { deleteTrnThunk } from '../../redux/transactions/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import clsx from 'clsx';
+
 import { selectBalance } from '../../redux/auth/selectors';
+
+import dateFormat from 'helpers/dateFormat';
 
 const TransactionsMobileItem = ({ item = {} }) => {
   const dispatch = useDispatch();
@@ -23,7 +26,7 @@ const TransactionsMobileItem = ({ item = {} }) => {
         <tbody className={s.tbody}>
           <tr className={s.t_row}>
             <td className={s.title}>Date</td>
-            <td className={s.value}>{item.transactionDate}</td>
+            <td className={s.value}>{dateFormat(item.transactionDate)}</td>
           </tr>
           <tr className={s.t_row}>
             <td className={s.title}>Type</td>
