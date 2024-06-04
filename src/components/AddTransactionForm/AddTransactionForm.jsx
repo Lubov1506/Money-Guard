@@ -119,6 +119,7 @@ const AddTransactionFormNew = ({ closeModal }) => {
                   selected={startDate}
                   onChange={date => setStartDate(date)}
                   calendarStartDay={1}
+                  maxDate={new Date()}
                 />
                 <FiCalendar className={styles.icon} />
               </div>
