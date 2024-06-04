@@ -171,7 +171,11 @@ form .buttonsWrapper {
 .switcheWrapper {
   display: flex;
   align-items: center;
+  align-items: center;
   gap: 20px;
+  .slash {
+    padding-left: 20px;
+  }
 }
 
 .switcheWrapper span {
