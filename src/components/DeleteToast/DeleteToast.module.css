@@ -1,43 +1,56 @@
 .undelete_toast {
-  padding: 5px;
   display: flex;
   flex-direction: column;
-  justify-self: center;
-  gap: 5px;
-  h3 {
-    font-weight: 600;
-    text-align: center;
-    font-size: 18px;
-  }
-  p {
-  }
-  .info {
-    font-weight: 600;
-    display: flex;
-    gap: 10px;
-    justify-content: space-evenly;
-  }
-  .comment {
-  }
-  .sum {
-  }
+  gap: 16px;
+}
+.comment {
+  display: block;
+  text-align: center;
+  padding: 12px;
+}
+.sum {
+  padding: 12px;
+  display: block;
+  text-align: center;
+  font-weight: 700;
+}
+.info {
+  font-weight: 600;
+}
+.infoContainer {
+  font-weight: 400;
+  justify-content: flex-start;
 }
 .btns {
   display: flex;
   gap: 20px;
   justify-content: space-evenly;
-  .delete_btn {
-    background-color: var(--dashboard-text);
-    padding: 5px;
-    font-weight: 600;
-    border-radius: 5px;
-    color: var(--white);
-  }
-  .undelete_btn {
-    background-color: var(--icon-violet);
-    padding: 5px;
-    font-weight: 600;
-    border-radius: 5px;
-    color: var(--white);
-  }
+  display: flex;
+  justify-content: space-evenly;
+}
+.delete_btn {
+  padding: 5px;
+  font-weight: 600;
+  border-radius: 5px;
+  color: var(--white);
+
+  border-radius: 10px;
+  color: rgba(251, 251, 251, 1);
+  background: linear-gradient(96.76deg, #7000ff -16.42%, #100137 120.71%);
+  box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  transition: all 300ms ease-in-out;
+}
+.undelete_btn {
+  padding: 5px;
+  font-weight: 600;
+  border-radius: 5px;
+  color: var(--white);
+
+  border-radius: 10px;
+  color: rgba(251, 251, 251, 1);
+  background: linear-gradient(96.76deg, #7000ff -16.42%, #100137 120.71%);
+  box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  transition: all 300ms ease-in-out;
 }

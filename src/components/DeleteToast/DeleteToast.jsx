@@ -2,7 +2,7 @@ import { toast } from 'react-toastify';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteTrnThunk } from '../../redux/transactions/operations';
-import { toastStyles } from 'components/Toast/toastStyles';
+import { deleteToastStyles } from 'components/Toast/toastStyles';
 import s from './DeleteToast.module.css';
 import { prettyMoneyFormat } from 'helpers/prettyMoneyFormat';
 
@@ -16,7 +16,9 @@ const DeleteToast = () => {
     setDeletedIds(prev => [...prev, transactionId]);
     const toastId = toast(
       <div className={s.undelete_toast}>
-        <h3>Delete?</h3>
+        <div className={s.infoContainer}>
+          <p>You can still undo the operation</p>
+        </div>
         <div className={s.info}>
           <p className={s.comment}>{comment} </p>
           <p className={s.sum}>{prettyMoneyFormat(sum)}</p>
@@ -37,13 +39,14 @@ const DeleteToast = () => {
               setDeletedIds(prev =>
                 prev.filter(item => item !== transactionId)
               );
-              toast.dismiss(toastId, toastStyles);
+              toast.dismiss(toastId, deleteToastStyles);
             }}
           >
-            Undelete
+            Keep it!
           </button>
         </div>
       </div>,
+      deleteToastStyles,
       {
         onClose: () => {
           if (!undo) {
@@ -51,12 +54,6 @@ const DeleteToast = () => {
             dispatch(deleteTrnThunk(transactionId));
           }
         },
-        autoClose: 3000,
-        closeOnClick: false,
-        closeButton: false,
-        hideProgressBar: false,
-        pauseOnHover: true,
-        draggable: true,
       }
     );
   };

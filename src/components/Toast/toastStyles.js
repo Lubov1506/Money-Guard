@@ -1,7 +1,7 @@
 export const toastStyles = {
-  autoClose: 2000,
+  autoClose: 3000,
   hideProgressBar: false,
-  closeOnClick: true,
+
   pauseOnHover: true,
   draggable: true,
 
@@ -22,4 +22,24 @@ export const toastContainerStyles = {
   color: 'white',
   fontFamily: 'Poppins, sans-serif',
   borderRadius: '8px',
+};
+
+export const deleteToastStyles = {
+  closeOnClick: false,
+  width: '350px',
+  autoClose: 3000,
+  hideProgressBar: false,
+  closeButton: false,
+  pauseOnHover: true,
+  draggable: true,
+
+  style: {
+    backgroundColor: '#c754ebb4 ',
+    color: 'white',
+    fontSize: '16px',
+    padding: '16px',
+    fontFamily: 'Poppins, sans-serif',
+    borderRadius: '8px',
+  },
+  theme: 'colored',
 };
