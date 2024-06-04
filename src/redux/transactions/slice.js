@@ -33,6 +33,9 @@ const transactionsSlice = createSlice({
         state.periodTransactions = payload;
       })
       .addCase(editTrnThunk.fulfilled, (state, { payload }) => {
+        payload.transactionDate = payload.transactionDate
+          .toString()
+          .slice(0, 10);
         state.items = state.items.map(trn =>
           trn.id === payload.id ? payload : trn
         );
