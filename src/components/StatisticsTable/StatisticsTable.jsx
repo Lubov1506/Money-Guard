@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import StatisticsItem from '../StatisticsItem/StatisticsItem';
 import s from './StatisticsTable.module.css';
 import { selectPeriodTransactions } from '../../redux/transactions/selectors';
-import prettyMoneyFormat from '../../constants/PrettyMoneyFormat';
+import {prettyMoneyFormat} from 'helpers';
 import { getTrasactionCategoryColor } from '../../constants/TransactionConstants';
 
 const StatisticsTable = () => {
