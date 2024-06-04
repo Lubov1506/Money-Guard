@@ -26,23 +26,29 @@ const TransactionsList = () => {
   return (
     <>
       {isTablet ? (
-        <table className={s.table}>
-          <thead className={s.thead}>
-            <tr className={s.t_row}>
-              <td className={s.title}>Date</td>
-              <td className={s.title}>Type</td>
-              <td className={s.title}>Category</td>
-              <td className={s.title}>Comment</td>
-              <td className={s.title}>Sum</td>
-              <td className={s.title}></td>
-            </tr>
-          </thead>
-          <tbody>
-            {transactions.map(item => (
-              <TransactionsDescItem key={item.id} item={item} />
-            ))}
-          </tbody>
-        </table>
+        <>
+          <table className={s.thead}>
+            <thead>
+              <tr className={s.t_row}>
+                <th className={s.title}>Date</th>
+                <th className={s.title}>Type</th>
+                <th className={s.title}>Category</th>
+                <th className={s.title}>Comment</th>
+                <th className={s.title}>Sum</th>
+                <th className={s.title}></th>
+              </tr>
+            </thead>
+          </table>
+          <div className={s.tbody_scroll}>
+            <table className={s.tbody}>
+              <tbody>
+                {transactions.map(item => (
+                  <TransactionsDescItem key={item.id} item={item} />
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
       ) : (
         <ul className={s.list}>
           {transactions.map(item => (

@@ -3,7 +3,6 @@
   margin-top: 46px;
   border-collapse: collapse;
 }
-
 .title {
   padding: 16px 10px 16px 20px;
   font-family: var(--font-family);
@@ -16,6 +15,24 @@
   backdrop-filter: blur(100px);
   box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
   background: rgba(82, 59, 126, 0.6);
+  width: 100%;
+  border-collapse: collapse;
+}
+.tbody {
+  width: 100%;
+
+  border-collapse: collapse;
+}
+.tbody_scroll {
+  max-height: calc(100vh - 240px);
+  overflow-y: scroll;
+}
+
+.tbody_scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(70, 20, 59, 0.589) rgba(180, 128, 172, 0.411);
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable both-edges;
 }
 
 .list {
