@@ -12,3 +12,4 @@ export { default as ModalAddTransactionNew } from './ModalAddTransaction/ModalAd
 export { default as EditModal } from './EditModal/EditModal';
 export { default as LoginForm } from './LoginForm/LoginForm';
 export { default as RegistrationForm } from './RegistrationForm/RegistrationForm';
+export { default as DeleteToast } from './DeleteToast/DeleteToast';

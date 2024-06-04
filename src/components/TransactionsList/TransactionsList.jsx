@@ -2,75 +2,35 @@ import TransactionsDescItem from '../TransactionsDescItem/TransactionsDescItem';
 import TransactionsMobileItem from '../TransactionsMobileItem/TransactionsMobileItem';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectTransactions } from '../../redux/transactions/selectors';
-import { useEffect, useState } from 'react';
-import {
-  deleteTrnThunk,
-  fetchAllTrnThunk,
-} from '../../redux/transactions/operations';
-
+import { useEffect } from 'react';
+import { fetchAllTrnThunk } from '../../redux/transactions/operations';
 import s from './TransactionsList.module.css';
 import EmptyHistory from 'components/EmptyHistory/EmptyHistory';
 import { useMedia } from 'hooks';
-import { toast } from 'react-toastify';
-import { toastStyles } from 'components/Toast/toastStyles';
+import DeleteToast from '../DeleteToast/DeleteToast'
+
 
 const TransactionsList = () => {
   const transactions = useSelector(selectTransactions).toSorted(
     (a, b) => new Date(b.transactionDate) - new Date(a.transactionDate)
   );
   const dispatch = useDispatch();
-  const [deletedIds, setDeletetIds] = useState([]);
+
   useEffect(() => {
     dispatch(fetchAllTrnThunk());
   }, [dispatch]);
 
   const { isTablet } = useMedia();
+  const { showDeleteToast, deletedIds } = DeleteToast();
 
   const handleDelete = (transactionId, sum, comment) => {
-    let undo = false;
-    console.log(new Set());
-    setDeletetIds(prev => [...prev, transactionId]);
-    const toastId = toast(
-      <div className={s.undelete_toast}>
-        <h3>Delete ?</h3>
-        <p>{comment} </p>
-        <p>{Math.abs(sum)}</p>
-        <button
-          className={s.delete_btn}
-          onClick={() => {
-            toast.dismiss(toastId);
-          }}
-        >
-          Delete
-        </button>
-        <button
-          className={s.undelete_btn}
-          onClick={() => {
-            undo = true;
-            setDeletetIds(prev => prev.filter(item => item !== transactionId));
-
-            toast.dismiss(toastId, toastStyles);
-          }}
-        >
-          Undelete
-        </button>
-      </div>,
-      {
-        onClose: () => {
-          if (!undo) {
-            setDeletetIds(prev => prev.filter(item => item !== transactionId));
-            dispatch(deleteTrnThunk(transactionId));
-          }
-        },
-        autoClose: 3000,
-        closeOnClick: false,
-      }
-    );
+    showDeleteToast(transactionId, sum, comment);
   };
 
   if (!transactions.length) {
     return <EmptyHistory />;
   }
+
   return (
     <>
       {isTablet ? (

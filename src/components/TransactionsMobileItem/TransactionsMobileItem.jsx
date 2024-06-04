@@ -3,13 +3,12 @@ import s from './TransactionsMobileItem.module.css';
 import { GoPencil } from 'react-icons/go';
 import FormButton from '../common/FormButton/FormButton';
 import { getTransactionCategory } from '../../constants/TransactionConstants';
-import { deleteTrnThunk } from '../../redux/transactions/operations';
-import { useDispatch } from 'react-redux';
+
 import clsx from 'clsx';
 import dateFormat from 'helpers/dateFormat';
 
 const TransactionsMobileItem = ({ item = {}, handleDelete }) => {
-  // const dispatch = useDispatch();
+
   const { openEditModal } = useOutletContext();
   return (
     <li className={s.li}>
