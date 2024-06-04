@@ -14,7 +14,6 @@ const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const user = useSelector(selectUser);
   const userName = user ? user.username : null;
-
   const { isMobile } = useMedia();
 
   const open = () => {
@@ -36,7 +35,7 @@ const Header = () => {
           />
         </NavLink>
         <div className={s.user}>
-          <span className={s.userName}>{userName}</span>
+          <span className={s.userName}>{userName || 'Guest'}</span>
           <button onClick={open} className={s.exitBtn}>
             <ImExit width={18} height={18} />
             {!isMobile && <p>Exit</p>}
