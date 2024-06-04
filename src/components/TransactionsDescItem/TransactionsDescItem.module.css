@@ -34,14 +34,14 @@
 }
 .value_type {
   display: block;
-  margin-left: 18px;
+  margin-left: 15px;
 }
 
 .value_strong {
+  padding: 13px 10px 13px 24px;
   font-family: var(--font-family);
   font-weight: 600;
   font-size: 16px;
-  text-align: center;
 }
 .minus {
   color: var(--dashboard-text);
