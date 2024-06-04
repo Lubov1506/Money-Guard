@@ -81,3 +81,7 @@
   padding: 16px 0;
   text-align: center;
 }
+.title:nth-child(5) {
+  padding: 16px 0;
+  text-align: right;
+}
