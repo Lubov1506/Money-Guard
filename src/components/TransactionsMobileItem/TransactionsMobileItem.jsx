@@ -3,12 +3,15 @@ import s from './TransactionsMobileItem.module.css';
 import { GoPencil } from 'react-icons/go';
 import FormButton from '../common/FormButton/FormButton';
 import { getTransactionCategory } from '../../constants/TransactionConstants';
-import { deleteTrnThunk } from '../../redux/transactions/operations';
-import { useDispatch } from 'react-redux';
+import {useSelector } from 'react-redux';
 import clsx from 'clsx';
+import { selectCategories } from '../../redux/transactions/selectors';
+import dateFormat from 'helpers/dateFormat';
+import { prettyMoneyFormat } from 'helpers/prettyMoneyFormat';
 
-const TransactionsMobileItem = ({ item = {} }) => {
-  const dispatch = useDispatch();
+const TransactionsMobileItem = ({ item = {}, handleDelete }) => {
+const categories = useSelector(selectCategories);
+
   const { openEditModal } = useOutletContext();
   return (
     <li className={s.li}>
@@ -21,7 +24,7 @@ const TransactionsMobileItem = ({ item = {} }) => {
         <tbody className={s.tbody}>
           <tr className={s.t_row}>
             <td className={s.title}>Date</td>
-            <td className={s.value}>{item.transactionDate}</td>
+            <td className={s.value}>{dateFormat(item.transactionDate)}</td>
           </tr>
           <tr className={s.t_row}>
             <td className={s.title}>Type</td>
@@ -30,7 +33,7 @@ const TransactionsMobileItem = ({ item = {} }) => {
           <tr className={s.t_row}>
             <td className={s.title}>Category</td>
             <td className={s.value}>
-              {getTransactionCategory(item.categoryId)}
+              {getTransactionCategory(item.categoryId, categories)}
             </td>
           </tr>
           <tr className={s.t_row}>
@@ -45,7 +48,7 @@ const TransactionsMobileItem = ({ item = {} }) => {
                 item.type === 'EXPENSE' ? s.minus : s.plus
               )}
             >
-              {Math.abs(item.amount).toFixed(2)}
+              {prettyMoneyFormat(item.amount)}
             </td>
           </tr>
           <tr className={s.t_row}>
@@ -54,7 +57,7 @@ const TransactionsMobileItem = ({ item = {} }) => {
                 type="button"
                 text="Delete"
                 variant={'btn_delete'}
-                handlerFunction={() => dispatch(deleteTrnThunk(item.id))}
+               handlerFunction={() => handleDelete(item.id, item.amount, item.comment)}
               />
             </td>
             <td className={s.value}>

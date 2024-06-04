@@ -1,9 +1,8 @@
-const prettyMoneyFormat = number => {
+export const prettyBalanceFormat = number => {
   return new Intl.NumberFormat('en-US', {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   })
-    .format(Math.abs(number))
+    .format(number)
     .replace(/,/g, ' ');
 };
-export default prettyMoneyFormat;

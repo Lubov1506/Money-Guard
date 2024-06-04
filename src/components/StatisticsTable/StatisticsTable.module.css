@@ -62,4 +62,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+}
+
+.scroll {
+  @media only screen and (min-width: 768px) {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(70, 20, 59, 0.589) rgba(180, 128, 172, 0.411);
+    scroll-behavior: smooth;
+    scrollbar-gutter: stable both-edges;
+    overflow-y: scroll;
+    max-height: calc(100vh - 600px);
+  }
+  @media only screen and (min-width: 1280px) {
+    max-height: calc(100vh - 300px);
+  }
 }

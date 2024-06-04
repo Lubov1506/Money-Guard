@@ -3,6 +3,9 @@ import icons from '../../images/icons/sprite.svg';
 import s from './Navigation.module.css';
 import clsx from 'clsx';
 import { useMedia } from '../../hooks/useMedia';
+import { MdHome } from 'react-icons/md';
+import { SlGraph } from 'react-icons/sl';
+import { FaDollarSign } from 'react-icons/fa6';
 
 const buildLinkClass = ({ isActive }) => {
   return clsx(s.link, isActive && s.active);
@@ -15,17 +18,13 @@ const Navigation = () => {
     <ul className={s.link_icon_wrapper}>
       <li>
         <NavLink to="/" className={buildLinkClass}>
-          <svg className={s.icon}>
-            <use href={`${icons}#icon-home`} />
-          </svg>
+          <MdHome className={s.icon} />
           {isTablet || isDesktop ? <span className={s.span}>Home</span> : ''}
         </NavLink>
       </li>
       <li>
         <NavLink to="/statistics" className={buildLinkClass}>
-          <svg className={s.icon}>
-            <use href={`${icons}#icon-statistics`} />
-          </svg>
+          <SlGraph className={s.icon} />
           {isTablet || isDesktop ? (
             <span className={s.span}>Statistics</span>
           ) : (
@@ -33,15 +32,12 @@ const Navigation = () => {
           )}
         </NavLink>
       </li>
-
       {isTablet || isDesktop ? (
         ''
       ) : (
         <li>
           <NavLink to="/currency" className={buildLinkClass}>
-            <svg className={s.icon}>
-              <use href={`${icons}#icon-currency`} />
-            </svg>
+            <FaDollarSign className={s.icon} />
           </NavLink>
         </li>
       )}

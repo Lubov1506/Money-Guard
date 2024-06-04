@@ -9,7 +9,7 @@ export { default as DoughnutChart } from './DoughnutChart/DoughnutChart';
 export { default as StatisticDatePicker } from './StatisticDatePicker/StatisticDatePicker';
 export { default as StatisticsTable } from './StatisticsTable/StatisticsTable';
 export { default as ModalAddTransactionNew } from './ModalAddTransaction/ModalAddTransaction';
-export { default as ModalEditTransaction } from './ModalEditTransaction/ModalEditTransaction';
 export { default as EditModal } from './EditModal/EditModal';
 export { default as LoginForm } from './LoginForm/LoginForm';
 export { default as RegistrationForm } from './RegistrationForm/RegistrationForm';
+export { default as DeleteToast } from './DeleteToast/DeleteToast';

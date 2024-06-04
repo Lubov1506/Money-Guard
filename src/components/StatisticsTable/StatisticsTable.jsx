@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import StatisticsItem from '../StatisticsItem/StatisticsItem';
 import s from './StatisticsTable.module.css';
 import { selectPeriodTransactions } from '../../redux/transactions/selectors';
-import prettyMoneyFormat from '../../constants/PrettyMoneyFormat';
+import { prettyMoneyFormat } from 'helpers';
 import { getTrasactionCategoryColor } from '../../constants/TransactionConstants';
 
 const StatisticsTable = () => {
@@ -20,6 +20,7 @@ const StatisticsTable = () => {
           })
           .filter(item => item.type === 'EXPENSE')
       : null;
+
   const incomeData =
     incomeSummary && incomeSummary >= 0 ? prettyMoneyFormat(incomeSummary) : 0;
   const expenseData = expenseSummary ? prettyMoneyFormat(expenseSummary) : 0;
@@ -34,23 +35,27 @@ const StatisticsTable = () => {
               <th className={s.sum}>Sum</th>
             </tr>
           </thead>
-          <tbody className={s.tableBody}>
-            {data.map((item, idx) => (
-              <StatisticsItem key={idx} item={item} />
-            ))}
-          </tbody>
-          <tfoot className={s.tableFooter}>
-            <tr className={s.expences}>
-              <th className={s.stat_text}>Expences:</th>
-              <th>{expenseData}</th>
-            </tr>
-
-            <tr className={s.income}>
-              <th className={s.stat_text}>Income:</th>
-              <th>{incomeData}</th>
-            </tr>
-          </tfoot>
         </table>
+        <div className={s.scroll}>
+          <table className={s.table}>
+            <tbody className={s.tableBody}>
+              {data.map((item, idx) => (
+                <StatisticsItem key={idx} item={item} />
+              ))}
+            </tbody>
+            <tfoot className={s.tableFooter}>
+              <tr className={s.expences}>
+                <th className={s.stat_text}>Expences:</th>
+                <th>{expenseData}</th>
+              </tr>
+
+              <tr className={s.income}>
+                <th className={s.stat_text}>Income:</th>
+                <th>{incomeData}</th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
       </div>
     );
   }

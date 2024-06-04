@@ -1,6 +1,7 @@
 .doughnutContainer {
   margin: 0 auto;
   width: 280px;
+  height: 280px;
   position: relative;
   display: flex;
   align-items: center;
@@ -17,25 +18,13 @@
   }
 }
 
-.balance {
-  position: absolute;
-  font-family: 'Poppins';
-  font-weight: 600;
-  font-size: 18px;
-  text-align: center;
-  color: var(--white);
-  z-index: 500;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
 .doughnut {
-  font-family: 'Poppins';
+  /* font-family: 'Poppins'; */
   z-index: 1000;
 }
 
 .text {
-  font-family: 'Poppins';
+  /* font-family: 'Poppins'; */
   font-weight: 400;
   font-size: 14px;
   text-align: center;
@@ -47,7 +36,7 @@
   }
 }
 .textMobile {
-  font-family: 'Poppins';
+  /* font-family: 'Poppins'; */
   font-weight: 400;
   font-size: 12px;
   text-align: center;
@@ -58,6 +47,19 @@
     display: none;
   }
 }
+.balance {
+  position: absolute;
+  /* font-family: 'Poppins'; */
+  font-weight: 600;
+  font-size: 18px;
+  text-align: center;
+  color: var(--white);
+  z-index: 500;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .positiveBalance {
   color: var(--white);
 }
