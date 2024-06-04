@@ -42,5 +42,5 @@ input {
   outline: none;
 }
 input:focus {
-  border-bottom: 1px solid rgba(186, 14, 14, 0.814);
+  border-bottom: 1px solid var(--white-60);
 }

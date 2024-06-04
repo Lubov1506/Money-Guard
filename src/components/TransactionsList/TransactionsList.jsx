@@ -4,10 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectTransactions } from '../../redux/transactions/selectors';
 import { useEffect } from 'react';
 import { fetchAllTrnThunk } from '../../redux/transactions/operations';
-
 import s from './TransactionsList.module.css';
 import EmptyHistory from 'components/EmptyHistory/EmptyHistory';
 import { useMedia } from 'hooks';
+import DeleteToast from '../DeleteToast/DeleteToast'
+
 
 const TransactionsList = () => {
   const transactions = useSelector(selectTransactions).toSorted(
@@ -20,9 +21,16 @@ const TransactionsList = () => {
   }, [dispatch]);
 
   const { isTablet } = useMedia();
+  const { showDeleteToast, deletedIds } = DeleteToast();
+
+  const handleDelete = (transactionId, sum, comment) => {
+    showDeleteToast(transactionId, sum, comment);
+  };
+
   if (!transactions.length) {
     return <EmptyHistory />;
   }
+
   return (
     <>
       {isTablet ? (
@@ -39,14 +47,23 @@ const TransactionsList = () => {
           </thead>
           <tbody>
             {transactions.map(item => (
-              <TransactionsDescItem key={item.id} item={item} />
+              <TransactionsDescItem
+                key={item.id}
+                item={item}
+                deletedIds={deletedIds}
+                handleDelete={handleDelete}
+              />
             ))}
           </tbody>
         </table>
       ) : (
         <ul className={s.list}>
           {transactions.map(item => (
-            <TransactionsMobileItem key={item.id} item={item} />
+            <TransactionsMobileItem
+              key={item.id}
+              item={item}
+              handleDelete={handleDelete}
+            />
           ))}
         </ul>
       )}

@@ -1,39 +1,29 @@
-import { useDispatch, useSelector } from 'react-redux';
+
+import { useSelector } from 'react-redux';
+
 import FormButton from '../common/FormButton/FormButton';
 import s from './TransactionsDescItem.module.css';
 import { GoPencil } from 'react-icons/go';
-import { deleteTrnThunk } from '../../redux/transactions/operations';
 import { getTransactionCategory } from '../../constants/TransactionConstants';
 import { useOutletContext } from 'react-router-dom';
 import clsx from 'clsx';
-import { toast } from 'react-toastify';
-import { toastStyles } from 'components/Toast/toastStyles';
-
 import { selectCategories } from '../../redux/transactions/selectors';
-
 import dateFormat from 'helpers/dateFormat';
-
-
-const TransactionsDescItem = ({ item }) => {
-  const dispatch = useDispatch();
+import dateFormat from 'helpers/dateFormat';
+const categories = useSelector(selectCategories);
+const TransactionsDescItem = ({ deletedIds, item, handleDelete }) => {
   const { openEditModal } = useOutletContext();
-  const categories = useSelector(selectCategories);
-  const handleDelete = () => {
-    dispatch(deleteTrnThunk(item.id))
-      .unwrap()
-      .then(item => {
-        console.log(item);
-        toast.success(`Transaction deleted`, toastStyles);
-      });
-  };
 
   return (
     <>
       <tr className={s.t_row} key={item.id}>
 
         <td className={s.value}>{dateFormat(item.transactionDate)}</td>
-        <td className={`${s.value} ${s.value_type}`}>{item.type === 'EXPENSE' ? '-' : '+'}</td>
-        <td className={s.value}>{getTransactionCategory(item.categoryId, categories)}</td>
+
+        <td className={`${s.value} ${s.value_type}`}>
+          {item.type === 'EXPENSE' ? '-' : '+'}
+        </td>
+        <td className={s.value}>{getTransactionCategory(item.categoryId)}</td>
 
         <td className={s.value}>{item.comment}</td>
         <td
@@ -57,7 +47,10 @@ const TransactionsDescItem = ({ item }) => {
             type="button"
             text="Delete"
             variant={'btn_delete'}
-            handlerFunction={handleDelete}
+            isDisabled={deletedIds.some(idFromArray => idFromArray === item.id)}
+            handlerFunction={() =>
+              handleDelete(item.id, item.amount, item.comment)
+            }
           />
         </td>
       </tr>
