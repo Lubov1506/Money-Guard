@@ -116,7 +116,6 @@ const DoughnutChart = () => {
     <div className={css.doughnutContainer}>
       {(() => {
         if (!expenseTotal) {
-          console.log(balance);
           return (
             <>
               <div
@@ -125,7 +124,10 @@ const DoughnutChart = () => {
                 }`}
               >
                 <p className={css.textMobile}>No transactions</p>
-                <p className={css.text}>No transactions,<br /> your balance is:</p>
+                <p className={css.text}>
+                  No transactions,
+                  <br /> your balance is:
+                </p>
                 <p> ₴ {formattedBalance}</p>
               </div>
               <Doughnut
@@ -136,6 +138,7 @@ const DoughnutChart = () => {
             </>
           );
         } else {
+          console.log(balance);
           return (
             <>
               <div
