@@ -23,7 +23,8 @@
 
 @media only screen and (min-width: 768px) {
   .backdrop {
-    background-color: unset;
+    background-size: 100% 100%;
+    background-color: var(--background);
     background-image: url('../../images/login/bg-login-tab@1x.webp');
   }
 }
