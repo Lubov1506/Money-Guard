@@ -3,11 +3,13 @@ import s from './TransactionsMobileItem.module.css';
 import { GoPencil } from 'react-icons/go';
 import FormButton from '../common/FormButton/FormButton';
 import { getTransactionCategory } from '../../constants/TransactionConstants';
-
+import {useSelector } from 'react-redux';
 import clsx from 'clsx';
+import { selectCategories } from '../../redux/transactions/selectors';
 import dateFormat from 'helpers/dateFormat';
 
 const TransactionsMobileItem = ({ item = {}, handleDelete }) => {
+const categories = useSelector(selectCategories);
 
   const { openEditModal } = useOutletContext();
   return (
@@ -30,7 +32,7 @@ const TransactionsMobileItem = ({ item = {}, handleDelete }) => {
           <tr className={s.t_row}>
             <td className={s.title}>Category</td>
             <td className={s.value}>
-              {getTransactionCategory(item.categoryId)}
+              {getTransactionCategory(item.categoryId, categories)}
             </td>
           </tr>
           <tr className={s.t_row}>
