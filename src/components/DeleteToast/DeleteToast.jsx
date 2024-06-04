@@ -2,7 +2,6 @@ import { toast } from 'react-toastify';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteTrnThunk } from '../../redux/transactions/operations';
-import { deleteToastStyles } from 'components/Toast/toastStyles';
 import s from './DeleteToast.module.css';
 import { prettyMoneyFormat } from 'helpers/prettyMoneyFormat';
 
@@ -39,14 +38,14 @@ const DeleteToast = () => {
               setDeletedIds(prev =>
                 prev.filter(item => item !== transactionId)
               );
-              toast.dismiss(toastId, deleteToastStyles);
+              toast.dismiss(toastId);
             }}
           >
             Keep it!
           </button>
         </div>
       </div>,
-      deleteToastStyles,
+
       {
         onClose: () => {
           if (!undo) {
@@ -54,6 +53,14 @@ const DeleteToast = () => {
             dispatch(deleteTrnThunk(transactionId));
           }
         },
+        closeOnClick: false,
+        width: '350px',
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeButton: false,
+        pauseOnHover: true,
+        draggable: true,
+        backgroundColor: '#c754ebb4',
       }
     );
   };

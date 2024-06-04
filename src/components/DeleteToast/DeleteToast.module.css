@@ -2,6 +2,12 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  background-color: #c754ebb4;
+  color: white;
+  font-size: 16px;
+  padding: 16px;
+
+  border-radius: 8px;
 }
 .comment {
   display: block;
