@@ -4,11 +4,13 @@ import { GoPencil } from 'react-icons/go';
 import FormButton from '../common/FormButton/FormButton';
 import { getTransactionCategory } from '../../constants/TransactionConstants';
 import { deleteTrnThunk } from '../../redux/transactions/operations';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import clsx from 'clsx';
+import { selectBalance } from '../../redux/auth/selectors';
 
 const TransactionsMobileItem = ({ item = {} }) => {
   const dispatch = useDispatch();
+  const categories = useSelector(selectBalance);
   const { openEditModal } = useOutletContext();
   return (
     <li className={s.li}>
@@ -30,7 +32,7 @@ const TransactionsMobileItem = ({ item = {} }) => {
           <tr className={s.t_row}>
             <td className={s.title}>Category</td>
             <td className={s.value}>
-              {getTransactionCategory(item.categoryId)}
+              {getTransactionCategory(item.categoryId, categories)}
             </td>
           </tr>
           <tr className={s.t_row}>

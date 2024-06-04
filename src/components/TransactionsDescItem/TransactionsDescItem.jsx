@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import FormButton from '../common/FormButton/FormButton';
 import s from './TransactionsDescItem.module.css';
 import { GoPencil } from 'react-icons/go';
@@ -8,11 +8,12 @@ import { useOutletContext } from 'react-router-dom';
 import clsx from 'clsx';
 import { toast } from 'react-toastify';
 import { toastStyles } from 'components/Toast/toastStyles';
+import { selectCategories } from '../../redux/transactions/selectors';
 
 const TransactionsDescItem = ({ item }) => {
   const dispatch = useDispatch();
   const { openEditModal } = useOutletContext();
-
+  const categories = useSelector(selectCategories);
   const handleDelete = () => {
     dispatch(deleteTrnThunk(item.id))
       .unwrap()
@@ -27,7 +28,9 @@ const TransactionsDescItem = ({ item }) => {
       <tr className={s.t_row} key={item.id}>
         <td className={s.value}>{item.transactionDate}</td>
         <td className={s.value}>{item.type === 'EXPENSE' ? '-' : '+'}</td>
-        <td className={s.value}>{getTransactionCategory(item.categoryId)}</td>
+        <td className={s.value}>
+          {getTransactionCategory(item.categoryId, categories)}
+        </td>
         <td className={s.value}>{item.comment}</td>
         <td
           className={clsx(
