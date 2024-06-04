@@ -32,7 +32,11 @@ const ProgressBar = ({ password, confirmPassword }) => {
           className={css.progressBar}
           style={{
             width: `${progress}%`,
-            backgroundColor: match ? '#FFB627' : '#ff4b5c',
+            backgroundColor: !match
+              ? '#ff4b5c'
+              : progress < 99
+              ? '#FFB627'
+              : '#4caf50',
           }}
         ></div>
       </div>
