@@ -4,9 +4,13 @@
   width: 100%;
   padding: 0 20px;
   overflow-y: scroll;
-  scrollbar-width: 0px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(70, 20, 59, 0.589) rgba(180, 128, 172, 0.411);
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable both-edges;
   max-height: calc(100vh - 240px);
   @media only screen and (min-width: 768px) {
+    overflow-y: unset;
     max-height: calc(100vh - 317px);
   }
   @media only screen and (min-width: 1280px) {
@@ -14,12 +18,4 @@
     padding: 0 16px 0 69px;
     display: block;
   }
-}
-
-.div::-webkit-scrollbar {
-  display: none;
-}
-.div {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
 }

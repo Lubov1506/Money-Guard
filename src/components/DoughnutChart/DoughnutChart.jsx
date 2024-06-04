@@ -75,7 +75,7 @@ const DoughnutChart = () => {
   const total = incomeTotal + expenseTotal;
   const balance = total ? total : 0;
 
-  console.log('Expense ', expenseTotal, 'Income ', incomeTotal);
+  // console.log('Expense ', expenseTotal, 'Income ', incomeTotal);
 
   const data = expense.map(item => ({
     ...item,
@@ -98,14 +98,14 @@ const DoughnutChart = () => {
         ],
       }
     : {
-        labels: ['Add expenses'],
+        labels: ['No transactions'],
         datasets: [
           {
             label: ' No expenses',
             data: [1],
-            backgroundColor: ['#ffffff'],
-            borderColor: ['#ffffff'],
-            borderWidth: 1,
+            backgroundColor: ['rgba(255, 255, 255, 0.6)'],
+            borderColor: ['rgba(255, 255, 255, 0.6)'],
+            borderWidth: 0,
           },
         ],
       };
@@ -123,8 +123,11 @@ const DoughnutChart = () => {
                   balance < 0 ? css.negativeBalance : css.positiveBalance
                 }`}
               >
-                <p className={css.textMobile}>Add expenses</p>
-                <p className={css.text}>Add expenses, your balance is:</p>
+                <p className={css.textMobile}>No transactions</p>
+                <p className={css.text}>
+                  No transactions,
+                  <br /> your balance is:
+                </p>
                 <p> ₴ {formattedBalance}</p>
               </div>
               <Doughnut
@@ -135,6 +138,7 @@ const DoughnutChart = () => {
             </>
           );
         } else {
+          console.log(balance);
           return (
             <>
               <div
