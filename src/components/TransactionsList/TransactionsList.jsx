@@ -10,7 +10,9 @@ import EmptyHistory from 'components/EmptyHistory/EmptyHistory';
 import { useMedia } from 'hooks';
 
 const TransactionsList = () => {
-  const transactions = useSelector(selectTransactions);
+  const transactions = useSelector(selectTransactions).toSorted(
+    (a, b) => new Date(b.transactionDate) - new Date(a.transactionDate)
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
