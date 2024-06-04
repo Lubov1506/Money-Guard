@@ -1,4 +1,3 @@
-
 import { useSelector } from 'react-redux';
 
 import FormButton from '../common/FormButton/FormButton';
@@ -9,21 +8,22 @@ import { useOutletContext } from 'react-router-dom';
 import clsx from 'clsx';
 import { selectCategories } from '../../redux/transactions/selectors';
 import dateFormat from 'helpers/dateFormat';
-import dateFormat from 'helpers/dateFormat';
-const categories = useSelector(selectCategories);
+
 const TransactionsDescItem = ({ deletedIds, item, handleDelete }) => {
   const { openEditModal } = useOutletContext();
+  const categories = useSelector(selectCategories);
 
   return (
     <>
       <tr className={s.t_row} key={item.id}>
-
         <td className={s.value}>{dateFormat(item.transactionDate)}</td>
 
         <td className={`${s.value} ${s.value_type}`}>
           {item.type === 'EXPENSE' ? '-' : '+'}
         </td>
-        <td className={s.value}>{getTransactionCategory(item.categoryId)}</td>
+        <td className={s.value}>
+          {getTransactionCategory(item.categoryId, categories)}
+        </td>
 
         <td className={s.value}>{item.comment}</td>
         <td
