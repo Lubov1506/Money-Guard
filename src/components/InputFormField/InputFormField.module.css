@@ -48,7 +48,7 @@
 .error {
   color: var(--yellow);
   position: absolute;
-  top: 4em;
+  top: 3.5em;
   font-size: 0.7em;
   padding-left: 50px;
 }
