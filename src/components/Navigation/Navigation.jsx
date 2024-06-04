@@ -12,7 +12,7 @@ const buildLinkClass = ({ isActive }) => {
 };
 
 const Navigation = () => {
-  const { isDesktop, isTablet } = useMedia();
+  const { isMobile, isDesktop, isTablet } = useMedia();
 
   return (
     <ul className={s.link_icon_wrapper}>
@@ -32,7 +32,7 @@ const Navigation = () => {
           )}
         </NavLink>
       </li>
-      {isTablet || isDesktop ? (
+      {!isMobile ? (
         ''
       ) : (
         <li>

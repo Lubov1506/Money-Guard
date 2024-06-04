@@ -13,7 +13,7 @@ const Balance = () => {
     <div className={s.balance_container}>
       <p className={s.balance_label}>Your balance</p>
       <p className={clsx(s.balance_amount, balance < 0 && s.negative)}>
-        ₴ {formattedNumber}
+        <span className={s.sign}>₴</span> {formattedNumber}
       </p>
     </div>
   );

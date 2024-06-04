@@ -40,3 +40,7 @@
 .negative {
   color: var(--dashboard-text);
 }
+
+.sign {
+  font-weight: 400;
+}
