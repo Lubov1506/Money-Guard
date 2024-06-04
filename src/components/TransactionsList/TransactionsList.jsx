@@ -19,8 +19,7 @@ const TransactionsList = () => {
     (a, b) => new Date(b.transactionDate) - new Date(a.transactionDate)
   );
   const dispatch = useDispatch();
-  const [pending, setPending] = useState(false);
-  const [deletedId, setDeletetId] = useState(null);
+  const [deletedIds, setDeletetIds] = useState([]);
   useEffect(() => {
     dispatch(fetchAllTrnThunk());
   }, [dispatch]);
@@ -29,8 +28,8 @@ const TransactionsList = () => {
 
   const handleDelete = transactionId => {
     let undo = false;
-    setPending(true);
-    setDeletetId(transactionId);
+    console.log(new Set());
+    setDeletetIds(prev => [...prev, transactionId]);
     const toastId = toast(
       <div className={s.undelete_toast}>
         <button
@@ -45,7 +44,8 @@ const TransactionsList = () => {
           className={s.undelete_btn}
           onClick={() => {
             undo = true;
-            setPending(false);
+            setDeletetIds(prev => prev.filter(item => item !== transactionId));
+
             toast.dismiss(toastId, toastStyles);
           }}
         >
@@ -55,7 +55,7 @@ const TransactionsList = () => {
       {
         onClose: () => {
           if (!undo) {
-            setPending(false);
+            setDeletetIds(prev => prev.filter(item => item !== transactionId));
             dispatch(deleteTrnThunk(transactionId));
           }
         },
@@ -87,8 +87,7 @@ const TransactionsList = () => {
               <TransactionsDescItem
                 key={item.id}
                 item={item}
-                pending={pending}
-                deletedId={deletedId}
+                deletedIds={deletedIds}
                 handleDelete={handleDelete}
               />
             ))}
