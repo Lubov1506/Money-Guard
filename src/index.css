@@ -1,6 +1,6 @@
 @import url('./css/reset.css');
 @import url('./css/fonts.css');
-
+@import url('./css/datePickerStyles.css');
 :root {
   --yellow: #ffb627;
   --icon-violet: #734aef;
