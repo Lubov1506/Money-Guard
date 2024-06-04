@@ -1,9 +1,10 @@
 .general_wrap {
   width: 100%;
-
   overflow-y: scroll;
+  scrollbar-width: thin;
   height: calc(100vh - 240px);
   @media only screen and (min-width: 768px) {
+    overflow-y: unset;
     display: flex;
     height: unset;
     justify-content: space-evenly;
@@ -12,13 +13,6 @@
   @media only screen and (min-width: 1280px) {
     max-height: calc(100vh - 80px);
   }
-}
-.general_wrap::-webkit-scrollbar {
-  display: none;
-}
-.general_wrap {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
 }
 
 .donut_wrap {
@@ -31,7 +25,8 @@
     margin-right: 32px;
   }
   @media only screen and (min-width: 1280px) {
-    margin-left: 69px;
+    margin-left: 49px;
+    margin-right: 0;
   }
 }
 .stat_wrap {
