@@ -73,7 +73,7 @@ const EditModal = ({ closeModal, item }) => {
         )}
         <Formik initialValues={initialValues} onSubmit={handleSubmit}>
           {({ isSubmitting }) => (
-            <Form>
+            <Form className={s.form}> 
               <h2 className={s.formTitle}>Edit transaction</h2>
 
               <div className={s.switcheWrapper}>

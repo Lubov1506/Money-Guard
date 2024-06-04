@@ -10,15 +10,18 @@
 } */
 
 .modal {
+  width: 100%;
+  min-height: 100%;
+  max-height: calc(100vh - 60px);
   position: absolute;
-  top: 60px;
+  /* top: 60px; */
   z-index: 100;
   display: flex;
   flex-direction: column;
   align-self: center;
   align-items: center;
   margin: 0 auto;
-  padding: 238px 20px;
+  padding: 120px 20px;
   background-image: url('../../images/addTrn/add-edit-mob1x.webp');
   background-color: var(--form-color);
   background-repeat: no-repeat;
