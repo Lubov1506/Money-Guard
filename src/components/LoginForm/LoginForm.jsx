@@ -9,7 +9,7 @@ import FormButton from '../common/FormButton/FormButton';
 import { Link } from 'react-router-dom';
 import Logo from '../common/Logo/Logo';
 import InputFormField from 'components/InputFormField/InputFormField';
-
+import { motion } from 'framer-motion';
 export const LoginForm = () => {
   const dispatch = useDispatch();
   const initialValues = {
@@ -23,45 +23,47 @@ export const LoginForm = () => {
 
   return (
     <div className={s.backdrop}>
-      <div className={s.modal}>
-        <Logo />
-        <Formik
-          initialValues={initialValues}
-          validationSchema={loginValidatiSchema}
-          onSubmit={handleSubmit}
-        >
-          <Form className={s.form}>
-            <div className={s.inputs}>
-              <InputFormField
-                icon={MdOutlineMailOutline}
-                type="email"
-                name="email"
-                placeholder="Enter your email"
-              />
-              <InputFormField
-                icon={MdLock}
-                type="password"
-                name="password"
-                placeholder="Password"
-              />
-            </div>
-            <div className={s.btns}>
-              <FormButton
-                type="submit"
-                text={'LogIn'}
-                variant={'multiColorButtton'}
-              />
-              <Link to="/register">
-                <FormButton
-                  type="button"
-                  text={'Register'}
-                  variant={'whiteButtton'}
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+        <div className={s.modal}>
+          <Logo />
+          <Formik
+            initialValues={initialValues}
+            validationSchema={loginValidatiSchema}
+            onSubmit={handleSubmit}
+          >
+            <Form className={s.form}>
+              <div className={s.inputs}>
+                <InputFormField
+                  icon={MdOutlineMailOutline}
+                  type="email"
+                  name="email"
+                  placeholder="Enter your email"
                 />
-              </Link>
-            </div>
-          </Form>
-        </Formik>
-      </div>
+                <InputFormField
+                  icon={MdLock}
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                />
+              </div>
+              <div className={s.btns}>
+                <FormButton
+                  type="submit"
+                  text={'LogIn'}
+                  variant={'multiColorButtton'}
+                />
+                <Link to="/register">
+                  <FormButton
+                    type="button"
+                    text={'Register'}
+                    variant={'whiteButtton'}
+                  />
+                </Link>
+              </div>
+            </Form>
+          </Formik>
+        </div>
+      </motion.div>
     </div>
   );
 };

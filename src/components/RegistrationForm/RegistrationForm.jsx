@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import Logo from '../common/Logo/Logo';
 // import ProgressBar from '../ProgressBar/ProgressBar';
 import InputFormField from 'components/InputFormField/InputFormField';
+import { motion } from 'framer-motion';
 
 export const RegistrationForm = () => {
   const dispatch = useDispatch();
@@ -23,67 +24,70 @@ export const RegistrationForm = () => {
   const handleSubmit = (values, actions) => {
     const { username, email, password } = values;
     dispatch(signUpThunk({ username, email, password }));
+
     actions.resetForm();
   };
 
   return (
     <div className={s.backdrop}>
-      <div className={s.modal}>
-        <Logo />
-        <Formik
-          initialValues={initialValues}
-          validationSchema={registerValidatSchema}
-          onSubmit={handleSubmit}
-        >
-          {({ values }) => (
-            <Form className={s.form}>
-              <div className={s.inputs}>
-                <InputFormField
-                  icon={IoPerson}
-                  type="text"
-                  name="username"
-                  placeholder="Name"
-                />
-                <InputFormField
-                  icon={MdOutlineMailOutline}
-                  type="email"
-                  name="email"
-                  placeholder="E-mail"
-                />
-                <InputFormField
-                  icon={MdLock}
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  passwordValue={values.password}
-                />
-                <InputFormField
-                  icon={MdLock}
-                  type="password"
-                  name="confirmPassword"
-                  placeholder="Confirm password"
-                  confirmValue={values.confirmPassword}
-                  passwordValue={values.password}
-                />
-              </div>
-              <div className={s.btns}>
-                <FormButton
-                  type="submit"
-                  text={'Register'}
-                  variant={'multiColorButtton'}
-                />
-                <Link to="/login">
-                  <FormButton
-                    type="button"
-                    text={'LogIn'}
-                    variant={'whiteButtton'}
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+        <div className={s.modal}>
+          <Logo />
+          <Formik
+            initialValues={initialValues}
+            validationSchema={registerValidatSchema}
+            onSubmit={handleSubmit}
+          >
+            {({ values }) => (
+              <Form className={s.form}>
+                <div className={s.inputs}>
+                  <InputFormField
+                    icon={IoPerson}
+                    type="text"
+                    name="username"
+                    placeholder="Name"
                   />
-                </Link>
-              </div>
-            </Form>
-          )}
-        </Formik>
-      </div>
+                  <InputFormField
+                    icon={MdOutlineMailOutline}
+                    type="email"
+                    name="email"
+                    placeholder="E-mail"
+                  />
+                  <InputFormField
+                    icon={MdLock}
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    passwordValue={values.password}
+                  />
+                  <InputFormField
+                    icon={MdLock}
+                    type="password"
+                    name="confirmPassword"
+                    placeholder="Confirm password"
+                    confirmValue={values.confirmPassword}
+                    passwordValue={values.password}
+                  />
+                </div>
+                <div className={s.btns}>
+                  <FormButton
+                    type="submit"
+                    text={'Register'}
+                    variant={'multiColorButtton'}
+                  />
+                  <Link to="/login">
+                    <FormButton
+                      type="button"
+                      text={'LogIn'}
+                      variant={'whiteButtton'}
+                    />
+                  </Link>
+                </div>
+              </Form>
+            )}
+          </Formik>
+        </div>
+      </motion.div>
     </div>
   );
 };

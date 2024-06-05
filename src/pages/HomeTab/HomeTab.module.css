@@ -6,13 +6,11 @@
   overflow-y: scroll;
   max-height: calc(100vh - 240px);
   @media only screen and (min-width: 768px) {
-    max-height: calc(100vh - 317px);
-    height: 280px;
-  padding: 0 20px;
+    max-height: calc(100vh - 410px);
+    padding: 0 20px;
   }
   @media only screen and (min-width: 1280px) {
-    max-height: calc(100vh - 80px);
-    height: 480px;
+    max-height: calc(100vh - 240px);
     margin-top: 46px;
     padding: 0 16px 0 69px;
     display: block;

@@ -4,6 +4,7 @@ import {
   StatisticsTable,
 } from 'components';
 import { useMedia } from 'hooks';
+import { motion } from 'framer-motion';
 
 import s from './StatisticsTab.module.css';
 
