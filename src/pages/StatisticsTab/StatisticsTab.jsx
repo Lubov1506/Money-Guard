@@ -11,7 +11,7 @@ import s from './StatisticsTab.module.css';
 const StatisticsTab = () => {
   const { isTablet, isDesktop } = useMedia();
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+    <>
       {!isDesktop && !isTablet && (
         <>
           <div className={s.general_wrap}>
@@ -38,7 +38,7 @@ const StatisticsTab = () => {
           </div>
         </div>
       )}
-    </motion.div>
+    </>
   );
 };
 
