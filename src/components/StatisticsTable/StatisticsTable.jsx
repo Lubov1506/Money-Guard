@@ -36,9 +36,9 @@ const StatisticsTable = () => {
             </tr>
           </thead>
         </table>
-        <div className={s.scroll}>
+        <div className={s.divTable}>
           <table className={s.table}>
-            <tbody className={s.tableBody}>
+            <tbody className={s.scroll}>
               {data.map((item, idx) => (
                 <StatisticsItem
                   key={idx}

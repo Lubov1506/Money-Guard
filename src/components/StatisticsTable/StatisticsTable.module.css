@@ -64,19 +64,36 @@
   justify-content: center;
   flex-direction: column;
 }
-
-.scroll {
+.divTable {
+  height: 100%;
   @media only screen and (min-width: 768px) {
-    overflow-y: scroll;
-    max-height: calc(100vh - 600px);
+    /* max-height: calc(100vh - 600px); */
   }
   @media only screen and (min-width: 1280px) {
-    max-height: calc(100vh - 300px);
+    /* max-height: calc(100vh - 332px); */
+  }
+}
+
+.scroll {
+  padding: 0 16px;
+  font-size: 14px;
+
+  @media only screen and (min-width: 768px) {
+    display: block;
+    overflow: auto;
+    overflow-y: scroll;
+    max-height: calc(100vh - 650px);
+  }
+  @media only screen and (min-width: 1280px) {
+    max-height: calc(100vh - 400px);
+  }
+  tr {
+    text-align: left;
   }
 }
 
 .scroll::-webkit-scrollbar {
-  width: 8px; /* Змінив ширину для більшої видимості */
+  width: 8px;
   height: 23px;
 }
 
