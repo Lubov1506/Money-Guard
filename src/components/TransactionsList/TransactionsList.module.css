@@ -1,6 +1,7 @@
 .table {
   width: 100%;
   border-collapse: collapse;
+  height: 100%;
 }
 
 .title {
