@@ -8,7 +8,6 @@ import { PrivateRoute, PublicRoute } from './routes';
 import Loader from 'components/Loader/Loader';
 import { Dashboard, LoginPage, NotFound, RegistrationPage } from './pages';
 import { useMedia } from './hooks';
-import { getCategoriesThunk } from './redux/transactions/operations';
 
 const CurrencyTab = lazy(() => import('./pages/CurrencyTab/CurrencyTab'));
 const HomeTab = lazy(() => import('./pages/HomeTab/HomeTab'));
@@ -19,7 +18,6 @@ function App() {
   const isRefreshing = useSelector(selectIsRefreshing);
   useEffect(() => {
     dispatch(refreshUserThunk());
-    dispatch(getCategoriesThunk());
   }, [dispatch]);
   const { isMobile } = useMedia();
   return (

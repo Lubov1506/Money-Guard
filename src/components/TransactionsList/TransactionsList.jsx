@@ -1,11 +1,10 @@
 import TransactionsDescItem from '../TransactionsDescItem/TransactionsDescItem';
 import TransactionsMobileItem from '../TransactionsMobileItem/TransactionsMobileItem';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { selectTransactions } from '../../redux/transactions/selectors';
-import { useEffect } from 'react';
-import { fetchAllTrnThunk } from '../../redux/transactions/operations';
+
 import s from './TransactionsList.module.css';
-import EmptyHistory from 'components/EmptyHistory/EmptyHistory';
+
 import { useMedia } from 'hooks';
 import useDeleteToast from '../DeleteToast/DeleteToast';
 import clsx from 'clsx';
@@ -14,22 +13,11 @@ const TransactionsList = () => {
   const transactions = useSelector(selectTransactions).toSorted(
     (a, b) => new Date(b.transactionDate) - new Date(a.transactionDate)
   );
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchAllTrnThunk());
-  }, [dispatch]);
-
   const { isTablet } = useMedia();
   const { showDeleteToast, deletedIds } = useDeleteToast();
-
   const handleDelete = (transactionId, sum, comment) => {
     showDeleteToast(transactionId, sum, comment);
   };
-
-  if (!transactions.length) {
-    return <EmptyHistory />;
-  }
 
   return (
     <>
