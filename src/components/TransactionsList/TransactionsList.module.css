@@ -19,7 +19,6 @@
   backdrop-filter: blur(100px);
   box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
   background: rgba(82, 59, 126, 0.6);
-
 }
 
 .list {
@@ -28,7 +27,9 @@
   gap: 8px;
   padding: 0;
 }
-
+.sum {
+  text-align: right;
+}
 .title:first-child {
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;

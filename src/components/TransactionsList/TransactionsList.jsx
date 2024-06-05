@@ -8,6 +8,7 @@ import s from './TransactionsList.module.css';
 import EmptyHistory from 'components/EmptyHistory/EmptyHistory';
 import { useMedia } from 'hooks';
 import useDeleteToast from '../DeleteToast/DeleteToast';
+import clsx from 'clsx';
 
 const TransactionsList = () => {
   const transactions = useSelector(selectTransactions).toSorted(
@@ -40,7 +41,7 @@ const TransactionsList = () => {
               <th className={s.title}>Type</th>
               <th className={s.title}>Category</th>
               <th className={s.title}>Comment</th>
-              <th className={s.title}>Sum</th>
+              <th className={clsx(s.title, s.sum)}>Sum</th>
               <th className={s.title}></th>
             </tr>
           </thead>
