@@ -3,18 +3,26 @@ import s from './TransactionsMobileItem.module.css';
 import { GoPencil } from 'react-icons/go';
 import FormButton from '../common/FormButton/FormButton';
 import { getTransactionCategory } from '../../constants/TransactionConstants';
-import {useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import clsx from 'clsx';
 import { selectCategories } from '../../redux/transactions/selectors';
 import dateFormat from 'helpers/dateFormat';
 import { prettyMoneyFormat } from 'helpers/prettyMoneyFormat';
+import { motion } from 'framer-motion';
 
-const TransactionsMobileItem = ({ item = {}, handleDelete }) => {
-const categories = useSelector(selectCategories);
+const TransactionsMobileItem = ({ item = {}, handleDelete, index }) => {
+  const categories = useSelector(selectCategories);
 
   const { openEditModal } = useOutletContext();
   return (
-    <li className={s.li}>
+    <motion.li
+      className={s.li}
+      transition={{ delay: 0.3 * index }}
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 50 }}
+      key={item.id}
+    >
       <table
         className={clsx(
           s.table,
@@ -57,7 +65,9 @@ const categories = useSelector(selectCategories);
                 type="button"
                 text="Delete"
                 variant={'btn_delete'}
-               handlerFunction={() => handleDelete(item.id, item.amount, item.comment)}
+                handlerFunction={() =>
+                  handleDelete(item.id, item.amount, item.comment)
+                }
               />
             </td>
             <td className={s.value}>
@@ -73,7 +83,7 @@ const categories = useSelector(selectCategories);
           </tr>
         </tbody>
       </table>
-    </li>
+    </motion.li>
   );
 };
 

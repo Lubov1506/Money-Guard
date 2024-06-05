@@ -8,14 +8,22 @@ import clsx from 'clsx';
 import { selectCategories } from '../../redux/transactions/selectors';
 import dateFormat from 'helpers/dateFormat';
 import { prettyMoneyFormat } from 'helpers/prettyMoneyFormat';
+import { motion } from 'framer-motion';
 
-const TransactionsDescItem = ({ deletedIds, item, handleDelete }) => {
+const TransactionsDescItem = ({ deletedIds, item, handleDelete, index }) => {
   const { openEditModal } = useOutletContext();
   const categories = useSelector(selectCategories);
 
   return (
     <>
-      <tr className={s.t_row} key={item.id}>
+      <motion.tr
+        className={s.t_row}
+        key={item.id}
+        transition={{ delay: 0.2 * index }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 20 }}
+      >
         <td className={s.value}>{dateFormat(item.transactionDate)}</td>
 
         <td className={`${s.value} ${s.value_type}`}>
@@ -53,7 +61,7 @@ const TransactionsDescItem = ({ deletedIds, item, handleDelete }) => {
             }
           />
         </td>
-      </tr>
+      </motion.tr>
     </>
   );
 };

@@ -51,6 +51,7 @@ const TransactionsList = () => {
                 item={item}
                 deletedIds={deletedIds}
                 handleDelete={handleDelete}
+                index={transactions.indexOf(item) + 1}
               />
             ))}
           </tbody>
@@ -62,6 +63,7 @@ const TransactionsList = () => {
               key={item.id}
               item={item}
               handleDelete={handleDelete}
+              index={transactions.indexOf(item) + 1}
             />
           ))}
         </ul>
