@@ -23,7 +23,7 @@
   .noOutletWrapper {
     min-height: 237px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
   }
   .navBalWrapper {
     display: flex;

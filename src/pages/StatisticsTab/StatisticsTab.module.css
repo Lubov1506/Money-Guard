@@ -22,7 +22,7 @@
   margin-bottom: 32px;
   @media only screen and (min-width: 768px) {
     gap: 20px;
-    margin-right: 32px;
+    /* margin-right: 32px; */
   }
   @media only screen and (min-width: 1280px) {
     margin-left: 49px;
@@ -65,4 +65,16 @@
     margin-top: 32px;
     padding-left: 15px;
   }
+}
+.scroll::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #40357d;
+  opacity: 0.6;
+}
+
+.scroll::-webkit-scrollbar {
+  border-radius: 5px;
+  width: 8px;
+  background-color: #40357d;
 }
