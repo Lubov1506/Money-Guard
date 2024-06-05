@@ -18,7 +18,7 @@ const DeleteToast = () => {
       <div className={s.undelete_toast}>
         <h3>Delete?</h3>
         <div className={s.info}>
-          <p className={s.comment}>{comment} </p>
+          <p className={s.comment}>{comment} :</p>
           <p className={s.sum}>{prettyMoneyFormat(sum)}</p>
         </div>
         <div className={s.btns}>
@@ -40,7 +40,7 @@ const DeleteToast = () => {
               toast.dismiss(toastId, toastStyles);
             }}
           >
-            Undelete
+            Cancel
           </button>
         </div>
       </div>,
