@@ -41,6 +41,7 @@
   font-family: var(--font-family);
   font-weight: 600;
   font-size: 16px;
+  text-align: right;
 }
 .minus {
   color: var(--dashboard-text);

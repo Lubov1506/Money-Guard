@@ -28,7 +28,9 @@
   gap: 8px;
   padding: 0;
 }
-
+.sum {
+  text-align: right;
+}
 .title:first-child {
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
