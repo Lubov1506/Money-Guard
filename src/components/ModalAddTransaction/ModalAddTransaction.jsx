@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import styles from './ModalAddTransaction.module.css';
 import AddTransactionForm from '../AddTransactionForm/AddTransactionForm';
-
+import { motion } from 'framer-motion';
 const ModalAddTransactionNew = ({ closeModal }) => {
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -22,11 +22,14 @@ const ModalAddTransactionNew = ({ closeModal }) => {
   };
 
   return (
-    <>
-      <div className={styles.addModal} onClick={closeOnClickOutside}>
-        <AddTransactionForm closeModal={closeModal} />
-      </div>
-    </>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className={styles.addModal}
+      onClick={closeOnClickOutside}
+    >
+      <AddTransactionForm closeModal={closeModal} />
+    </motion.div>
   );
 };
 

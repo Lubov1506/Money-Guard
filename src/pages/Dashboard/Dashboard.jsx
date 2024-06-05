@@ -19,8 +19,12 @@ const Dashboard = () => {
   const [isEditedTrn, setIsEditedTrn] = useState(null);
   const openAddModal = () => setIsAddModalOpen(true);
   const openEditModal = item => setIsEditModalOpen(true, setIsEditedTrn(item));
-  const closeAddModal = () => setIsAddModalOpen(false);
-  const closeEditModal = () => setIsEditModalOpen(false);
+  const closeAddModal = () => {
+    setIsAddModalOpen(false);
+  };
+  const closeEditModal = () => {
+    setIsEditModalOpen(false);
+  };
 
   return (
     <>
